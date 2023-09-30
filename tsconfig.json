@@ -1,4 +1,5 @@
 {
+    "$schema": "https://raw.githubusercontent.com/TypeScriptToLua/TypeScriptToLua/master/tsconfig-schema.json",
     "compilerOptions": {
         "incremental": true,
         "target": "es6",
@@ -14,10 +15,20 @@
         "typeRoots": [
             "./node_modules/@types"
         ],
-        "rootDir": "src"
+        "rootDir": "src",
     },
     "include": [
         "src",
         "test"
-    ]
+    ],
+    "tstl": {
+        "luaBundle": "startup.lua",
+        "luaBundleEntry": "./src/app/app.ts",
+        "luaTarget": "5.1",
+        "luaPlugins": [
+            {
+                "name": "./plugin.ts"
+            }
+        ]
+    }
 }
