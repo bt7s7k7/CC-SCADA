@@ -12,6 +12,10 @@ export class SwitchField extends UIField implements EventHandler {
     protected _store = DataStore.of("boolean")
     protected _lastValue = false
 
+    public getLabel(): string {
+        return this.label ?? this.key
+    }
+
     public init(): void {
         this._store.init({
             defaultValue: this._lastValue,
@@ -33,10 +37,9 @@ export class SwitchField extends UIField implements EventHandler {
     public render(): Widget {
         return new Widget({
             content: [
-                new Widget({ content: this.label ?? this.key }),
-                new Widget({ grow: true }),
-                new Widget({ content: " OFF ", style: this._lastValue == false ? "error" : "secondary", onClick: () => this._store.setValue(false) }),
-                new Widget({ content: " ON ", style: this._lastValue == true ? "success" : "secondary", onClick: () => this._store.setValue(true) })
+                new Widget({ content: " " + this.getLabel().padEnd(this.monitor.getLabelLength()) }),
+                new Widget({ content: " OFF ", style: this._lastValue == false ? "error" : "grey", onClick: () => this._store.setValue(false) }),
+                new Widget({ content: " ON ", style: this._lastValue == true ? "success" : "grey", onClick: () => this._store.setValue(true) })
             ]
         })
     }

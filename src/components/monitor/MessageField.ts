@@ -6,13 +6,16 @@ export class MessageField extends UIField {
     public message = ""
     public output: string | null = null
 
+    public getLabel(): string {
+        return this.message
+    }
+
     public render(): Widget {
         return new Widget({
             content: this.output == null ? [
-                new Widget({ content: this.message })
+                new Widget({ content: " " + this.message.padEnd(this.monitor.getLabelLength()) })
             ] : [
-                new Widget({ content: this.message }),
-                new Widget({ grow: true }),
+                new Widget({ content: " " + this.message.padEnd(this.monitor.getLabelLength()) }),
                 new Widget({ content: this.output, style: "output" })
             ]
         })

@@ -6,6 +6,7 @@ import { MonitorComponent } from "./Monitor"
 export abstract class UIField extends Component {
     public monitor: MonitorComponent = null!
 
+    public abstract getLabel(): string
     public abstract render(): Widget
     public init() { }
 }

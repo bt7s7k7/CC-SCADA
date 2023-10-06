@@ -111,7 +111,6 @@ export abstract class DomainProxy {
 
         sendRequest()
         EventLoop.setInterval(listener, 1, () => {
-            Logger.printWork(`No response, searching again...`)
             sendRequest()
         })
 

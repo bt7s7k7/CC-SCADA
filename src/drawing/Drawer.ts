@@ -1,21 +1,23 @@
 import { Logger } from "../support/Logger"
 import { Point } from "./Point"
 
-export type Style = "primary" | "secondary" | "error" | "success" | "output"
+export type Style = "primary" | "secondary" | "error" | "success" | "output" | "grey"
 const COLOR_PALETTE: Record<Style, [bg: number, fg: number]> = {
     primary: [colors.blue, colors.white],
     secondary: [colors.gray, colors.white],
     error: [colors.red, colors.white],
-    success: [colors.lime, colors.white],
-    output: [colors.gray, colors.yellow]
+    success: [colors.green, colors.white],
+    output: [colors.gray, colors.yellow],
+    grey: [colors.lightGray, colors.black]
 }
 
 const MONO_PALETTE: Record<Style, [bg: number, fg: number]> = {
     primary: [colors.white, colors.black],
-    error: [colors.lightGray, colors.black],
-    success: [colors.lightGray, colors.black],
-    secondary: [colors.black, colors.lightGray],
-    output: [colors.black, colors.white]
+    error: [colors.white, colors.black],
+    success: [colors.white, colors.black],
+    secondary: [colors.black, colors.white],
+    output: [colors.black, colors.lightGray],
+    grey: [colors.gray, colors.black]
 }
 
 export class Drawer {

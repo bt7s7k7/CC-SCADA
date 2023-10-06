@@ -15,6 +15,7 @@ import { ValueField } from "./ValueField"
 
 export class MonitorComponent extends Component implements EventHandler {
     public monitor = ""
+    public label: string | null = null
     public fields: UIField[] = []
     public drawer: Drawer | null = null
     public scroll = -1
@@ -24,18 +25,24 @@ export class MonitorComponent extends Component implements EventHandler {
     protected _redrawPending = false
     protected _lastWidgets: Widget[] = []
     protected _connected = false
+    protected _maxLabel = 0
 
     public getManifest(): ComponentManifest {
         return {
             subComponentType: UIField,
             fields: [
-                { name: "monitor", type: "string" }
+                { name: "monitor", type: "string" },
+                { name: "label", type: "string", optional: true },
             ]
         }
     }
 
     public getFrame() {
         return this._frame
+    }
+
+    public getLabelLength() {
+        return this._maxLabel
     }
 
     public addSubcomponent(component: Component): void {
@@ -77,24 +84,30 @@ export class MonitorComponent extends Component implements EventHandler {
             content = this.fields.map(v => v.render())
         } else {
             content = [
-                new Widget({ grow: true }),
+                new Widget({}),
                 new Widget({
                     content: [
                         new Widget({ grow: true }),
-                        new Widget({ content: "Connecting..." }),
+                        new Widget({ content: "Connecting." + ".".repeat(this._frame % 3) + " ".repeat(2 - (this._frame % 3)) }),
                         new Widget({ grow: true })
                     ]
-                }),
-                new Widget({ grow: true })
+                })
             ]
         }
+
+        let maxLabel = 0
+        for (const field of this.fields) {
+            const labelLength = field.getLabel().length
+            if (labelLength > maxLabel) maxLabel = labelLength
+        }
+        this._maxLabel = maxLabel + 3
 
         const root = new Widget({
             style: "secondary",
             axis: "column",
             content: [
                 new Widget({
-                    content: `\xB7${this.system.name}`,
+                    content: ` ${this.label ?? this.system.name}`,
                     style: "primary"
                 }),
                 new Widget({

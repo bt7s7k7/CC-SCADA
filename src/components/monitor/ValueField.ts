@@ -13,6 +13,10 @@ export class ValueField extends UIField implements EventHandler {
     protected _store = DataStore.of("any")
     protected _lastValue: StoredValue = "<empty>"
 
+    public getLabel(): string {
+        return this.label ?? this.key
+    }
+
     public init(): void {
         this._store.init({
             defaultValue: this._lastValue,
@@ -41,8 +45,7 @@ export class ValueField extends UIField implements EventHandler {
 
         return new Widget({
             content: [
-                new Widget({ content: this.label ?? this.key }),
-                new Widget({ grow: true }),
+                new Widget({ content: " " + this.getLabel().padEnd(this.monitor.getLabelLength()) }),
                 new Widget({ content: output, style: "output" })
             ]
         })
