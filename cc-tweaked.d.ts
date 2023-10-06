@@ -3200,6 +3200,7 @@ declare namespace term {
             text to the current terminal line.
             
             @param text The text to write.
+        @noSelf 
         */
         write(text: string): void
 
@@ -3210,6 +3211,7 @@ declare namespace term {
             will copy pixels from above instead.
             
             @param y The number of lines to move up by. This may be a negative number.
+        @noSelf 
         */
         scroll(y: number): void
 
@@ -3219,6 +3221,7 @@ declare namespace term {
             
             @returns The x position of the cursor.
             @returns The y position of the cursor.
+        @noSelf 
         */
         getCursorPos(): LuaMultiReturn<[number, number]>
 
@@ -3227,6 +3230,7 @@ declare namespace term {
             
             @param x The new x position of the cursor.
             @param y The new y position of the cursor.
+        @noSelf 
         */
         setCursorPos(x: number, y: number): void
 
@@ -3235,6 +3239,7 @@ declare namespace term {
             
             
             @returns If the cursor is blinking.
+        @noSelf 
         */
         getCursorBlink(): boolean
 
@@ -3242,6 +3247,7 @@ declare namespace term {
             Sets whether the cursor should be visible (and blinking) at the current cursor position.
             
             @param blink Whether the cursor should blink.
+        @noSelf 
         */
         setCursorBlink(blink: boolean): void
 
@@ -3251,12 +3257,14 @@ declare namespace term {
             
             @returns The terminal's width.
             @returns The terminal's height.
+        @noSelf 
         */
         getSize(): LuaMultiReturn<[number, number]>
 
         /**
             Clears the terminal, filling it with the current background colour.
             
+        @noSelf 
         */
         clear(): void
 
@@ -3264,6 +3272,7 @@ declare namespace term {
             Clears the line the cursor is currently on, filling it with the current background
             colour.
             
+        @noSelf 
         */
         clearLine(): void
 
@@ -3272,6 +3281,7 @@ declare namespace term {
             
             
             @returns The current text colour.
+        @noSelf 
         */
         getTextColour(): number
 
@@ -3280,6 +3290,7 @@ declare namespace term {
             
             
             @returns The current text colour.
+        @noSelf 
         */
         getTextColor(): number
 
@@ -3287,6 +3298,7 @@ declare namespace term {
             Set the colour that new text will be written as.
             
             @param colour The new text colour.
+        @noSelf 
         */
         setTextColour(colour: number): void
 
@@ -3294,6 +3306,7 @@ declare namespace term {
             Set the colour that new text will be written as.
             
             @param colour The new text colour.
+        @noSelf 
         */
         setTextColor(colour: number): void
 
@@ -3303,6 +3316,7 @@ declare namespace term {
             
             
             @returns The current background colour.
+        @noSelf 
         */
         getBackgroundColour(): number
 
@@ -3312,6 +3326,7 @@ declare namespace term {
             
             
             @returns The current background colour.
+        @noSelf 
         */
         getBackgroundColor(): number
 
@@ -3320,6 +3335,7 @@ declare namespace term {
             terminal.
             
             @param colour The new background colour.
+        @noSelf 
         */
         setBackgroundColour(colour: number): void
 
@@ -3328,6 +3344,7 @@ declare namespace term {
             terminal.
             
             @param colour The new background colour.
+        @noSelf 
         */
         setBackgroundColor(colour: number): void
 
@@ -3339,6 +3356,7 @@ declare namespace term {
             
             
             @returns Whether this terminal supports colour.
+        @noSelf 
         */
         isColour(): boolean
 
@@ -3350,6 +3368,7 @@ declare namespace term {
             
             
             @returns Whether this terminal supports colour.
+        @noSelf 
         */
         isColor(): boolean
 
@@ -3368,6 +3387,7 @@ declare namespace term {
             @param backgroundColour The corresponding background colours.
             
             @throws If the three inputs are not the same length.
+        @noSelf 
         */
         blit(text: string, textColour: string, backgroundColour: string): void
 
@@ -3382,6 +3402,7 @@ declare namespace term {
             @param index The colour whose palette should be changed.
             @param colour A 24-bit integer representing the RGB value of the colour. For instance the integer
             0xFF0000 corresponds to the colour #FF0000.
+        @noSelf 
         */
         setPaletteColour(index: number, colour: number): void
 
@@ -3396,6 +3417,7 @@ declare namespace term {
             @param index The colour whose palette should be changed.
             @param colour A 24-bit integer representing the RGB value of the colour. For instance the integer
             0xFF0000 corresponds to the colour #FF0000.
+        @noSelf 
         */
         setPaletteColor(index: number, colour: number): void
 
@@ -3407,6 +3429,7 @@ declare namespace term {
             @returns The red channel, will be between 0 and 1.
             @returns The green channel, will be between 0 and 1.
             @returns The blue channel, will be between 0 and 1.
+        @noSelf 
         */
         getPaletteColour(colour: number): LuaMultiReturn<[number, number, number]>
 
@@ -3418,6 +3441,7 @@ declare namespace term {
             @returns The red channel, will be between 0 and 1.
             @returns The green channel, will be between 0 and 1.
             @returns The blue channel, will be between 0 and 1.
+        @noSelf 
         */
         getPaletteColor(colour: number): LuaMultiReturn<[number, number, number]>
 

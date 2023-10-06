@@ -2,7 +2,7 @@ import { FieldType } from "../app/config"
 import { Logger } from "../support/Logger"
 
 export interface ComponentManifest {
-    subComponentType: (new () => Component) | null
+    subComponentType: (abstract new () => Component) | null
     fields: { name: string, type: FieldType, optional?: boolean }[]
 }
 

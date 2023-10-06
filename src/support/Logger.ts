@@ -28,6 +28,14 @@ function logPrint(prefix: string | null, color: number, values: any[]) {
     }
 }
 
+declare const debug: {
+    /** @noSelf */
+    traceback(): string
+}
+function performTrace() {
+    return debug.traceback()
+}
+
 export namespace Logger {
     export function setLogFile(file: io.Handle) {
         _logFile = file
@@ -54,7 +62,9 @@ export namespace Logger {
     }
 
     export function abort(...values: any[]): never {
-        logPrint("ABORT", colors.red, values)
+        const msg = values.map(v => tostring(v)).join(" ")
+        const stack = performTrace()
+        logPrint("ABORT", colors.red, [msg + "\n" + stack])
         throw new Error("abort")
     }
 }

@@ -2,9 +2,10 @@
 /// <reference path="../../cc-tweaked.d.ts" />
 /// <reference path="../../craftos.d.ts" />
 
+import "../components/Monitor"
 import { EventLoop } from "../support/EventLoop"
 import { Logger } from "../support/Logger"
-import { DeviceFoundEvent } from "../system/DevicesManager"
+import { DeviceFoundEvent } from "../system/DeviceManager"
 import { DomainAcquiredEvent, DomainLostEvent, DomainProxy } from "../system/DomainProxy"
 import { Event, EventHandler } from "../system/Event"
 import { System } from "../system/System"
@@ -53,6 +54,8 @@ try {
         Logger.printOK(`System name: ${system.name}`)
         Logger.printOK(`Domain: ${system.domain}`)
 
+        os.setComputerLabel(system.name)
+
         system.registerEventHandler(new class implements EventHandler {
             public handleEvent(event: Event): void {
                 if (event instanceof DomainAcquiredEvent) {
@@ -76,7 +79,11 @@ try {
         EventLoop.run()
     }
 } catch (err: any) {
-    if (typeof err != "object" && err.message != "abort") {
+    if (typeof err == "object") {
+        if (err.message != "abort") {
+            Logger.abort(err.stack)
+        }
+    } else {
         Logger.abort(err)
     }
 }
