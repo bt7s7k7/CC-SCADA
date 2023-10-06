@@ -5,10 +5,12 @@ export class Widget {
     public style: Style | null = null
     public position = Point.NaN
     public size = Point.NaN
+    public parent: Widget | null = null
     public content: Widget[] | string | null = null
     public grow = false
     public scroll = -1
     public axis: "row" | "column" = "row"
+    public onClick: (() => void) | null = null
 
     constructor(opt: Omit<Partial<Widget>, "position" | "size">) {
         Object.assign(this, opt)
@@ -110,10 +112,13 @@ export class Widget {
                     child.style = target.style
                 }
 
+                child.parent = target
+
                 visit(child)
             }
         }
 
         visit(root)
+        return drawn.reverse()
     }
 }

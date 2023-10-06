@@ -25,6 +25,7 @@ function logPrint(prefix: string | null, color: number, values: any[]) {
     if (_logFile) {
         if (prefix != null) _logFile.write(`[${prefix}] `)
         _logFile.write(msg + "\n")
+        _logFile.flush()
     }
 }
 

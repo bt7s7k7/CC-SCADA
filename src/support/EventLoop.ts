@@ -1,4 +1,3 @@
-let _iteration: (() => void)[] = []
 interface Subscription<K extends keyof EventMap = any> {
     event: K
     listener: (event: EventMap[K], handle: ListenerHandle) => void
@@ -7,6 +6,8 @@ interface Subscription<K extends keyof EventMap = any> {
     handle: ListenerHandle
 }
 
+let _immediate: (() => void)[] = []
+const _microtasks: (() => void)[] = []
 const _subscriptions = new Map<keyof EventMap, Subscription[]>()
 
 export class ListenerHandle {
@@ -50,45 +51,54 @@ export namespace EventLoop {
 
     export function run() {
         for (; ;) {
-            while (_iteration.length > 0) {
-                const swap = _iteration
-                _iteration = []
+            while (_immediate.length > 0) {
+                const swap = _immediate
+                _immediate = []
                 for (const callback of swap) {
                     callback()
                 }
             }
 
-            const event = os.pullEvent()
-            const eventName = event[0]
-            const eventData: Record<string, any> = {}
-            for (let i = 0; i < event.length; i++) {
-                eventData[i.toString()] = event[i]
-            }
+            if (_microtasks.length > 0) {
+                const task = _microtasks.shift()!
+                task()
+            } else {
+                const event = os.pullEvent()
+                const eventName = event[0]
+                const eventData: Record<string, any> = {}
+                for (let i = 0; i < event.length; i++) {
+                    eventData[i.toString()] = event[i]
+                }
 
-            const subscriptions = _subscriptions.get(eventName as keyof EventMap)
-            if (subscriptions != null) {
-                const once = new ListenerHandle()
+                const subscriptions = _subscriptions.get(eventName as keyof EventMap)
+                if (subscriptions != null) {
+                    const once = new ListenerHandle()
 
-                for (const subscription of subscriptions) {
-                    let skip = false
-                    if (subscription.match) {
-                        for (const [key, value] of Object.entries(subscription.match)) {
-                            if (eventData[key] != value) skip = true
+                    for (const subscription of subscriptions) {
+                        let skip = false
+                        if (subscription.match) {
+                            for (const [key, value] of Object.entries(subscription.match)) {
+                                if (eventData[key] != value) skip = true
+                            }
+                        }
+
+                        if (!skip) {
+                            subscription.listener(eventData, subscription.handle)
                         }
                     }
 
-                    if (!skip) {
-                        subscription.listener(eventData, subscription.handle)
-                    }
+                    once.dispose()
                 }
-
-                once.dispose()
             }
         }
     }
 
     export function setImmediate(callback: () => void) {
-        _iteration.push(callback)
+        _immediate.push(callback)
+    }
+
+    export function queueMicrotask(task: () => void) {
+        _microtasks.push(task)
     }
 
     export function setTimeout(handle: ListenerHandle | null, time: number, callback: (handle: ListenerHandle) => void) {

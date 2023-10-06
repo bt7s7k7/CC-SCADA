@@ -1,4 +1,5 @@
 import { Component, ComponentManifest, registerComponent } from "../components/Component"
+import { DataStoreManager } from "../data/DataStoreManager"
 import { EventLoop } from "../support/EventLoop"
 import { Logger } from "../support/Logger"
 import { DeviceManager } from "./DeviceManager"
@@ -14,6 +15,7 @@ export class System extends Component {
     public readonly connectionModem: string | null = null
 
     public readonly devices = new DeviceManager(this)
+    public readonly data = new DataStoreManager(this)
 
     public getManifest(): ComponentManifest {
         return {

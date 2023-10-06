@@ -2,10 +2,10 @@
 /// <reference path="../../cc-tweaked.d.ts" />
 /// <reference path="../../craftos.d.ts" />
 
-import "../components/Monitor"
+import "../components/monitor/Monitor"
 import { EventLoop } from "../support/EventLoop"
 import { Logger } from "../support/Logger"
-import { DeviceFoundEvent } from "../system/DeviceManager"
+import { DeviceFoundEvent, DeviceLostEvent } from "../system/DeviceManager"
 import { DomainAcquiredEvent, DomainLostEvent, DomainProxy } from "../system/DomainProxy"
 import { Event, EventHandler } from "../system/Event"
 import { System } from "../system/System"
@@ -65,17 +65,22 @@ try {
                     DomainProxy.findDomain(system.domain)
                 } else if (event instanceof DeviceFoundEvent) {
                     Logger.printOK(`Found device "${event.getTypes()}" at "${event.name}"`)
+                } else if (event instanceof DeviceLostEvent) {
+                    Logger.printOK(`Lost device at "${event.name}"`)
                 }
             }
         })
 
-        if (system.domain == null) {
-            Logger.printWork("Creating local domain...")
-        } else {
-            Logger.printWork("Searching for domain...")
-        }
 
-        DomainProxy.findDomain(system.domain)
+        EventLoop.queueMicrotask(() => {
+            if (system.domain == null) {
+                Logger.printWork("Creating local domain...")
+            } else {
+                Logger.printWork("Searching for domain...")
+            }
+
+            DomainProxy.findDomain(system.domain)
+        })
         EventLoop.run()
     }
 } catch (err: any) {

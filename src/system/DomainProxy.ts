@@ -1,13 +1,21 @@
+import { StoredValue } from "../data/DataStore"
 import { EventLoop, ListenerHandle } from "../support/EventLoop"
 import { Logger } from "../support/Logger"
 import { DOMAIN_DISCOVERY_CHANNEL, Domain } from "./Domain"
 import { Event } from "./Event"
 import { System } from "./System"
 
+export interface StoreKeyVal {
+    key: string
+    value: StoredValue | null
+}
+
 export type DomainMessage = (
     | { kind: "domain:ping" }
     | { kind: "domain:pong" }
     | { kind: "domain:login", name: string, nonce: number, domain: string }
+    | { kind: "domain:subscribe", values: StoreKeyVal[] }
+    | { kind: "domain:update", values: StoreKeyVal[] }
 )
 
 export type ClientMessage = (
@@ -15,6 +23,7 @@ export type ClientMessage = (
     | { kind: "client:pong" }
     | { kind: "client:login-accept", nonce: number }
     | { kind: "client:login-deny", nonce: number, reason: string }
+    | { kind: "client:update", values: StoreKeyVal[] }
 )
 
 export class DomainAcquiredEvent extends Event {
@@ -33,6 +42,12 @@ export abstract class DomainProxy {
     protected _receiveMessage(msg: ClientMessage) {
         if (msg.kind == "client:ping") {
             this._sendMessage({ kind: "domain:pong" })
+            return
+        }
+
+        if (msg.kind == "client:update") {
+            this.system.data.handleUpdate(msg.values)
+            return
         }
     }
 
@@ -40,7 +55,10 @@ export abstract class DomainProxy {
         const system = System.getSystem()
 
         if (domainName == null) {
-            system.emitEvent(new DomainAcquiredEvent(new LocalDomain(system)))
+            const proxy = new LocalDomain(system) as DomainProxy
+            proxy._sendMessage({ kind: "domain:login", domain: system.name, name: system.name, nonce: 0 })
+            system.emitEvent(new DomainAcquiredEvent(proxy))
+            system.data.handleInit(proxy)
             return
         }
 
@@ -82,6 +100,7 @@ export abstract class DomainProxy {
                     const modem = system.devices.getDevice(modemName) as modem
                     const proxy = new RemoteDomain(system, modemName, modem, domainID)
                     system.emitEvent(new DomainAcquiredEvent(proxy))
+                    system.data.handleInit(proxy)
                 }
 
                 if (msg.kind == "client:login-deny" && msg.nonce == nonce) {
@@ -110,7 +129,7 @@ class LocalDomain extends DomainProxy {
         this._receiveMessage(msg)
     })
 
-    protected _sendMessage(msg: DomainMessage): void {
+    protected override _sendMessage(msg: DomainMessage): void {
         this._domain.handleMessage(this._computerID, msg)
     }
 }
