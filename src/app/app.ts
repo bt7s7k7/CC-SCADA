@@ -37,10 +37,10 @@ try {
     Logger.printWork(`Initializing CC-SCADA v${version}...`)
     Logger.printWork(`Loading config...`)
 
-    const configFile = io.open("cc-scada.txt", "r")
+    const configFile = io.open("config.txt", "r")
     if (configFile == null) {
         Logger.printWork(`No config file found, creating blank.`)
-        const config = io.open("cc-scada.txt", "w")
+        const config = io.open("config.txt", "w")
         config.write([
             "@System",
             "name: worker",
