@@ -8,6 +8,7 @@ import { DomainAcquiredEvent, DomainLostEvent } from "../../system/DomainProxy"
 import { Event, EventHandler } from "../../system/Event"
 import { System } from "../../system/System"
 import { Component, ComponentManifest, registerComponent } from "../Component"
+import { ArrayViewComponent } from "./ArrayView"
 import { IndicatorField } from "./Indicator"
 import { MessageField } from "./MessageField"
 import { SwitchField } from "./SwitchField"
@@ -200,14 +201,14 @@ export class MonitorComponent extends Component implements EventHandler {
                 EventLoop.subscribe(listener, "key", (event) => {
                     if (this.fields.length == 0) return
                     const key = event["1"]
-                    if (key == /* Arrow down */ 208) {
+                    if (key == /* Arrow down */ 208 || key == /* Arrow down */ 264) {
                         if (!this.drawer!.isColor || this._cursorShown != 0) {
                             this._selected++
                             if (this._selected >= this.fields.length) this._selected = this.fields.length - 1
                         }
                         this._cursorShown = os.epoch("utc")
                         this.redraw()
-                    } else if (key == /* Arrow up */ 200) {
+                    } else if (key == /* Arrow up */ 200 || key == /* Arrow up */ 265) {
                         if (!this.drawer!.isColor || this._cursorShown != 0) {
                             this._selected--
                             if (this._selected < 0) this._selected = 0
@@ -216,7 +217,7 @@ export class MonitorComponent extends Component implements EventHandler {
                         this.redraw()
                     }
 
-                    if (key == /* Space */ 57 || key == /* Enter */ 28) {
+                    if (key == /* Space */ 57 || key == /* Enter */ 28 || key == /* Space */ 32 || key == /* Enter */ 257) {
                         const selected = this.fields[this._selected]
                         selected.action()
                         this._cursorShown = os.epoch("utc")
