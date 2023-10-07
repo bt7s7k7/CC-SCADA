@@ -8,6 +8,7 @@ import { DomainAcquiredEvent, DomainLostEvent } from "../../system/DomainProxy"
 import { Event, EventHandler } from "../../system/Event"
 import { System } from "../../system/System"
 import { Component, ComponentManifest, registerComponent } from "../Component"
+import { IndicatorField } from "./Indicator"
 import { MessageField } from "./MessageField"
 import { SwitchField } from "./SwitchField"
 import { UIField } from "./UIField"
@@ -233,4 +234,5 @@ registerComponent("Monitor", MonitorComponent)
 registerComponent("Message", MessageField)
 registerComponent("Value", ValueField)
 registerComponent("Switch", SwitchField)
+registerComponent("Indicator", IndicatorField)
 
