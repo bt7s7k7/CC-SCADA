@@ -9,7 +9,8 @@ import { BooleanConstant, NumberConstant, StringConstant } from "./Constant"
 import { DataReadOperator, DataWriteOperator } from "./Data"
 import { AndOperator, ChoiceOperator, NegateOperator, OrOperator } from "./Logic"
 import { AddOperator, DivOperator, EqualsOperator, GreaterOrEqualsOperator, GreaterThanOperator, IntDivOperator, LessOrEqualsOperator, LessThanOperator, ModOperator, MulOperator, SubOperator } from "./Numeric"
-import { Operator } from "./Operator"
+import { Operator, PollOperator } from "./Operator"
+import { AnalogRedstoneInputOperator, AnalogRedstoneOutputOperator, RedstoneInputOperator, RedstoneOutputOperator } from "./Redstone"
 
 export class ComputeComponent extends Component implements EventHandler {
     public operators: Operator[] = []
@@ -102,3 +103,8 @@ registerComponent("And", AndOperator)
 registerComponent("Or", OrOperator)
 registerComponent("Negate", NegateOperator)
 registerComponent("Choice", ChoiceOperator)
+registerComponent("RedstoneInput", RedstoneInputOperator)
+registerComponent("RedstoneOutput", RedstoneOutputOperator)
+registerComponent("AnalogRedstoneInput", AnalogRedstoneInputOperator)
+registerComponent("AnalogRedstoneOutput", AnalogRedstoneOutputOperator)
+registerComponent("Poll", PollOperator)

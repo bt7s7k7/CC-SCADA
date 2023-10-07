@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-console
 /// <reference path="../../cc-tweaked.d.ts" />
-/// <reference path="../../craftos.d.ts" />
+/// <reference path="../../addons.d.ts" />
 
 import "../components/compute/Compute"
 import "../components/monitor/Monitor"

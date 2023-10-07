@@ -25,29 +25,39 @@ export class DeviceLostEvent extends Event {
 }
 
 export class DeviceManager {
-    public readonly devices = new Map<string, object>()
+    protected readonly _devices = new Map<string, object>()
 
     public *getDevices() {
-        for (const [name, device] of this.devices) {
+        for (const [name, device] of this._devices) {
             yield new DeviceFoundEvent(name, device)
         }
     }
 
     public getDevice(name: string) {
-        const device = this.devices.get(name)
+        const device = this._devices.get(name)
         if (device == null) Logger.abort(`Cannot get device "${name}"`)
         return device
     }
 
+    public tryGetDevice(name: string) {
+        const device = this._devices.get(name)
+        return device as object | null
+    }
+
+    public hasType<K extends keyof PeripheralMap>(device: object | null, type: K): device is PeripheralMap[K] {
+        if (device == null) return false
+        return peripheral.hasType(device, type) ?? false
+    }
+
     protected _addDevice(name: string, device: object) {
         // Sometimes a peripheral event is raised event though the peripheral was already in getNames()
-        if (this.devices.has(name)) return
-        this.devices.set(name, device)
+        if (this._devices.has(name)) return
+        this._devices.set(name, device)
         this._system.emitEvent(new DeviceFoundEvent(name, device))
     }
 
     protected _removeDevice(name: string) {
-        this.devices.delete(name)
+        this._devices.delete(name)
         this._system.emitEvent(new DeviceLostEvent(name))
     }
 
