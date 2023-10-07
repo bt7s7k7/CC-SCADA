@@ -26,6 +26,8 @@ export class MonitorComponent extends Component implements EventHandler {
     protected _lastWidgets: Widget[] = []
     protected _connected = false
     protected _maxLabel = 0
+    protected _selected = 0
+    protected _cursorShown = 0
 
     public getManifest(): ComponentManifest {
         return {
@@ -43,6 +45,21 @@ export class MonitorComponent extends Component implements EventHandler {
 
     public getLabelLength() {
         return this._maxLabel
+    }
+
+    public renderLabelFor(field: UIField) {
+        let prefix = " "
+        if (!this.drawer!.isColor || this._cursorShown != 0) {
+            if (field == this.fields[this._selected]) {
+                prefix = "\xB7"
+            }
+
+            if (os.epoch("utc") - this._cursorShown > 1000) this._cursorShown = 0
+        }
+
+        return new Widget({
+            content: (prefix + field.getLabel()).padEnd(this.getLabelLength())
+        })
     }
 
     public addSubcomponent(component: Component): void {
@@ -169,9 +186,38 @@ export class MonitorComponent extends Component implements EventHandler {
                 EventLoop.subscribe(listener, "monitor_touch", (event) => {
                     this._handleClick(new Point(event["2"] - 1, event["3"] - 1))
                 }, { match: { "1": this.monitor } })
-            } else {
+            }
+
+            if (this.monitor == "main") {
                 EventLoop.subscribe(listener, "mouse_click", (event) => {
                     this._handleClick(new Point(event["2"] - 1, event["3"] - 1))
+                })
+
+                EventLoop.subscribe(listener, "key", (event) => {
+                    if (this.fields.length == 0) return
+                    const key = event["1"]
+                    if (key == /* Arrow down */ 208) {
+                        if (!this.drawer!.isColor || this._cursorShown != 0) {
+                            this._selected++
+                            if (this._selected >= this.fields.length) this._selected = this.fields.length - 1
+                        }
+                        this._cursorShown = os.epoch("utc")
+                        this.redraw()
+                    } else if (key == /* Arrow up */ 200) {
+                        if (!this.drawer!.isColor || this._cursorShown != 0) {
+                            this._selected--
+                            if (this._selected < 0) this._selected = 0
+                        }
+                        this._cursorShown = os.epoch("utc")
+                        this.redraw()
+                    }
+
+                    if (key == /* Space */ 57 || key == /* Enter */ 28) {
+                        const selected = this.fields[this._selected]
+                        selected.action()
+                        this._cursorShown = os.epoch("utc")
+                        this.redraw()
+                    }
                 })
             }
 

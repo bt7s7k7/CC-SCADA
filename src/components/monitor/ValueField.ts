@@ -45,7 +45,7 @@ export class ValueField extends UIField implements EventHandler {
 
         return new Widget({
             content: [
-                new Widget({ content: " " + this.getLabel().padEnd(this.monitor.getLabelLength()) }),
+                this.monitor.renderLabelFor(this),
                 new Widget({ content: output, style: "output" })
             ]
         })

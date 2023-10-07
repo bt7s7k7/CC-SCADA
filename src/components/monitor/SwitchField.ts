@@ -16,6 +16,10 @@ export class SwitchField extends UIField implements EventHandler {
         return this.label ?? this.key
     }
 
+    public action(): void {
+        this._store.setValue(!this._lastValue)
+    }
+
     public init(): void {
         this._store.init({
             defaultValue: this._lastValue,
@@ -37,7 +41,7 @@ export class SwitchField extends UIField implements EventHandler {
     public render(): Widget {
         return new Widget({
             content: [
-                new Widget({ content: " " + this.getLabel().padEnd(this.monitor.getLabelLength()) }),
+                this.monitor.renderLabelFor(this),
                 new Widget({ content: " OFF ", style: this._lastValue == false ? "error" : "grey", onClick: () => this._store.setValue(false) }),
                 new Widget({ content: " ON ", style: this._lastValue == true ? "success" : "grey", onClick: () => this._store.setValue(true) })
             ]

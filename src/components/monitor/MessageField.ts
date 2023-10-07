@@ -13,9 +13,9 @@ export class MessageField extends UIField {
     public render(): Widget {
         return new Widget({
             content: this.output == null ? [
-                new Widget({ content: " " + this.message.padEnd(this.monitor.getLabelLength()) })
+                this.monitor.renderLabelFor(this)
             ] : [
-                new Widget({ content: " " + this.message.padEnd(this.monitor.getLabelLength()) }),
+                this.monitor.renderLabelFor(this),
                 new Widget({ content: this.output, style: "output" })
             ]
         })

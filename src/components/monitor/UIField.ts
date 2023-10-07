@@ -9,4 +9,5 @@ export abstract class UIField extends Component {
     public abstract getLabel(): string
     public abstract render(): Widget
     public init() { }
+    public action() { }
 }
