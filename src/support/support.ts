@@ -9,3 +9,18 @@ export function ensureKey<K, T>(map: [K] extends [object] ? Map<K, T> | WeakMap<
     map.set(key, created)
     return created
 }
+
+export function ensureNumber(value: unknown) {
+    if (typeof value == "number") return value
+    if (typeof value == "string") return parseFloat(value)
+    if (typeof value == "boolean") return value ? 1 : 0
+    if (typeof value == "object") return (value as any[]).length
+    if (value == null) return 0
+
+    return NaN
+}
+
+export function ensureBoolean(value: unknown) {
+    if (typeof value == "boolean") return value
+    return ensureNumber(value) != 0
+}

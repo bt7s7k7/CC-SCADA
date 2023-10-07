@@ -2,6 +2,7 @@
 /// <reference path="../../cc-tweaked.d.ts" />
 /// <reference path="../../craftos.d.ts" />
 
+import "../components/compute/Compute"
 import "../components/monitor/Monitor"
 import { EventLoop } from "../support/EventLoop"
 import { Logger } from "../support/Logger"

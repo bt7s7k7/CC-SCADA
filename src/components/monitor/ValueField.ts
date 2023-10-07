@@ -23,7 +23,7 @@ export class ValueField extends UIField implements EventHandler {
             key: this.key,
             owner: false,
             handler: (value) => {
-                this._lastValue = value
+                this._lastValue = value ?? "<empty>"
                 this.monitor.redraw()
             }
         })

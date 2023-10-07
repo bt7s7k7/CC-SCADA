@@ -2,12 +2,12 @@ import { Logger } from "../support/Logger"
 import { Event } from "../system/Event"
 import { DataStoreInitEvent } from "./DataStoreInitEvent"
 
-interface DataTypeMap {
+export interface DataTypeMap {
     "string": string
     "number": number
     "boolean": boolean
     "list": string[]
-    "any": StoredValue
+    "any": StoredValue | null
 }
 
 const TYPE_REPS = {
@@ -26,7 +26,7 @@ interface Options<T> {
     key: string
 }
 
-export class DataStore<T extends StoredValue = StoredValue> {
+export class DataStore<T extends StoredValue | null = StoredValue | null> {
     protected _options: Options<T> | null = null
     protected _init: DataStoreInitEvent | null = null
 

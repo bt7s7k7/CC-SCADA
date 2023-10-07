@@ -91,19 +91,29 @@ export function parseConfig(config: io.Handle) {
 
             const childManifest = child.getManifest()
             const args = line.slice(nameEnd).split(",").map(v => v.trim())
-            if (args.length > childManifest.fields.length) {
-                Logger.abort(`Too many arguments (${args.length} > ${childManifest.fields.length}) at line ${lineNum}`)
-            }
             const defined = new Set<string>()
-            for (let i = 0; i < args.length; i++) {
-                const arg = args[i]
-                const field = childManifest.fields[i]
-                const value = parseField(field.type, arg)
-                if (value == null) {
-                    Logger.abort(`Cannot parse argument ${i} of type "${field.type}" at line ${lineNum}`)
+
+            if (args.length == 1 && args[0] == "") {
+                if (childManifest.fields.length > 0 && childManifest.fields[0].type == "string") {
+                    const field = childManifest.fields[0];
+                    (child as any)[field.name] = ""
+                    defined.add(field.name)
                 }
-                (child as any)[field.name] = value
-                defined.add(field.name)
+            } else {
+                if (args.length > childManifest.fields.length) {
+                    Logger.abort(`Too many arguments (${args.length} > ${childManifest.fields.length}) at line ${lineNum}`)
+                }
+
+                for (let i = 0; i < args.length; i++) {
+                    const arg = args[i]
+                    const field = childManifest.fields[i]
+                    const value = parseField(field.type, arg)
+                    if (value == null) {
+                        Logger.abort(`Cannot parse argument ${i} of type "${field.type}" at line ${lineNum}`)
+                    }
+                    (child as any)[field.name] = value
+                    defined.add(field.name)
+                }
             }
 
             const missing = childManifest.fields.filter(v => !v.optional).map((v, i) => ({ name: v.name, index: i })).filter(v => !defined.has(v.name))
