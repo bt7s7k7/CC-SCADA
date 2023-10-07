@@ -16,6 +16,7 @@ import { ValueField } from "./ValueField"
 
 export class MonitorComponent extends Component implements EventHandler {
     public monitor = ""
+    public scale = 1
     public label: string | null = null
     public fields: UIField[] = []
     public drawer: Drawer | null = null
@@ -36,6 +37,7 @@ export class MonitorComponent extends Component implements EventHandler {
             fields: [
                 { name: "monitor", type: "string" },
                 { name: "label", type: "string", optional: true },
+                { name: "scale", type: "number", optional: true },
             ]
         }
     }
@@ -84,6 +86,7 @@ export class MonitorComponent extends Component implements EventHandler {
         if (this.monitor == "main") return
 
         if (event instanceof DeviceFoundEvent && event.name == this.monitor && event.hasType("monitor")) {
+            event.device.setTextScale(this.scale)
             this.drawer = new Drawer(event.device)
             this.redraw()
         }
