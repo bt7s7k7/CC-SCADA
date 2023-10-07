@@ -239,4 +239,4 @@ registerComponent("Message", MessageField)
 registerComponent("Value", ValueField)
 registerComponent("Switch", SwitchField)
 registerComponent("Indicator", IndicatorField)
-
+registerComponent("ArrayView", ArrayViewComponent)

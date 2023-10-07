@@ -1,23 +1,22 @@
 import { Logger } from "../support/Logger"
 import { Event } from "../system/Event"
 import { DataStoreInitEvent } from "./DataStoreInitEvent"
+import { DataStoreManager } from "./DataStoreManager"
 
 export interface DataTypeMap {
     "string": string
     "number": number
     "boolean": boolean
-    "list": string[]
     "any": StoredValue | null
 }
 
 const TYPE_REPS = {
     "string": "string",
     "number": "number",
-    "boolean": "boolean",
-    "list": "object",
+    "boolean": "boolean"
 } as const
 
-export type StoredValue = string | number | boolean | string[]
+export type StoredValue = string | number | boolean
 
 interface Options<T> {
     owner: boolean
@@ -28,13 +27,12 @@ interface Options<T> {
 
 export class DataStore<T extends StoredValue | null = StoredValue | null> {
     protected _options: Options<T> | null = null
-    protected _init: DataStoreInitEvent | null = null
+    protected _manager: DataStoreManager | null = null
 
-    public update(event: Event) {
+    public handleUpdate(event: Event) {
         if (event instanceof DataStoreInitEvent) {
             if (this._options == null) Logger.abort("A DataStore was updated but not initialized")
             event.stores.push(this as DataStore<any>)
-            this._init = event
         }
     }
 
@@ -59,8 +57,23 @@ export class DataStore<T extends StoredValue | null = StoredValue | null> {
     }
 
     public setValue(value: T) {
-        if (this._init == null) Logger.abort("Tried to set value on DataStore before init")
-        this._init.update(this._options!.key, value)
+        if (this._manager == null) Logger.abort("Tried to operate on DataStore before init")
+        this._manager.setValue(this._options!.key, value)
+    }
+
+    public getValue() {
+        if (this._manager == null) Logger.abort("Tried to operate on DataStore before init")
+        return this._manager.getValue(this._options!.key) ?? this._options!.defaultValue
+    }
+
+    public setObject(object: Map<string, StoredValue>) {
+        if (this._manager == null) Logger.abort("Tried to operate on DataStore before init")
+        this._manager.setObject(this._options!.key, object)
+    }
+
+    public getObject() {
+        if (this._manager == null) Logger.abort("Tried to operate on DataStore before init")
+        return this._manager.getObject(this._options!.key)
     }
 
     protected constructor(

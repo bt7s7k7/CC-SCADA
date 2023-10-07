@@ -1,3 +1,4 @@
+import { Logger } from "../support/Logger"
 import { Drawer, Style } from "./Drawer"
 import { Point } from "./Point"
 
@@ -8,6 +9,7 @@ export class Widget {
     public parent: Widget | null = null
     public content: Widget[] | string | null = null
     public grow = false
+    public overflow: "show" | "hide" | "wrap" = "show"
     public scroll = -1
     public axis: "row" | "column" = "row"
     public onClick: (() => void) | null = null
@@ -54,21 +56,30 @@ export class Widget {
             return size
         }
 
+        const overflow: Widget[] = []
+
         function layout(target: Widget) {
             if (target.content == null || typeof target.content == "string") return
 
             const size = target.size
             const axis = target.axis
             const childSizes: number[] = []
+            const mainArg = axis == "row" ? "x" : "y"
             let growCount = 0
-            let leftover = axis == "row" ? size.x : size.y
+            let leftover = size[mainArg]
             for (const child of target.content) {
                 const size = getMinimumSize(child)
-                const main = axis == "row" ? size.x : size.y
+                const main = size[mainArg]
                 childSizes.push(main)
                 if (child.grow) growCount++
                 leftover -= main
             }
+
+            if (leftover < 0) {
+                if (target.overflow != "show") overflow.push(target)
+                leftover = 0
+            }
+
             const growSize = Math.floor(leftover / growCount)
             let growFix = leftover % growCount
             let offset = 0
@@ -93,6 +104,40 @@ export class Widget {
         root.position = Point.zero
         root.size = viewport
         layout(root)
+
+        if (overflow.length > 0) {
+            for (const target of overflow) {
+                if (target.content == null || typeof target.content == "string") Logger.abort("Should only have parent widgets")
+
+                const size = target.size
+                const axis = target.axis
+                const mainArg = axis == "row" ? "x" : "y"
+                const mainSize = size[mainArg]
+
+                let leftover = mainSize
+                const lines: Widget[][] = [[]]
+                for (const child of target.content) {
+                    const size = getMinimumSize(child)
+                    const main = size[mainArg]
+
+                    if (leftover - main < 0) {
+                        if (target.overflow == "hide") break
+                        lines.push([])
+                        leftover = mainSize
+                    }
+                    leftover -= main
+                    lines[lines.length - 1].push(child)
+                }
+
+                if (lines[0].length == 0) lines.splice(0, 1)
+
+                target.axis = axis == "row" ? "column" : "row"
+                target.content = lines.map(v => new Widget({ axis, content: v }))
+            }
+
+            sizeCache.clear()
+            layout(root)
+        }
     }
 
     public static draw(root: Widget, drawer: Drawer) {

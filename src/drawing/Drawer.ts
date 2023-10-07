@@ -20,6 +20,10 @@ const MONO_PALETTE: Record<Style, [bg: number, fg: number]> = {
     grey: [colors.gray, colors.black]
 }
 
+export function getStyleList() {
+    return [...Object.keys(MONO_PALETTE)] as Style[]
+}
+
 export class Drawer {
     public readonly isColor = this.ctx.isColor()
     public readonly size

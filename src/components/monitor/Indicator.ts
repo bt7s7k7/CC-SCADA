@@ -35,7 +35,7 @@ export class IndicatorField extends UIField implements EventHandler {
     }
 
     public handleEvent(event: Event): void {
-        this._store.update(event)
+        this._store.handleUpdate(event)
     }
 
     public render(): Widget {

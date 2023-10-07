@@ -14,8 +14,17 @@ class CustomPrinter extends tstl.LuaPrinter {
 }
 
 const plugin: tstl.Plugin = {
-    printer: (program: ts.Program, emitHost: tstl.EmitHost, fileName: string, file: tstl.File) =>
-        new CustomPrinter(emitHost, program, fileName).print(file),
+    printer: (program: ts.Program, emitHost: tstl.EmitHost, fileName: string, file: tstl.File) => {
+        const printer = fileName.includes("/app.ts") ? (
+            new CustomPrinter(emitHost, program, fileName)
+        ) : (
+            new tstl.LuaPrinter(emitHost, program, fileName)
+        )
+
+        const result = printer.print(file)
+        return result
+    },
+
 }
 
 export default plugin

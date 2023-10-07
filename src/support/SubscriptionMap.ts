@@ -11,7 +11,10 @@ export class SubscriptionMap<T> {
     }
 
     public remove(client: T) {
-        for (const query of this._reverse.get(client) ?? Logger.abort(`Cannot find subscriptions`)) {
+        const subscriptions = this._reverse.get(client)
+        if (subscriptions == null) return
+
+        for (const query of subscriptions) {
             const collection = this._store.get(query) ?? Logger.abort(`HierarchialMap.ts:15`)
             collection.delete(client)
             if (collection.size == 0) this._store.delete(query)

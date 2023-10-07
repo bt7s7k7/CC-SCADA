@@ -3,7 +3,7 @@ import { StoredValue } from "../data/DataStore"
 import { EventLoop, ListenerHandle } from "../support/EventLoop"
 import { Logger } from "../support/Logger"
 import { SubscriptionMap } from "../support/SubscriptionMap"
-import { ensureKey } from "../support/support"
+import { ensureKey, mergeObject } from "../support/support"
 import { ClientMessage, DomainMessage, StoreKeyVal } from "./DomainProxy"
 import { System } from "./System"
 
@@ -112,6 +112,9 @@ export class Domain {
                     this._store.set(key, value)
                 }
             },
+            updateObject: (prefix: string, object: Map<string, StoredValue>) => {
+                mergeObject(prefix, object, this._store, modifiedValues)
+            },
             initValue: (client: ClientHandle, key: string) => {
                 clientInit.push({ client, key })
             },
@@ -119,18 +122,30 @@ export class Domain {
                 if (modifiedValues.size == 0 && clientInit.length == 0) return
                 const clientUpdates = new Map<ClientHandle, Map<string, StoredValue | null>>()
 
-                for (const key of modifiedValues) {
-                    const value = this._store.get(key)
-                    const updatedClients = this._subscriptions.query(key)
-
-                    for (const client of updatedClients) {
+                const appendUpdates = (client: ClientHandle, key: string) => {
+                    if (key.endsWith(".*")) {
+                        const query = key.slice(0, -2)
+                        for (const [key, value] of this._store) {
+                            if (key.startsWith(query)) {
+                                ensureKey(clientUpdates, client, () => new Map<never, never>()).set(key, value)
+                            }
+                        }
+                    } else {
+                        const value = this._store.get(key)
                         ensureKey(clientUpdates, client, () => new Map<never, never>()).set(key, value as StoredValue | null)
                     }
                 }
 
+                for (const key of modifiedValues) {
+                    const updatedClients = this._subscriptions.query(key)
+
+                    for (const client of updatedClients) {
+                        appendUpdates(client, key)
+                    }
+                }
+
                 for (const { key, client } of clientInit) {
-                    const value = this._store.get(key)
-                    ensureKey(clientUpdates, client, () => new Map<never, never>()).set(key, value as StoredValue | null)
+                    appendUpdates(client, key)
                 }
 
                 for (const [client, updates] of clientUpdates) {
@@ -147,7 +162,9 @@ export class Domain {
 
     protected _updateDomainInfo() {
         const transaction = this._createTransaction()
-        transaction.updateValue("domain.clients", [...this._clientLookup.keys()])
+        const clientIDs = new Map<string, number>()
+        for (const client of this._clients.values()) clientIDs.set(client.name, client.id)
+        transaction.updateObject("domain.clients", clientIDs)
         transaction.finish()
     }
 

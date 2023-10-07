@@ -23,7 +23,7 @@ export class DataWriteOperator extends Operator implements EventHandler {
     }
 
     public handleEvent(event: Event): void {
-        this._store.update(event)
+        this._store.handleUpdate(event)
     }
 
     public init(): void {
@@ -67,7 +67,7 @@ export class DataReadOperator extends Operator implements EventHandler {
     }
 
     public handleEvent(event: Event): void {
-        this._store.update(event)
+        this._store.handleUpdate(event)
     }
 
     public init(): void {

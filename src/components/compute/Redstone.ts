@@ -131,7 +131,6 @@ export class RedstoneOutputOperator extends RedstoneBase {
 
     protected _handleChange(): void {
         const handle = this._getHandle()
-        Logger.debug("out", this._lastValue, handle == null)
         if (handle == null) return
 
         if (this._isAnalog) {

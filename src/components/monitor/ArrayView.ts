@@ -5,13 +5,12 @@ import { System } from "../../system/System"
 import { ComponentManifest } from "../Component"
 import { UIField } from "./UIField"
 
-
-export class ValueField extends UIField implements EventHandler {
+export class ArrayViewComponent extends UIField implements EventHandler {
     public key = ""
     public label: string | null = null
 
-    protected _store = DataStore.of("any")
-    protected _lastValue: StoredValue = "<empty>"
+    protected _store = DataStore.of("number")
+    protected _lastValue = new Map<string, StoredValue>()
 
     public getLabel(): string {
         return this.label ?? this.key
@@ -19,11 +18,11 @@ export class ValueField extends UIField implements EventHandler {
 
     public init(): void {
         this._store.init({
-            defaultValue: this._lastValue,
-            key: this.key,
+            defaultValue: 0,
+            key: this.key + ".*",
             owner: false,
             handler: (value) => {
-                this._lastValue = value ?? "<empty>"
+                this._lastValue = this._store.getObject()
                 this.monitor.redraw()
             }
         })
@@ -36,12 +35,17 @@ export class ValueField extends UIField implements EventHandler {
     }
 
     public render(): Widget {
-        const output = this._lastValue.toString()
-
         return new Widget({
+            overflow: "wrap",
             content: [
                 this.monitor.renderLabelFor(this),
-                new Widget({ content: output, style: "output" })
+                ...(this._lastValue.size == 0 ? (
+                    [new Widget({ content: "<empty>", style: "output" })]
+                ) : (
+                    [...this._lastValue]
+                        .map(v => `${v[0]}: ${v[1]}`)
+                        .map((v, i, a) => new Widget({ content: (i < a.length - 1 ? v + ", " : v), style: "output" }))
+                ))
             ]
         })
     }
