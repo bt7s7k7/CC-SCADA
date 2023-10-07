@@ -1,3 +1,4 @@
+import { PING_INTERVAL, TIMEOUT_DURATION } from "../constants"
 import { StoredValue } from "../data/DataStore"
 import { EventLoop, ListenerHandle } from "../support/EventLoop"
 import { Logger } from "../support/Logger"
@@ -36,8 +37,10 @@ export class DomainLostEvent extends Event {
     constructor() { super("DomainLostEvent") }
 }
 
-export abstract class DomainProxy {
+let _lastProxy: DomainProxy | null = null
 
+export abstract class DomainProxy {
+    protected _listener = new ListenerHandle()
     protected abstract _sendMessage(msg: DomainMessage): void
     protected _receiveMessage(msg: ClientMessage) {
         if (msg.kind == "client:ping") {
@@ -54,8 +57,14 @@ export abstract class DomainProxy {
     public static findDomain(domainName: string | null) {
         const system = System.getSystem()
 
+        if (_lastProxy) {
+            _lastProxy._listener.dispose()
+            _lastProxy = null
+        }
+
         if (domainName == null) {
             const proxy = new LocalDomain(system) as DomainProxy
+            _lastProxy = proxy
             proxy._sendMessage({ kind: "domain:login", domain: system.name, name: system.name, nonce: 0 })
             system.emitEvent(new DomainAcquiredEvent(proxy))
             system.data.handleInit(proxy)
@@ -99,6 +108,7 @@ export abstract class DomainProxy {
                     listener.dispose()
                     const modem = system.devices.getDevice(modemName) as modem
                     const proxy = new RemoteDomain(system, modemName, modem, domainID)
+                    _lastProxy = proxy
                     system.emitEvent(new DomainAcquiredEvent(proxy))
                     system.data.handleInit(proxy)
                 }
@@ -134,7 +144,6 @@ class LocalDomain extends DomainProxy {
 }
 
 class RemoteDomain extends DomainProxy {
-    protected readonly _listener = new ListenerHandle()
     protected readonly _computerID = os.getComputerID()
 
     protected _sendMessage(msg: DomainMessage): void {
@@ -173,11 +182,11 @@ class RemoteDomain extends DomainProxy {
             }
         })
 
-        EventLoop.setInterval(this._listener, 1, () => {
+        EventLoop.setInterval(this._listener, PING_INTERVAL, () => {
             this._sendMessage({ kind: "domain:ping" })
         })
 
-        EventLoop.setInterval(this._listener, 2, () => {
+        EventLoop.setInterval(this._listener, TIMEOUT_DURATION, () => {
             if (receivedPing == false) {
                 this._listener.dispose()
                 Logger.printError(`Domain connection timeout`)

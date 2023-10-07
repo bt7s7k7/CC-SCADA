@@ -1,3 +1,4 @@
+import { PING_INTERVAL, TIMEOUT_DURATION } from "../constants"
 import { StoredValue } from "../data/DataStore"
 import { EventLoop, ListenerHandle } from "../support/EventLoop"
 import { Logger } from "../support/Logger"
@@ -28,6 +29,7 @@ export class Domain {
     protected readonly _subscriptions = new SubscriptionMap<ClientHandle>()
 
     public handleMessage(id: number, msg: DomainMessage) {
+        // Logger.debug("<-", id, textutils.serialiseJSON(msg))
         if (msg.kind == "domain:login") {
             const duplicate = this._clients.get(id)
             const client = new ClientHandle(id, msg.name, msg.nonce)
@@ -150,6 +152,7 @@ export class Domain {
     }
 
     protected _sendMessage(id: number, msg: ClientMessage) {
+        // Logger.debug("->", id, textutils.serialiseJSON(msg))
         if (id == this._computerID) {
             this.messageListener?.(msg)
         } else {
@@ -225,7 +228,7 @@ export class Domain {
             })
 
 
-            EventLoop.setInterval(this._listener, 1, () => {
+            EventLoop.setInterval(this._listener, PING_INTERVAL, () => {
                 for (const client of this._clients.values()) {
                     if (client.id != this._computerID) {
                         this._sendMessage(client.id, { kind: "client:ping" })
@@ -233,11 +236,13 @@ export class Domain {
                 }
             })
 
-            EventLoop.setInterval(this._listener, 2, () => {
+            EventLoop.setInterval(this._listener, TIMEOUT_DURATION, () => {
                 for (const client of this._clients.values()) {
                     if (client.id != this._computerID && client.receivedPing == false) {
                         this._removeClient(client)
                     }
+
+                    client.receivedPing = false
                 }
             })
         }
