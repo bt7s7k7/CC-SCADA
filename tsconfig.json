@@ -22,7 +22,7 @@
         "test"
     ],
     "tstl": {
-        "luaBundle": "startup.lua",
+        "luaBundle": "cc-scada.lua",
         "luaBundleEntry": "./src/app/app.ts",
         "luaTarget": "5.1",
         "luaPlugins": [
