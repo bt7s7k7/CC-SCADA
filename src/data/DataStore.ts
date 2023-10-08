@@ -56,23 +56,27 @@ export class DataStore<T extends StoredValue | null = StoredValue | null> {
         }
     }
 
+    public hasInitialized() {
+        return this._manager != null
+    }
+
     public setValue(value: T) {
-        if (this._manager == null) Logger.abort("Tried to operate on DataStore before init")
+        if (this._manager == null) return
         this._manager.setValue(this._options!.key, value)
     }
 
     public getValue() {
-        if (this._manager == null) Logger.abort("Tried to operate on DataStore before init")
+        if (this._manager == null) return this._options!.defaultValue
         return this._manager.getValue(this._options!.key) ?? this._options!.defaultValue
     }
 
     public setObject(object: Map<string, StoredValue>) {
-        if (this._manager == null) Logger.abort("Tried to operate on DataStore before init")
+        if (this._manager == null) return
         this._manager.setObject(this._options!.key, object)
     }
 
     public getObject() {
-        if (this._manager == null) Logger.abort("Tried to operate on DataStore before init")
+        if (this._manager == null) return new Map<never, never>()
         return this._manager.getObject(this._options!.key)
     }
 

@@ -3,7 +3,7 @@
 /**
     Functions in the global environment, defined in bios.lua. This does not
     include standard Lua functions.
-    
+
     [Documentation](https://tweaked.cc/module/_G.html)
 */
 //declare namespace _G {
@@ -29,6 +29,8 @@
     
     @param time The number of seconds to sleep for, rounded up to the
     nearest multiple of 0.05.
+
+    [Documentation](https://tweaked.cc/module/_G.html)
 */
 declare function sleep(time: number): void
 
@@ -39,6 +41,8 @@ declare function sleep(time: number): void
     @param text The text to write to the string
     
     @returns The number of lines written
+ 
+    [Documentation](https://tweaked.cc/module/_G.html)
 */
 declare function write(text: string): number
 
@@ -49,6 +53,8 @@ declare function write(text: string): number
     @param ... The values to print on the screen
     
     @returns The number of lines written
+ 
+    [Documentation](https://tweaked.cc/module/_G.html)
 */
 declare function print(..._: /*not provided*/ any[]): number
 
@@ -57,6 +63,8 @@ declare function print(..._: /*not provided*/ any[]): number
     wrapping if necessary. After printing, the cursor is moved to the next line.
     
     @param ... The values to print on the screen
+ 
+    [Documentation](https://tweaked.cc/module/_G.html)
 */
 declare function printError(..._: /*not provided*/ any[]): void
 
@@ -77,6 +85,8 @@ declare function printError(..._: /*not provided*/ any[]): void
     the prompt.
     
     @returns The text typed in.
+ 
+    [Documentation](https://tweaked.cc/module/_G.html)
 */
 declare function read(replaceChar?: string, history?: object, completeFn?: (partial: string) => string[] | null, __default?: string): string
 
@@ -87,6 +97,8 @@ declare function read(replaceChar?: string, history?: object, completeFn?: (part
     emulator's version instead.
     
     For example, ComputerCraft 1.93.0 (Minecraft 1.15.2).
+ 
+    [Documentation](https://tweaked.cc/module/_G.html)
 */
 declare const _HOST: any
 
@@ -100,6 +112,8 @@ declare const _HOST: any
     An example value to disable autocompletion:
     
     shell.autocomplete=false,lua.autocomplete=false,edit.autocomplete=false
+ 
+    [Documentation](https://tweaked.cc/module/_G.html)
 */
 declare const _CC_DEFAULT_SETTINGS: any
 
@@ -107,103 +121,135 @@ declare const _CC_DEFAULT_SETTINGS: any
 /**
     Constants and functions for colour values, suitable for working with
     term and redstone.
-    
+ 
     [Documentation](https://tweaked.cc/module/colors.html)
 */
 declare namespace colors {
     /**
         White: Written as 0 in paint files and term.blit, has a default
         terminal colour of #F0F0F0.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const white = 0x1
 
     /**
         Orange: Written as 1 in paint files and term.blit, has a
         default terminal colour of #F2B233.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const orange = 0x2
 
     /**
         Magenta: Written as 2 in paint files and term.blit, has a
         default terminal colour of #E57FD8.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const magenta = 0x4
 
     /**
         Light blue: Written as 3 in paint files and term.blit, has a
         default terminal colour of #99B2F2.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const lightBlue = 0x8
 
     /**
         Yellow: Written as 4 in paint files and term.blit, has a
         default terminal colour of #DEDE6C.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const yellow = 0x10
 
     /**
         Lime: Written as 5 in paint files and term.blit, has a default
         terminal colour of #7FCC19.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const lime = 0x20
 
     /**
         Pink: Written as 6 in paint files and term.blit, has a default
         terminal colour of #F2B2CC.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const pink = 0x40
 
     /**
         Gray: Written as 7 in paint files and term.blit, has a default
         terminal colour of #4C4C4C.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const gray = 0x80
 
     /**
         Light gray: Written as 8 in paint files and term.blit, has a
         default terminal colour of #999999.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const lightGray = 0x100
 
     /**
         Cyan: Written as 9 in paint files and term.blit, has a default
         terminal colour of #4C99B2.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const cyan = 0x200
 
     /**
         Purple: Written as a in paint files and term.blit, has a
         default terminal colour of #B266E5.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const purple = 0x400
 
     /**
         Blue: Written as b in paint files and term.blit, has a default
         terminal colour of #3366CC.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const blue = 0x800
 
     /**
         Brown: Written as c in paint files and term.blit, has a default
         terminal colour of #7F664C.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const brown = 0x1000
 
     /**
         Green: Written as d in paint files and term.blit, has a default
         terminal colour of #57A64E.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const green = 0x2000
 
     /**
         Red: Written as e in paint files and term.blit, has a default
         terminal colour of #CC4C4C.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const red = 0x4000
 
     /**
         Black: Written as f in paint files and term.blit, has a default
         terminal colour of #111111.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export const black = 0x8000
 
@@ -214,6 +260,8 @@ declare namespace colors {
         @param ... The colors to combine.
         
         @returns The union of the color sets given in ...
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export function combine(..._: number[]): number
 
@@ -229,6 +277,8 @@ declare namespace colors {
         @param ... The colors to subtract.
         
         @returns The resulting color.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export function subtract(colors: number, ..._: number[]): number
 
@@ -240,6 +290,8 @@ declare namespace colors {
         @param color A color or set of colors that colors should contain.
         
         @returns If colors contains all colors within color.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export function test(colors: number, color: number): boolean
 
@@ -251,6 +303,8 @@ declare namespace colors {
         @param b The blue channel, should be between 0 and 1.
         
         @returns The combined hexadecimal colour.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export function packRGB(r: number, g: number, b: number): number
 
@@ -262,6 +316,8 @@ declare namespace colors {
         @returns The red channel, will be between 0 and 1.
         @returns The green channel, will be between 0 and 1.
         @returns The blue channel, will be between 0 and 1.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export function unpackRGB(rgb: number): LuaMultiReturn<[number, number, number]>
 
@@ -277,6 +333,8 @@ declare namespace colors {
         @param b The blue channel, as an argument to colors.packRGB.
         
         @returns The combined hexadecimal colour, as returned by colors.packRGB.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export function rgb8(r: number, g: number, b: number): number
 
@@ -288,6 +346,8 @@ declare namespace colors {
         @param color The color to convert.
         
         @returns The blit hex code of the color.
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export function toBlit(color: number): string
 
@@ -299,25 +359,31 @@ declare namespace colors {
         @param hex The paint/blit hex character to convert
         
         @returns The color
+ 
+        [Documentation](https://tweaked.cc/module/colors.html)
     */
     export function fromBlit(hex: string): number
 
 }
 /**
     An alternative version of colors for lovers of British spelling.
-    
+ 
     [Documentation](https://tweaked.cc/module/colours.html)
 */
 declare namespace colours {
     /**
         Grey. Written as 7 in paint files and term.blit, has a default
         terminal colour of #4C4C4C.
+ 
+        [Documentation](https://tweaked.cc/module/colours.html)
     */
     export const grey: any
 
     /**
         Light grey. Written as 8 in paint files and term.blit, has a
         default terminal colour of #999999.
+ 
+        [Documentation](https://tweaked.cc/module/colours.html)
     */
     export const lightGrey: any
 
@@ -325,7 +391,7 @@ declare namespace colours {
 /**
     Execute Minecraft commands and gather data from the results from
     a command computer.
-    
+ 
     [Documentation](https://tweaked.cc/module/commands.html)
 */
 declare namespace commands {
@@ -338,6 +404,8 @@ declare namespace commands {
         @returns The output of this command, as a list of lines.
         @returns The number of "affected" objects, or nil if the command failed. The definition of this
         varies from command to command.
+ 
+        [Documentation](https://tweaked.cc/module/commands.html)
     */
     export function exec(command: string): LuaMultiReturn<[boolean, string[], number | null]>
 
@@ -355,6 +423,8 @@ declare namespace commands {
         @param command The command to execute.
         
         @returns The "task id". When this command has been executed, it will queue a task_complete event with a matching id.
+ 
+        [Documentation](https://tweaked.cc/module/commands.html)
     */
     export function execAsync(command: string): number
 
@@ -364,6 +434,8 @@ declare namespace commands {
         @param ... The sub-command to complete.
         
         @returns A list of all available commands
+ 
+        [Documentation](https://tweaked.cc/module/commands.html)
     */
     export function list(..._: string[]): string[]
 
@@ -374,6 +446,8 @@ declare namespace commands {
         @returns This computer's x position.
         @returns This computer's y position.
         @returns This computer's z position.
+ 
+        [Documentation](https://tweaked.cc/module/commands.html)
     */
     export function getBlockPosition(): LuaMultiReturn<[number, number, number]>
 
@@ -398,6 +472,8 @@ declare namespace commands {
         
         @throws If the coordinates are not within the world.
         If trying to get information about more than 4096 blocks.
+ 
+        [Documentation](https://tweaked.cc/module/commands.html)
     */
     export function getBlockInfos(minX: number, minY: number, minZ: number, maxX: number, maxY: number, maxZ: number, dimension?: string): object[]
 
@@ -416,6 +492,8 @@ declare namespace commands {
         @returns The given block's information.
         
         @throws If the coordinates are not within the world, or are not currently loaded.
+ 
+        [Documentation](https://tweaked.cc/module/commands.html)
     */
     export function getBlockInfo(x: number, y: number, z: number, dimension?: string): object
 
@@ -424,6 +502,8 @@ declare namespace commands {
         
         This may be useful if a built-in function (such as commands.list) has been
         overwritten by a command.
+ 
+        [Documentation](https://tweaked.cc/module/commands.html)
     */
     export const native: any
 
@@ -432,13 +512,15 @@ declare namespace commands {
         
         As with commands.execAsync, this returns the "task id" of the enqueued
         command.
+ 
+        [Documentation](https://tweaked.cc/module/commands.html)
     */
     export const async: any
 
 }
 /**
     Interact with disk drives.
-    
+ 
     [Documentation](https://tweaked.cc/module/disk.html)
 */
 declare namespace disk {
@@ -448,6 +530,8 @@ declare namespace disk {
         @param name The name of the disk drive.
         
         @returns If something is in the disk drive.
+ 
+        [Documentation](https://tweaked.cc/module/disk.html)
     */
     export function isPresent(name: string): boolean
 
@@ -462,6 +546,8 @@ declare namespace disk {
         
         @returns The name of the current media, or nil if the drive is
         not present or empty.
+ 
+        [Documentation](https://tweaked.cc/module/disk.html)
     */
     export function getLabel(name: string): string | null
 
@@ -470,6 +556,8 @@ declare namespace disk {
         
         @param name The name of the disk drive.
         @param label The new label of the disk
+ 
+        [Documentation](https://tweaked.cc/module/disk.html)
     */
     export function setLabel(name: string, label: string | null): void
 
@@ -481,6 +569,8 @@ declare namespace disk {
         @param name The name of the disk drive.
         
         @returns If the disk is present and provides a mount.
+ 
+        [Documentation](https://tweaked.cc/module/disk.html)
     */
     export function hasData(name: string): boolean
 
@@ -492,6 +582,8 @@ declare namespace disk {
         
         @returns The mount's directory, or nil if the drive does not
         contain a floppy or computer.
+ 
+        [Documentation](https://tweaked.cc/module/disk.html)
     */
     export function getMountPath(name: string): string | null
 
@@ -504,6 +596,8 @@ declare namespace disk {
         @param name The name of the disk drive.
         
         @returns If the disk is present and has audio saved on it.
+ 
+        [Documentation](https://tweaked.cc/module/disk.html)
     */
     export function hasAudio(name: string): boolean
 
@@ -516,6 +610,8 @@ declare namespace disk {
         
         @returns The track title, false if there is not a music
         record in the drive or nil if no drive is present.
+ 
+        [Documentation](https://tweaked.cc/module/disk.html)
     */
     export function getAudioTitle(name: string): string | false | null
 
@@ -528,6 +624,8 @@ declare namespace disk {
         when another record is started.
         
         @param name The name of the disk drive.
+ 
+        [Documentation](https://tweaked.cc/module/disk.html)
     */
     export function playAudio(name: string): void
 
@@ -536,6 +634,8 @@ declare namespace disk {
         disk.playAudio.
         
         @param name The name o the disk drive.
+ 
+        [Documentation](https://tweaked.cc/module/disk.html)
     */
     export function stopAudio(name: string): void
 
@@ -543,6 +643,8 @@ declare namespace disk {
         Ejects any item currently in the drive, spilling it into the world as a loose item.
         
         @param name The name of the disk drive.
+ 
+        [Documentation](https://tweaked.cc/module/disk.html)
     */
     export function eject(name: string): void
 
@@ -555,6 +657,8 @@ declare namespace disk {
         @param name The name of the disk drive.
         
         @returns The disk ID, or nil if the drive does not contain a floppy disk.
+ 
+        [Documentation](https://tweaked.cc/module/disk.html)
     */
     export function getID(name: string): string | null
 
@@ -562,7 +666,7 @@ declare namespace disk {
 /**
     Interact with the computer's files and filesystem, allowing you to manipulate files, directories and paths. This
     includes:
-    
+ 
     [Documentation](https://tweaked.cc/module/fs.html)
 */
 declare namespace fs {
@@ -584,6 +688,8 @@ declare namespace fs {
         not be included in the returned list.
         
         @returns A list of possible completion candidates.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function complete(path: string, location: string, include_files?: boolean, include_dirs?: boolean): string[]
 
@@ -609,6 +715,8 @@ declare namespace fs {
         @returns A list of paths that match the search string.
         
         @throws If the supplied path was invalid.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function find(path: string): string[]
 
@@ -624,6 +732,8 @@ declare namespace fs {
         @returns If the path is mounted, rather than a normal file/folder.
         
         @throws If the path does not exist.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function isDriveRoot(path: string): boolean
 
@@ -635,6 +745,8 @@ declare namespace fs {
         @returns A table with a list of files in the directory.
         
         @throws If the path doesn't exist.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function list(path: string): string[]
 
@@ -648,6 +760,8 @@ declare namespace fs {
         @returns The new path, with separators added between parts as needed.
         
         @throws On argument errors.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function combine(path: string, ..._: string[]): string
 
@@ -657,6 +771,8 @@ declare namespace fs {
         @param path The path to get the name from.
         
         @returns The final part of the path (the file name).
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function getName(path: string): string
 
@@ -666,6 +782,8 @@ declare namespace fs {
         @param path The path to get the directory from.
         
         @returns The path with the final part removed (the parent directory).
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function getDir(path: string): string
 
@@ -677,6 +795,8 @@ declare namespace fs {
         @returns The size of the file, in bytes.
         
         @throws If the path doesn't exist.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function getSize(path: string): number
 
@@ -686,6 +806,8 @@ declare namespace fs {
         @param path The path to check the existence of.
         
         @returns Whether the path exists.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function exists(path: string): boolean
 
@@ -695,6 +817,8 @@ declare namespace fs {
         @param path The path to check.
         
         @returns Whether the path is a directory.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function isDir(path: string): boolean
 
@@ -704,6 +828,8 @@ declare namespace fs {
         @param path The path to check.
         
         @returns Whether the path cannot be written to.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function isReadOnly(path: string): boolean
 
@@ -713,6 +839,8 @@ declare namespace fs {
         @param path The path to the directory to create.
         
         @throws If the directory couldn't be created.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function makeDir(path: string): void
 
@@ -725,6 +853,8 @@ declare namespace fs {
         @param dest The destination path for the file or directory.
         
         @throws If the file or directory couldn't be moved.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function move(path: string, dest: string): void
 
@@ -737,6 +867,8 @@ declare namespace fs {
         @param dest The path to the destination file or directory.
         
         @throws If the file or directory couldn't be copied.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function copy(path: string, dest: string): void
 
@@ -749,6 +881,8 @@ declare namespace fs {
         @param path The path to the file or directory to delete.
         
         @throws If the file or directory couldn't be deleted.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     function __reserved__delete(path: string): void
 
@@ -772,6 +906,8 @@ declare namespace fs {
         @returns A file handle object for the file.
         
         @throws If an invalid mode was specified.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function open(path: string, mode: string): object
 
@@ -783,6 +919,8 @@ declare namespace fs {
         @returns The name of the drive that the file is on; e.g. hdd for local files, or rom for ROM files.
         
         @throws If the path doesn't exist.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function getDrive(path: string): string | null
 
@@ -795,6 +933,8 @@ declare namespace fs {
         @returns The amount of free space available, in bytes, or "unlimited".
         
         @throws If the path doesn't exist.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function getFreeSpace(path: string): number | "unlimited"
 
@@ -807,6 +947,8 @@ declare namespace fs {
         treasure disks.
         
         @throws If the capacity cannot be determined.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function getCapacity(path: string): number | null
 
@@ -824,12 +966,16 @@ declare namespace fs {
         @returns The resulting attributes.
         
         @throws If the path does not exist.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export function attributes(path: string): { size: number, isDir: boolean, isReadOnly: boolean, created: number, modified: number }
 
     /**
         A file handle opened with fs.open with the "rb"
         mode.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export interface BinaryReadHandle {
         /**
@@ -842,6 +988,8 @@ declare namespace fs {
             
             @throws When trying to read a negative number of bytes.
             If the file has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         read(count?: number): null
 
@@ -852,6 +1000,8 @@ declare namespace fs {
             @returns The remaining contents of the file, or nil if we are at the end.
             
             @throws If the file has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         readAll(): string | null
 
@@ -863,6 +1013,8 @@ declare namespace fs {
             @returns The read line or nil if at the end of the file.
             
             @throws If the file has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         readLine(withTrailing?: boolean): string | null
 
@@ -884,6 +1036,8 @@ declare namespace fs {
             @returns The new position.
             
             @throws If the file has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         seek(whence?: string, offset?: number): number
 
@@ -894,6 +1048,8 @@ declare namespace fs {
             
             
             @throws If the file has already been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         close(): void
 
@@ -902,6 +1058,8 @@ declare namespace fs {
     /**
         A file handle opened with fs.open with the "r"
         mode.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export interface ReadHandle {
         /**
@@ -912,6 +1070,8 @@ declare namespace fs {
             @returns The read line or nil if at the end of the file.
             
             @throws If the file has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         readLine(withTrailing?: boolean): string | null
 
@@ -922,6 +1082,8 @@ declare namespace fs {
             @returns The remaining contents of the file, or nil if we are at the end.
             
             @throws If the file has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         readAll(): null | string
 
@@ -934,6 +1096,8 @@ declare namespace fs {
             
             @throws When trying to read a negative number of characters.
             If the file has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         read(count?: number): string | null
 
@@ -944,6 +1108,8 @@ declare namespace fs {
             
             
             @throws If the file has already been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         close(): void
 
@@ -951,6 +1117,8 @@ declare namespace fs {
 
     /**
         A file handle opened by fs.open using the "w" or "a" modes.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export interface WriteHandle {
         /**
@@ -959,6 +1127,8 @@ declare namespace fs {
             @param text The text to write to the file.
             
             @throws If the file has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         write(text: string): void
 
@@ -968,6 +1138,8 @@ declare namespace fs {
             @param text The text to write to the file.
             
             @throws If the file has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         writeLine(text: string): void
 
@@ -976,6 +1148,8 @@ declare namespace fs {
             
             
             @throws If the file has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         flush(): void
 
@@ -986,6 +1160,8 @@ declare namespace fs {
             
             
             @throws If the file has already been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         close(): void
 
@@ -994,6 +1170,8 @@ declare namespace fs {
     /**
         A file handle opened by fs.open using the "wb" or "ab"
         modes.
+ 
+        [Documentation](https://tweaked.cc/module/fs.html)
     */
     export interface BinaryWriteHandle {
         /**
@@ -1002,6 +1180,8 @@ declare namespace fs {
             @param charcode The byte to write.
             
             @throws If the file has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         write(charcode: number): void
 
@@ -1010,6 +1190,8 @@ declare namespace fs {
             
             
             @throws If the file has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         flush(): void
 
@@ -1031,6 +1213,8 @@ declare namespace fs {
             @returns The new position.
             
             @throws If the file has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         seek(whence?: string, offset?: number): number
 
@@ -1041,6 +1225,8 @@ declare namespace fs {
             
             
             @throws If the file has already been closed.
+ 
+            [Documentation](https://tweaked.cc/module/fs.html)
         */
         close(): void
 
@@ -1051,12 +1237,14 @@ declare namespace fs {
 /**
     Use modems to locate the position of the current turtle or
     computers.
-    
+ 
     [Documentation](https://tweaked.cc/module/gps.html)
 */
 declare namespace gps {
     /**
         The channel which GPS requests and responses are broadcast on.
+ 
+        [Documentation](https://tweaked.cc/module/gps.html)
     */
     export const CHANNEL_GPS = 65534
 
@@ -1070,13 +1258,15 @@ declare namespace gps {
         @returns This computer's x position.
         @returns This computer's y position.
         @returns This computer's z position.
+ 
+        [Documentation](https://tweaked.cc/module/gps.html)
     */
     export function locate(timeout?: number, debug?: boolean): LuaMultiReturn<[number, number, number]>
 
 }
 /**
     Find help files on the current computer.
-    
+ 
     [Documentation](https://tweaked.cc/module/help.html)
 */
 declare namespace help {
@@ -1086,6 +1276,8 @@ declare namespace help {
         
         
         @returns The current help search path, separated by colons.
+ 
+        [Documentation](https://tweaked.cc/module/help.html)
     */
     export function path(): string
 
@@ -1094,6 +1286,8 @@ declare namespace help {
         for to newPath
         
         @param newPath The new path to use.
+ 
+        [Documentation](https://tweaked.cc/module/help.html)
     */
     export function setPath(newPath: string): void
 
@@ -1104,6 +1298,8 @@ declare namespace help {
         
         @returns The path to the given topic's help file, or nil if it
         cannot be found.
+ 
+        [Documentation](https://tweaked.cc/module/help.html)
     */
     export function lookup(topic: string): string | null
 
@@ -1112,6 +1308,8 @@ declare namespace help {
         
         
         @returns A list of topics in alphabetical order.
+ 
+        [Documentation](https://tweaked.cc/module/help.html)
     */
     export function topics(): object
 
@@ -1122,13 +1320,15 @@ declare namespace help {
         @param prefix The prefix to match
         
         @returns A list of matching topics.
+ 
+        [Documentation](https://tweaked.cc/module/help.html)
     */
     export function completeTopic(prefix: string): object
 
 }
 /**
     Make HTTP requests, sending and receiving data to a remote web server.
-    
+ 
     [Documentation](https://tweaked.cc/module/http.html)
 */
 declare namespace http {
@@ -1143,6 +1343,8 @@ declare namespace http {
         decoded.
         
         @returns The resulting http response, which can be read from.
+ 
+        [Documentation](https://tweaked.cc/module/http.html)
     */
     export function get(url: string, headers?: { [index: string]: string }, binary?: boolean): Response
 
@@ -1158,6 +1360,8 @@ declare namespace http {
         decoded.
         
         @returns The resulting http response, which can be read from.
+ 
+        [Documentation](https://tweaked.cc/module/http.html)
     */
     export function post(url: string, body: string, headers?: { [index: string]: string }, binary?: boolean): Response
 
@@ -1175,6 +1379,8 @@ declare namespace http {
         @param binary? Whether to make a binary HTTP request. If true,
         the body will not be UTF-8 encoded, and the received response will not be
         decoded.
+ 
+        [Documentation](https://tweaked.cc/module/http.html)
     */
     export function request(url: string, body?: string, headers?: { [index: string]: string }, binary?: boolean): void
 
@@ -1188,6 +1394,8 @@ declare namespace http {
         
         @returns When this url is not invalid. This does not imply that it is
         allowed - see the comment above.
+ 
+        [Documentation](https://tweaked.cc/module/http.html)
     */
     export function checkURLAsync(url: string): true
 
@@ -1200,6 +1408,8 @@ declare namespace http {
         @param url The URL to check.
         
         @returns When this url is valid and can be requested via http.request.
+ 
+        [Documentation](https://tweaked.cc/module/http.html)
     */
     export function checkURL(url: string): true
 
@@ -1213,6 +1423,8 @@ declare namespace http {
         ws:// or wss:// protocol.
         @param headers? Additional headers to send as part
         of the initial websocket connection.
+ 
+        [Documentation](https://tweaked.cc/module/http.html)
     */
     export function websocketAsync(url: string, headers?: { [index: string]: string }): void
 
@@ -1225,6 +1437,8 @@ declare namespace http {
         of the initial websocket connection.
         
         @returns The websocket connection.
+ 
+        [Documentation](https://tweaked.cc/module/http.html)
     */
     export function websocket(url: string, headers?: { [index: string]: string }): Websocket
 
@@ -1234,6 +1448,8 @@ declare namespace http {
         See also
         
         http.websocket On how to open a websocket.
+ 
+        [Documentation](https://tweaked.cc/module/http.html)
     */
     export interface Websocket {
         /**
@@ -1245,6 +1461,8 @@ declare namespace http {
             @returns If this was a binary message.
             
             @throws If the websocket has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/http.html)
         */
         receive(timeout?: number): LuaMultiReturn<[string, boolean]>
 
@@ -1256,6 +1474,8 @@ declare namespace http {
             
             @throws If the message is too large.
             If the websocket has been closed.
+ 
+            [Documentation](https://tweaked.cc/module/http.html)
         */
         send(message: string, binary?: boolean): void
 
@@ -1263,6 +1483,8 @@ declare namespace http {
             Close this websocket. This will terminate the connection, meaning messages can no longer be sent or received
             along it.
             
+ 
+            [Documentation](https://tweaked.cc/module/http.html)
         */
         close(): void
 
@@ -1276,6 +1498,8 @@ declare namespace http {
         See also
         
         http.request On how to make a http request.
+ 
+        [Documentation](https://tweaked.cc/module/http.html)
     */
     export interface Response {
         /**
@@ -1284,6 +1508,8 @@ declare namespace http {
             
             @returns The response code (i.e. 200)
             @returns The response message (i.e. "OK")
+ 
+            [Documentation](https://tweaked.cc/module/http.html)
         */
         getResponseCode(): LuaMultiReturn<[number, string]>
 
@@ -1293,6 +1519,8 @@ declare namespace http {
             
             
             @returns The response's headers.
+ 
+            [Documentation](https://tweaked.cc/module/http.html)
         */
         getResponseHeaders(): { [index: string]: string }
 
@@ -1301,19 +1529,23 @@ declare namespace http {
 }
 /**
     Emulates Lua's standard io library.
-    
+ 
     [Documentation](https://tweaked.cc/module/io.html)
 */
 declare namespace io {
     /**
         A file handle representing the "standard input". Reading from this
         file will prompt the user for input.
+ 
+        [Documentation](https://tweaked.cc/module/io.html)
     */
     export const stdin: any
 
     /**
         A file handle representing the "standard output". Writing to this
         file will display the written text to the screen.
+ 
+        [Documentation](https://tweaked.cc/module/io.html)
     */
     export const stdout: any
 
@@ -1322,6 +1554,8 @@ declare namespace io {
         
         One may use this to display error messages, writing to it will display
         them on the terminal.
+ 
+        [Documentation](https://tweaked.cc/module/io.html)
     */
     export const stderr: any
 
@@ -1330,12 +1564,16 @@ declare namespace io {
         
         @param file? The file handle to close, defaults to the
         current output file.
+ 
+        [Documentation](https://tweaked.cc/module/io.html)
     */
     export function close(file?: Handle): void
 
     /**
         Flushes the current output file.
         
+ 
+        [Documentation](https://tweaked.cc/module/io.html)
     */
     export function flush(): void
 
@@ -1347,6 +1585,8 @@ declare namespace io {
         @returns The current input file.
         
         @throws If the provided filename cannot be opened for reading.
+ 
+        [Documentation](https://tweaked.cc/module/io.html)
     */
     export function input(file?: Handle | string): Handle
 
@@ -1368,6 +1608,8 @@ declare namespace io {
         @returns The line iterator.
         
         @throws If the file cannot be opened for reading
+ 
+        [Documentation](https://tweaked.cc/module/io.html)
     */
     export function lines(filename?: string, ..._: /*not provided*/ any[]): LuaIterable<string>
 
@@ -1390,6 +1632,8 @@ declare namespace io {
         @param mode? The mode to open the file with. This defaults to rb.
         
         @returns The opened file.
+ 
+        [Documentation](https://tweaked.cc/module/io.html)
     */
     export function open(filename: string, mode?: string): Handle
 
@@ -1401,6 +1645,8 @@ declare namespace io {
         @returns The current output file.
         
         @throws If the provided filename cannot be opened for writing.
+ 
+        [Documentation](https://tweaked.cc/module/io.html)
     */
     export function output(file?: Handle | string): Handle
 
@@ -1413,6 +1659,8 @@ declare namespace io {
         @param ... The formats to read, defaulting to a whole line.
         
         @returns The data read, or nil if nothing can be read.
+ 
+        [Documentation](https://tweaked.cc/module/io.html)
     */
     export function read(..._: string[]): LuaMultiReturn<(string | null)[]>
 
@@ -1424,6 +1672,8 @@ declare namespace io {
         
         @returns "file" if this is an open file, "closed file" if it
         is a closed file handle, or nil if not a file handle.
+ 
+        [Documentation](https://tweaked.cc/module/io.html)
     */
     export function type(obj: /*not provided*/ any): string | null
 
@@ -1434,11 +1684,15 @@ declare namespace io {
         there for full details.
         
         @param ... The strings to write
+ 
+        [Documentation](https://tweaked.cc/module/io.html)
     */
     export function write(..._: string[]): void
 
     /**
         A file handle which can be read or written to.
+ 
+        [Documentation](https://tweaked.cc/module/io.html)
     */
     export interface Handle {
         /**
@@ -1448,6 +1702,8 @@ declare namespace io {
             @returns If this handle was successfully closed.
             
             @throws If this handle was already closed.
+ 
+            [Documentation](https://tweaked.cc/module/io.html)
         */
         close(): true
 
@@ -1456,6 +1712,8 @@ declare namespace io {
             
             
             @throws If the handle has been closed
+ 
+            [Documentation](https://tweaked.cc/module/io.html)
         */
         flush(): void
 
@@ -1473,6 +1731,8 @@ declare namespace io {
             @returns The line iterator.
             
             @throws If the file cannot be opened for reading
+ 
+            [Documentation](https://tweaked.cc/module/io.html)
         */
         lines(..._: /*not provided*/ any[]): LuaIterable<string>
 
@@ -1497,6 +1757,8 @@ declare namespace io {
             @param ... The formats to use.
             
             @returns The data read from the file.
+ 
+            [Documentation](https://tweaked.cc/module/io.html)
         */
         read(..._: /*not provided*/ any[]): LuaMultiReturn<(string | null)[]>
 
@@ -1521,6 +1783,8 @@ declare namespace io {
             @param offset? The offset from the start to move to.
             
             @returns The new location of the file cursor.
+ 
+            [Documentation](https://tweaked.cc/module/io.html)
         */
         seek(whence?: string, offset?: number): number
 
@@ -1535,6 +1799,8 @@ declare namespace io {
             
             @param mode The buffering mode.
             @param size? The size of the buffer.
+ 
+            [Documentation](https://tweaked.cc/module/io.html)
         */
         setvbuf(mode: string, size?: number): void
 
@@ -1544,6 +1810,8 @@ declare namespace io {
             @param ... The values to write.
             
             @returns The current file, allowing chained calls.
+ 
+            [Documentation](https://tweaked.cc/module/io.html)
         */
         write(..._: (string | number)[]): Handle
 
@@ -1552,7 +1820,7 @@ declare namespace io {
 }
 /**
     Constants for all keyboard "key codes", as queued by the key event.
-    
+ 
     [Documentation](https://tweaked.cc/module/keys.html)
 */
 declare namespace keys {
@@ -1563,13 +1831,15 @@ declare namespace keys {
         @param code The key code to look up.
         
         @returns The name of the key, or nil if not a valid key code.
+ 
+        [Documentation](https://tweaked.cc/module/keys.html)
     */
     export function getName(code: number): string | null
 
 }
 /**
     Multishell allows multiple programs to be run at the same time.
-    
+ 
     [Documentation](https://tweaked.cc/module/multishell.html)
 */
 declare namespace multishell {
@@ -1582,6 +1852,8 @@ declare namespace multishell {
         
         
         @returns The currently visible process's index.
+ 
+        [Documentation](https://tweaked.cc/module/multishell.html)
     */
     export function getFocus(): number
 
@@ -1592,6 +1864,8 @@ declare namespace multishell {
         
         @returns If the process was changed successfully. This will
         return false if there is no process with this id.
+ 
+        [Documentation](https://tweaked.cc/module/multishell.html)
     */
     export function setFocus(n: number): boolean
 
@@ -1605,6 +1879,8 @@ declare namespace multishell {
         
         @returns The current process title, or nil if the
         process doesn't exist.
+ 
+        [Documentation](https://tweaked.cc/module/multishell.html)
     */
     export function getTitle(n: number): string | null
 
@@ -1613,6 +1889,8 @@ declare namespace multishell {
         
         @param n The process index.
         @param title The new process title.
+ 
+        [Documentation](https://tweaked.cc/module/multishell.html)
     */
     export function setTitle(n: number, title: string): void
 
@@ -1621,6 +1899,8 @@ declare namespace multishell {
         
         
         @returns The currently running process.
+ 
+        [Documentation](https://tweaked.cc/module/multishell.html)
     */
     export function getCurrent(): number
 
@@ -1637,6 +1917,8 @@ declare namespace multishell {
         @param ... Additional arguments to pass to the program.
         
         @returns The index of the created process.
+ 
+        [Documentation](https://tweaked.cc/module/multishell.html)
     */
     export function launch(tProgramEnv: object, sProgramPath: string, ..._: /*not provided*/ any[]): number
 
@@ -1645,13 +1927,15 @@ declare namespace multishell {
         
         
         @returns The number of processes.
+ 
+        [Documentation](https://tweaked.cc/module/multishell.html)
     */
     export function getCount(): number
 
 }
 /**
     The os API allows interacting with the current computer.
-    
+ 
     [Documentation](https://tweaked.cc/module/os.html)
 */
 declare namespace os {
@@ -1670,6 +1954,8 @@ declare namespace os {
         @param path The path of the API to load.
         
         @returns Whether or not the API was successfully loaded.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function loadAPI(path: string): boolean
 
@@ -1682,6 +1968,8 @@ declare namespace os {
         This effectively removes the specified table from _G.
         
         @param name The name of the API to unload.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function unloadAPI(name: string): void
 
@@ -1700,6 +1988,8 @@ declare namespace os {
         
         @returns event The name of the event that fired.
         @returns param... Optional additional parameters of the event.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function pullEvent(filter?: string): LuaMultiReturn<[string, ...any]>
 
@@ -1715,6 +2005,8 @@ declare namespace os {
         
         @returns event The name of the event that fired.
         @returns param... Optional additional parameters of the event.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function pullEventRaw(filter?: string): LuaMultiReturn<[string, ...any]>
 
@@ -1723,6 +2015,8 @@ declare namespace os {
         
         @param time The number of seconds to sleep for, rounded up to the
         nearest multiple of 0.05.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function sleep(time: number): void
 
@@ -1734,6 +2028,8 @@ declare namespace os {
         
         
         @returns The current CraftOS version.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function version(): string
 
@@ -1755,6 +2051,8 @@ declare namespace os {
         @param ... The arguments to pass to the program.
         
         @returns Whether or not the program ran successfully.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function run(env: object, path: string, ..._: /*not provided*/ any[]): boolean
 
@@ -1765,6 +2063,8 @@ declare namespace os {
         @param name The name of the event to queue.
         @param ... The parameters of the event. These can be any primitive type (boolean, number, string) as well as
         tables. Other types (like functions), as well as metatables, will not be preserved.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function queueEvent(name: string, ..._: /*not provided*/ any[]): void
 
@@ -1783,6 +2083,8 @@ declare namespace os {
         timer event, or cancel the timer.
         
         @throws If the time is below zero.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function startTimer(timer: number): number
 
@@ -1791,6 +2093,8 @@ declare namespace os {
         timer from firing.
         
         @param token The ID of the timer to cancel.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function cancelTimer(token: number): void
 
@@ -1805,6 +2109,8 @@ declare namespace os {
         alarm event, or cancel the alarm.
         
         @throws If the time is out of range.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function setAlarm(time: number): number
 
@@ -1813,18 +2119,24 @@ declare namespace os {
         alarm from firing.
         
         @param token The ID of the alarm to cancel.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function cancelAlarm(token: number): void
 
     /**
         Shuts down the computer immediately.
         
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function shutdown(): void
 
     /**
         Reboots the computer immediately.
         
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function reboot(): void
 
@@ -1833,6 +2145,8 @@ declare namespace os {
         
         
         @returns The ID of the computer.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function getComputerID(): number
 
@@ -1841,6 +2155,8 @@ declare namespace os {
         
         
         @returns The ID of the computer.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function computerID(): number
 
@@ -1849,6 +2165,8 @@ declare namespace os {
         
         
         @returns The label of the computer.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function getComputerLabel(): string | null
 
@@ -1857,6 +2175,8 @@ declare namespace os {
         
         
         @returns The label of the computer.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function computerLabel(): string | null
 
@@ -1864,6 +2184,8 @@ declare namespace os {
         Set the label of this computer.
         
         @param label? The new label. May be nil in order to clear it.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function setComputerLabel(label?: string): void
 
@@ -1872,6 +2194,8 @@ declare namespace os {
         
         
         @returns The computer's uptime.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function clock(): number
 
@@ -1896,6 +2220,8 @@ declare namespace os {
         @returns The hour of the selected locale, or a UNIX timestamp from the table, depending on the argument passed in.
         
         @throws If an invalid locale is passed.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function time(locale?: string | object): any
 
@@ -1916,6 +2242,8 @@ declare namespace os {
         @returns The day depending on the selected locale.
         
         @throws If an invalid locale is passed.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function day(args?: string): number
 
@@ -1943,6 +2271,8 @@ declare namespace os {
         @returns The milliseconds since the epoch depending on the selected locale.
         
         @throws If an invalid locale is passed.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function epoch(args?: string): number
 
@@ -1967,6 +2297,8 @@ declare namespace os {
         @returns The resulting format string.
         
         @throws If an invalid format is passed.
+ 
+        [Documentation](https://tweaked.cc/module/os.html)
     */
     export function date(format?: string, time?: number): any
 
@@ -1974,7 +2306,7 @@ declare namespace os {
 /**
     Utilities for drawing more complex graphics, such as pixels, lines and
     images.
-    
+ 
     [Documentation](https://tweaked.cc/module/paintutils.html)
 */
 declare namespace paintutils {
@@ -1985,6 +2317,8 @@ declare namespace paintutils {
         
         @returns The parsed image data, suitable for use with
         paintutils.drawImage.
+ 
+        [Documentation](https://tweaked.cc/module/paintutils.html)
     */
     export function parseImage(image: string): object
 
@@ -1997,6 +2331,8 @@ declare namespace paintutils {
         
         @returns The parsed image data, suitable for use with
         paintutils.drawImage, or nil if the file does not exist.
+ 
+        [Documentation](https://tweaked.cc/module/paintutils.html)
     */
     export function loadImage(path: string): object | null
 
@@ -2010,6 +2346,8 @@ declare namespace paintutils {
         @param yPos The y position to draw at, where 1 is the very top.
         @param colour? The color of this pixel. This will be
         the current background colour if not specified.
+ 
+        [Documentation](https://tweaked.cc/module/paintutils.html)
     */
     export function drawPixel(xPos: number, yPos: number, colour?: number): void
 
@@ -2025,6 +2363,8 @@ declare namespace paintutils {
         @param endY The end y position of the line.
         @param colour? The color of this pixel. This will be
         the current background colour if not specified.
+ 
+        [Documentation](https://tweaked.cc/module/paintutils.html)
     */
     export function drawLine(startX: number, startY: number, endX: number, endY: number, colour?: number): void
 
@@ -2041,6 +2381,8 @@ declare namespace paintutils {
         @param endY The end y position of the line.
         @param colour? The color of this pixel. This will be
         the current background colour if not specified.
+ 
+        [Documentation](https://tweaked.cc/module/paintutils.html)
     */
     export function drawBox(startX: number, startY: number, endX: number, endY: number, colour?: number): void
 
@@ -2057,6 +2399,8 @@ declare namespace paintutils {
         @param endY The end y position of the line.
         @param colour? The color of this pixel. This will be
         the current background colour if not specified.
+ 
+        [Documentation](https://tweaked.cc/module/paintutils.html)
     */
     export function drawFilledBox(startX: number, startY: number, endX: number, endY: number, colour?: number): void
 
@@ -2066,13 +2410,15 @@ declare namespace paintutils {
         @param image The parsed image data.
         @param xPos The x position to start drawing at.
         @param yPos The y position to start drawing at.
+ 
+        [Documentation](https://tweaked.cc/module/paintutils.html)
     */
     export function drawImage(image: object, xPos: number, yPos: number): void
 
 }
 /**
     A simple way to run several functions at once.
-    
+ 
     [Documentation](https://tweaked.cc/module/parallel.html)
 */
 declare namespace parallel {
@@ -2082,6 +2428,8 @@ declare namespace parallel {
         from the parallel.waitForAny call.
         
         @param ... The functions this task will run
+ 
+        [Documentation](https://tweaked.cc/module/parallel.html)
     */
     export function waitForAny(..._: Function[]): void
 
@@ -2091,13 +2439,15 @@ declare namespace parallel {
         from the parallel.waitForAll call.
         
         @param ... The functions this task will run
+ 
+        [Documentation](https://tweaked.cc/module/parallel.html)
     */
     export function waitForAll(..._: Function[]): void
 
 }
 /**
     Find and control peripherals attached to this computer.
-    
+ 
     [Documentation](https://tweaked.cc/module/peripheral.html)
 */
 declare namespace peripheral {
@@ -2110,6 +2460,8 @@ declare namespace peripheral {
         
         
         @returns A list of the names of all attached peripherals.
+ 
+        [Documentation](https://tweaked.cc/module/peripheral.html)
     */
     export function getNames(): string[]
 
@@ -2119,6 +2471,8 @@ declare namespace peripheral {
         @param name The side or network name that you want to check.
         
         @returns If a peripheral is present with the given name.
+ 
+        [Documentation](https://tweaked.cc/module/peripheral.html)
     */
     export function isPresent(name: string): boolean
 
@@ -2129,6 +2483,8 @@ declare namespace peripheral {
         wrapped peripheral instance.
         
         @returns The peripheral's types, or nil if it is not present.
+ 
+        [Documentation](https://tweaked.cc/module/peripheral.html)
     */
     export function getType(peripheral: string | object): LuaMultiReturn<(string)[]>
 
@@ -2139,6 +2495,8 @@ declare namespace peripheral {
         @param peripheral_type The type to check.
         
         @returns If a peripheral has a particular type, or nil if it is not present.
+ 
+        [Documentation](https://tweaked.cc/module/peripheral.html)
     */
     export function hasType(peripheral: string | object, peripheral_type: string): boolean | null
 
@@ -2149,6 +2507,8 @@ declare namespace peripheral {
         
         @returns A list of methods provided by this peripheral, or nil if
         it is not present.
+ 
+        [Documentation](https://tweaked.cc/module/peripheral.html)
     */
     export function getMethods(name: string): string[] | null
 
@@ -2158,6 +2518,8 @@ declare namespace peripheral {
         @param peripheral The peripheral to get the name of.
         
         @returns The name of the given peripheral.
+ 
+        [Documentation](https://tweaked.cc/module/peripheral.html)
     */
     export function getName(peripheral: object): string
 
@@ -2169,6 +2531,8 @@ declare namespace peripheral {
         @param ... Additional arguments to pass to the method
         
         @returns The return values of the peripheral method.
+ 
+        [Documentation](https://tweaked.cc/module/peripheral.html)
     */
     export function call(name: string, method: string, ..._: /*not provided*/ any[]): /*not provided*/ any
 
@@ -2180,6 +2544,8 @@ declare namespace peripheral {
         
         @returns The table containing the peripheral's methods, or nil if
         there is no peripheral present with the given name.
+ 
+        [Documentation](https://tweaked.cc/module/peripheral.html)
     */
     export function wrap(name: string): object | null
 
@@ -2193,13 +2559,15 @@ declare namespace peripheral {
         and returns if it should be included in the result.
         
         @returns 0 or more wrapped peripherals matching the given filters.
+ 
+        [Documentation](https://tweaked.cc/module/peripheral.html)
     */
     export function find(ty: string, filter?: (name: string, wrapped: object) => boolean): LuaMultiReturn<(object)[]>
 
 }
 /**
     Control the current pocket computer, adding or removing upgrades.
-    
+ 
     [Documentation](https://tweaked.cc/module/pocket.html)
 */
 declare namespace pocket {
@@ -2211,6 +2579,8 @@ declare namespace pocket {
         
         @returns If an item was equipped.
         @returns The reason an item was not equipped.
+ 
+        [Documentation](https://tweaked.cc/module/pocket.html)
     */
     export function equipBack(): LuaMultiReturn<[boolean, string | null]>
 
@@ -2220,6 +2590,8 @@ declare namespace pocket {
         
         @returns If the upgrade was unequipped.
         @returns The reason an upgrade was not unequipped.
+ 
+        [Documentation](https://tweaked.cc/module/pocket.html)
     */
     export function unequipBack(): LuaMultiReturn<[boolean, string | null]>
 
@@ -2228,23 +2600,29 @@ declare namespace pocket {
     Communicate with other computers by using modems. rednet
     provides a layer of abstraction on top of the main modem peripheral, making
     it slightly easier to use.
-    
+ 
     [Documentation](https://tweaked.cc/module/rednet.html)
 */
 declare namespace rednet {
     /**
         The channel used by the Rednet API to broadcast messages.
+ 
+        [Documentation](https://tweaked.cc/module/rednet.html)
     */
     export const CHANNEL_BROADCAST = 65535
 
     /**
         The channel used by the Rednet API to repeat messages.
+ 
+        [Documentation](https://tweaked.cc/module/rednet.html)
     */
     export const CHANNEL_REPEAT = 65533
 
     /**
         The number of channels rednet reserves for computer IDs. Computers with IDs
         greater or equal to this limit wrap around to 0.
+ 
+        [Documentation](https://tweaked.cc/module/rednet.html)
     */
     export const MAX_ID_CHANNELS = 65500
 
@@ -2259,6 +2637,8 @@ declare namespace rednet {
         @param modem The name of the modem to open.
         
         @throws If there is no such modem with the given name
+ 
+        [Documentation](https://tweaked.cc/module/rednet.html)
     */
     export function open(modem: string): void
 
@@ -2270,6 +2650,8 @@ declare namespace rednet {
         open modems will be closed.
         
         @throws If there is no such modem with the given name
+ 
+        [Documentation](https://tweaked.cc/module/rednet.html)
     */
     export function close(modem?: string): void
 
@@ -2280,6 +2662,8 @@ declare namespace rednet {
         modems will be checked.
         
         @returns If the given modem is open.
+ 
+        [Documentation](https://tweaked.cc/module/rednet.html)
     */
     export function isOpen(modem?: string): boolean
 
@@ -2303,6 +2687,8 @@ declare namespace rednet {
         @returns If this message was successfully sent (i.e. if rednet is
         currently open). Note, this does not guarantee the message was
         actually received.
+ 
+        [Documentation](https://tweaked.cc/module/rednet.html)
     */
     export function send(recipient: number, message: /*not provided*/ any, protocol?: string): boolean
 
@@ -2315,6 +2701,8 @@ declare namespace rednet {
         @param protocol? The "protocol" to send this message under. When
         using rednet.receive one can filter to only receive messages sent under a
         particular protocol.
+ 
+        [Documentation](https://tweaked.cc/module/rednet.html)
     */
     export function broadcast(message: /*not provided*/ any, protocol?: string): void
 
@@ -2331,6 +2719,8 @@ declare namespace rednet {
         @returns The computer which sent this message
         @returns The received message
         @returns The protocol this message was sent under.
+ 
+        [Documentation](https://tweaked.cc/module/rednet.html)
     */
     export function receive(protocol_filter?: string, timeout?: number): LuaMultiReturn<[number, /*not provided*/ any, string | null]>
 
@@ -2351,6 +2741,8 @@ declare namespace rednet {
         @param hostname The name this computer exposes for the given protocol.
         
         @throws If trying to register a hostname which is reserved, or currently in use.
+ 
+        [Documentation](https://tweaked.cc/module/rednet.html)
     */
     export function host(protocol: string, hostname: string): void
 
@@ -2359,6 +2751,8 @@ declare namespace rednet {
         respond to rednet.lookup requests.
         
         @param protocol The protocol to unregister your self from.
+ 
+        [Documentation](https://tweaked.cc/module/rednet.html)
     */
     export function unhost(protocol: string): void
 
@@ -2374,6 +2768,8 @@ declare namespace rednet {
         @param hostname? The hostname to search for.
         
         @returns A list of computer IDs hosting the given protocol.
+ 
+        [Documentation](https://tweaked.cc/module/rednet.html)
     */
     export function lookup(protocol: string, hostname?: string): LuaMultiReturn<(number)[]>
 
@@ -2384,13 +2780,15 @@ declare namespace rednet {
         This is automatically started in the background on computer startup, and
         should not be called manually.
         
+ 
+        [Documentation](https://tweaked.cc/module/rednet.html)
     */
     export function run(): void
 
 }
 /**
     Get and set redstone signals adjacent to this computer.
-    
+ 
     [Documentation](https://tweaked.cc/module/redstone.html)
 */
 declare namespace redstone {
@@ -2400,6 +2798,8 @@ declare namespace redstone {
         
         
         @returns A table of valid sides.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function getSides(): string[]
 
@@ -2408,6 +2808,8 @@ declare namespace redstone {
         
         @param side The side to set.
         @param on Whether the redstone signal should be on or off. When on, a signal strength of 15 is emitted.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function setOutput(side: string, on: boolean): void
 
@@ -2417,6 +2819,8 @@ declare namespace redstone {
         @param side The side to get.
         
         @returns Whether the redstone output is on or off.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function getOutput(side: string): boolean
 
@@ -2426,6 +2830,8 @@ declare namespace redstone {
         @param side The side to get.
         
         @returns Whether the redstone input is on or off.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function getInput(side: string): boolean
 
@@ -2436,6 +2842,8 @@ declare namespace redstone {
         @param value The signal strength between 0 and 15.
         
         @throws If value is not between 0 and 15.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function setAnalogOutput(side: string, value: number): void
 
@@ -2446,6 +2854,8 @@ declare namespace redstone {
         @param value The signal strength between 0 and 15.
         
         @throws If value is not between 0 and 15.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function setAnalogueOutput(side: string, value: number): void
 
@@ -2455,6 +2865,8 @@ declare namespace redstone {
         @param side The side to get.
         
         @returns The output signal strength, between 0 and 15.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function getAnalogOutput(side: string): number
 
@@ -2464,6 +2876,8 @@ declare namespace redstone {
         @param side The side to get.
         
         @returns The output signal strength, between 0 and 15.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function getAnalogueOutput(side: string): number
 
@@ -2473,6 +2887,8 @@ declare namespace redstone {
         @param side The side to get.
         
         @returns The input signal strength, between 0 and 15.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function getAnalogInput(side: string): number
 
@@ -2482,6 +2898,8 @@ declare namespace redstone {
         @param side The side to get.
         
         @returns The input signal strength, between 0 and 15.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function getAnalogueInput(side: string): number
 
@@ -2490,6 +2908,8 @@ declare namespace redstone {
         
         @param side The side to set.
         @param output The colour bitmask to set.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function setBundledOutput(side: string, output: number): void
 
@@ -2499,6 +2919,8 @@ declare namespace redstone {
         @param side The side to get.
         
         @returns The bundle cable's output.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function getBundledOutput(side: string): number
 
@@ -2508,6 +2930,8 @@ declare namespace redstone {
         @param side The side to get.
         
         @returns The bundle cable's input.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function getBundledInput(side: string): number
 
@@ -2518,13 +2942,15 @@ declare namespace redstone {
         @param mask The mask to test.
         
         @returns If the colours are on.
+ 
+        [Documentation](https://tweaked.cc/module/redstone.html)
     */
     export function testBundledInput(side: string, mask: number): boolean
 
 }
 /**
     Read and write configuration options for CraftOS and your programs.
-    
+ 
     [Documentation](https://tweaked.cc/module/settings.html)
 */
 declare namespace settings {
@@ -2542,6 +2968,8 @@ declare namespace settings {
         setting has not been changed.
         type: Require values to be of this type. Setting the value to another type
         will error.
+ 
+        [Documentation](https://tweaked.cc/module/settings.html)
     */
     export function define(name: string, options?: { description?: string, default?: any, type?: string }): void
 
@@ -2552,6 +2980,8 @@ declare namespace settings {
         for that.
         
         @param name The name of this option
+ 
+        [Documentation](https://tweaked.cc/module/settings.html)
     */
     export function undefine(name: string): void
 
@@ -2567,6 +2997,8 @@ declare namespace settings {
         serialisable by textutils.serialize.
         
         @throws If this value cannot be serialised
+ 
+        [Documentation](https://tweaked.cc/module/settings.html)
     */
     export function set(name: string, value: /*not provided*/ any): void
 
@@ -2579,6 +3011,8 @@ declare namespace settings {
         or nil otherwise.
         
         @returns The setting's, or the default if the setting has not been changed.
+ 
+        [Documentation](https://tweaked.cc/module/settings.html)
     */
     export function get(name: string, __default?: /*not provided*/ any): /*not provided*/ any
 
@@ -2589,6 +3023,8 @@ declare namespace settings {
         
         @returns Information about this setting. This includes all information from settings.define,
         as well as this setting's value.
+ 
+        [Documentation](https://tweaked.cc/module/settings.html)
     */
     export function getDetails(name: string): { description?: string, default?: any, type?: string, value?: any }
 
@@ -2599,6 +3035,8 @@ declare namespace settings {
         set, or the computer is rebooted.
         
         @param name The name of the setting to unset.
+ 
+        [Documentation](https://tweaked.cc/module/settings.html)
     */
     export function unset(name: string): void
 
@@ -2611,6 +3049,8 @@ declare namespace settings {
         
         @see settings.unset
         
+ 
+        [Documentation](https://tweaked.cc/module/settings.html)
     */
     export function clear(): void
 
@@ -2620,6 +3060,8 @@ declare namespace settings {
         
         @returns An alphabetically sorted list of all currently-defined
         settings.
+ 
+        [Documentation](https://tweaked.cc/module/settings.html)
     */
     export function getNames(): string[]
 
@@ -2634,6 +3076,8 @@ declare namespace settings {
         @returns Whether settings were successfully read from this
         file. Reasons for failure may include the file not existing or being
         corrupted.
+ 
+        [Documentation](https://tweaked.cc/module/settings.html)
     */
     export function load(sPath?: string): boolean
 
@@ -2646,13 +3090,15 @@ declare namespace settings {
         @param sPath? The path to save settings to, defaulting to .settings.
         
         @returns If the settings were successfully saved.
+ 
+        [Documentation](https://tweaked.cc/module/settings.html)
     */
     export function save(sPath?: string): boolean
 
 }
 /**
     The shell API provides access to CraftOS's command line interface.
-    
+ 
     [Documentation](https://tweaked.cc/module/shell.html)
 */
 declare namespace shell {
@@ -2667,6 +3113,8 @@ declare namespace shell {
         @param ... Arguments to this program.
         
         @returns Whether the program exited successfully.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function execute(command: string, ..._: string[]): boolean
 
@@ -2679,6 +3127,8 @@ declare namespace shell {
         @param ... The program to run and its arguments.
         
         @returns Whether the program exited successfully.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function run(..._: string[]): boolean
 
@@ -2689,6 +3139,8 @@ declare namespace shell {
         after your program has finished. If this is the toplevel shell, then the
         computer will be shutdown.
         
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function exit(): void
 
@@ -2699,6 +3151,8 @@ declare namespace shell {
         
         
         @returns The current working directory.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function dir(): string
 
@@ -2708,6 +3162,8 @@ declare namespace shell {
         @param dir The new working directory.
         
         @throws If the path does not exist or is not a directory.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function setDir(dir: string): void
 
@@ -2721,6 +3177,8 @@ declare namespace shell {
         
         
         @returns The current shell's path.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function path(): string
 
@@ -2731,6 +3189,8 @@ declare namespace shell {
         for from the current directory, rather than the computer's root.
         
         @param path The new program path.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function setPath(path: string): void
 
@@ -2742,6 +3202,8 @@ declare namespace shell {
         does nothing when the path starts with /.
         
         @param path The path to resolve.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function resolve(path: string): void
 
@@ -2752,6 +3214,8 @@ declare namespace shell {
         
         @returns The absolute path to the program, or nil if it could
         not be found.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function resolveProgram(command: string): string | null
 
@@ -2762,6 +3226,8 @@ declare namespace shell {
         start with ..
         
         @returns A list of available programs.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function programs(include_hidden?: boolean): string[]
 
@@ -2778,6 +3244,8 @@ declare namespace shell {
         @param sLine The input to complete.
         
         @returns The list of possible completions.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function complete(sLine: string): string[] | null
 
@@ -2787,6 +3255,8 @@ declare namespace shell {
         @param program The name of a program to complete.
         
         @returns A list of possible completions.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function completeProgram(program: string): string[]
 
@@ -2817,6 +3287,8 @@ declare namespace shell {
         @param program The path to the program. This should be an absolute path
         without the leading /.
         @param complete The completion function.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function setCompletionFunction(program: string, complete: (shell: object, index: number, argument: string, previous: string[]) => string[] | null): void
 
@@ -2829,6 +3301,8 @@ declare namespace shell {
         
         @returns A table mapping the
         absolute path of programs, to their completion functions.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function getCompletionInfo(): { [index: string]: { fnComplete: Function } }
 
@@ -2837,6 +3311,8 @@ declare namespace shell {
         
         
         @returns The absolute path to the running program.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function getRunningProgram(): string
 
@@ -2845,6 +3321,8 @@ declare namespace shell {
         
         @param command The name of the alias to add.
         @param program The name or path to the program.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function setAlias(command: string, program: string): void
 
@@ -2852,6 +3330,8 @@ declare namespace shell {
         Remove an alias.
         
         @param command The alias name to remove.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function clearAlias(command: string): void
 
@@ -2865,6 +3345,8 @@ declare namespace shell {
         
         @returns A table, where the keys are the names of
         aliases, and the values are the path to the program.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function aliases(): { [index: string]: string }
 
@@ -2877,6 +3359,8 @@ declare namespace shell {
         This function is only available if the multishell API is.
         
         @param ... The command line to run.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function openTab(..._: string[]): void
 
@@ -2884,6 +3368,8 @@ declare namespace shell {
         Switch to the multishell tab with the given index.
         
         @param id The tab to switch to.
+ 
+        [Documentation](https://tweaked.cc/module/shell.html)
     */
     export function switchTab(id: number): void
 
@@ -2891,7 +3377,7 @@ declare namespace shell {
 /**
     Interact with a computer's terminal or monitors, writing text and drawing
     ASCII graphics.
-    
+ 
     [Documentation](https://tweaked.cc/module/term.html)
 */
 declare namespace term {
@@ -2905,6 +3391,8 @@ declare namespace term {
         @returns The blue channel, will be between 0 and 1.
         
         @throws When given an invalid colour.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function nativePaletteColour(colour: number): LuaMultiReturn<[number, number, number]>
 
@@ -2918,6 +3406,8 @@ declare namespace term {
         @returns The blue channel, will be between 0 and 1.
         
         @throws When given an invalid colour.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function nativePaletteColor(colour: number): LuaMultiReturn<[number, number, number]>
 
@@ -2928,6 +3418,8 @@ declare namespace term {
         text to the current terminal line.
         
         @param text The text to write.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function write(text: string): void
 
@@ -2938,6 +3430,8 @@ declare namespace term {
         will copy pixels from above instead.
         
         @param y The number of lines to move up by. This may be a negative number.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function scroll(y: number): void
 
@@ -2947,6 +3441,8 @@ declare namespace term {
         
         @returns The x position of the cursor.
         @returns The y position of the cursor.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function getCursorPos(): LuaMultiReturn<[number, number]>
 
@@ -2955,6 +3451,8 @@ declare namespace term {
         
         @param x The new x position of the cursor.
         @param y The new y position of the cursor.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function setCursorPos(x: number, y: number): void
 
@@ -2963,6 +3461,8 @@ declare namespace term {
         
         
         @returns If the cursor is blinking.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function getCursorBlink(): boolean
 
@@ -2970,6 +3470,8 @@ declare namespace term {
         Sets whether the cursor should be visible (and blinking) at the current cursor position.
         
         @param blink Whether the cursor should blink.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function setCursorBlink(blink: boolean): void
 
@@ -2979,12 +3481,16 @@ declare namespace term {
         
         @returns The terminal's width.
         @returns The terminal's height.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function getSize(): LuaMultiReturn<[number, number]>
 
     /**
         Clears the terminal, filling it with the current background colour.
         
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function clear(): void
 
@@ -2992,6 +3498,8 @@ declare namespace term {
         Clears the line the cursor is currently on, filling it with the current background
         colour.
         
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function clearLine(): void
 
@@ -3000,6 +3508,8 @@ declare namespace term {
         
         
         @returns The current text colour.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function getTextColour(): number
 
@@ -3008,6 +3518,8 @@ declare namespace term {
         
         
         @returns The current text colour.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function getTextColor(): number
 
@@ -3015,6 +3527,8 @@ declare namespace term {
         Set the colour that new text will be written as.
         
         @param colour The new text colour.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function setTextColour(colour: number): void
 
@@ -3022,6 +3536,8 @@ declare namespace term {
         Set the colour that new text will be written as.
         
         @param colour The new text colour.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function setTextColor(colour: number): void
 
@@ -3031,6 +3547,8 @@ declare namespace term {
         
         
         @returns The current background colour.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function getBackgroundColour(): number
 
@@ -3040,6 +3558,8 @@ declare namespace term {
         
         
         @returns The current background colour.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function getBackgroundColor(): number
 
@@ -3048,6 +3568,8 @@ declare namespace term {
         terminal.
         
         @param colour The new background colour.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function setBackgroundColour(colour: number): void
 
@@ -3056,6 +3578,8 @@ declare namespace term {
         terminal.
         
         @param colour The new background colour.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function setBackgroundColor(colour: number): void
 
@@ -3067,6 +3591,8 @@ declare namespace term {
         
         
         @returns Whether this terminal supports colour.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function isColour(): boolean
 
@@ -3078,6 +3604,8 @@ declare namespace term {
         
         
         @returns Whether this terminal supports colour.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function isColor(): boolean
 
@@ -3096,6 +3624,8 @@ declare namespace term {
         @param backgroundColour The corresponding background colours.
         
         @throws If the three inputs are not the same length.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function blit(text: string, textColour: string, backgroundColour: string): void
 
@@ -3110,6 +3640,8 @@ declare namespace term {
         @param index The colour whose palette should be changed.
         @param colour A 24-bit integer representing the RGB value of the colour. For instance the integer
         0xFF0000 corresponds to the colour #FF0000.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function setPaletteColour(index: number, colour: number): void
 
@@ -3124,6 +3656,8 @@ declare namespace term {
         @param index The colour whose palette should be changed.
         @param colour A 24-bit integer representing the RGB value of the colour. For instance the integer
         0xFF0000 corresponds to the colour #FF0000.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function setPaletteColor(index: number, colour: number): void
 
@@ -3135,6 +3669,8 @@ declare namespace term {
         @returns The red channel, will be between 0 and 1.
         @returns The green channel, will be between 0 and 1.
         @returns The blue channel, will be between 0 and 1.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function getPaletteColour(colour: number): LuaMultiReturn<[number, number, number]>
 
@@ -3146,6 +3682,8 @@ declare namespace term {
         @returns The red channel, will be between 0 and 1.
         @returns The green channel, will be between 0 and 1.
         @returns The blue channel, will be between 0 and 1.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function getPaletteColor(colour: number): LuaMultiReturn<[number, number, number]>
 
@@ -3166,6 +3704,8 @@ declare namespace term {
         
         @returns The previous redirect object, as returned by
         term.current.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function redirect(target: Redirect): Redirect
 
@@ -3174,6 +3714,8 @@ declare namespace term {
         
         
         @returns The current terminal redirect
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function current(): Redirect
 
@@ -3186,11 +3728,15 @@ declare namespace term {
         
         
         @returns The native terminal redirect.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export function native(): Redirect
 
     /**
         A base class for all objects which interact with a terminal. Namely the term and monitors.
+ 
+        [Documentation](https://tweaked.cc/module/term.html)
     */
     export interface Redirect {
         /**
@@ -3200,6 +3746,8 @@ declare namespace term {
             text to the current terminal line.
             
             @param text The text to write.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         write(text: string): void
@@ -3211,6 +3759,8 @@ declare namespace term {
             will copy pixels from above instead.
             
             @param y The number of lines to move up by. This may be a negative number.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         scroll(y: number): void
@@ -3221,6 +3771,8 @@ declare namespace term {
             
             @returns The x position of the cursor.
             @returns The y position of the cursor.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         getCursorPos(): LuaMultiReturn<[number, number]>
@@ -3230,6 +3782,8 @@ declare namespace term {
             
             @param x The new x position of the cursor.
             @param y The new y position of the cursor.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         setCursorPos(x: number, y: number): void
@@ -3239,6 +3793,8 @@ declare namespace term {
             
             
             @returns If the cursor is blinking.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         getCursorBlink(): boolean
@@ -3247,6 +3803,8 @@ declare namespace term {
             Sets whether the cursor should be visible (and blinking) at the current cursor position.
             
             @param blink Whether the cursor should blink.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         setCursorBlink(blink: boolean): void
@@ -3257,6 +3815,8 @@ declare namespace term {
             
             @returns The terminal's width.
             @returns The terminal's height.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         getSize(): LuaMultiReturn<[number, number]>
@@ -3264,6 +3824,8 @@ declare namespace term {
         /**
             Clears the terminal, filling it with the current background colour.
             
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         clear(): void
@@ -3272,6 +3834,8 @@ declare namespace term {
             Clears the line the cursor is currently on, filling it with the current background
             colour.
             
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         clearLine(): void
@@ -3281,6 +3845,8 @@ declare namespace term {
             
             
             @returns The current text colour.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         getTextColour(): number
@@ -3290,6 +3856,8 @@ declare namespace term {
             
             
             @returns The current text colour.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         getTextColor(): number
@@ -3298,6 +3866,8 @@ declare namespace term {
             Set the colour that new text will be written as.
             
             @param colour The new text colour.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         setTextColour(colour: number): void
@@ -3306,6 +3876,8 @@ declare namespace term {
             Set the colour that new text will be written as.
             
             @param colour The new text colour.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         setTextColor(colour: number): void
@@ -3316,6 +3888,8 @@ declare namespace term {
             
             
             @returns The current background colour.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         getBackgroundColour(): number
@@ -3326,6 +3900,8 @@ declare namespace term {
             
             
             @returns The current background colour.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         getBackgroundColor(): number
@@ -3335,6 +3911,8 @@ declare namespace term {
             terminal.
             
             @param colour The new background colour.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         setBackgroundColour(colour: number): void
@@ -3344,6 +3922,8 @@ declare namespace term {
             terminal.
             
             @param colour The new background colour.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         setBackgroundColor(colour: number): void
@@ -3356,6 +3936,8 @@ declare namespace term {
             
             
             @returns Whether this terminal supports colour.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         isColour(): boolean
@@ -3368,6 +3950,8 @@ declare namespace term {
             
             
             @returns Whether this terminal supports colour.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         isColor(): boolean
@@ -3387,6 +3971,8 @@ declare namespace term {
             @param backgroundColour The corresponding background colours.
             
             @throws If the three inputs are not the same length.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         blit(text: string, textColour: string, backgroundColour: string): void
@@ -3402,6 +3988,8 @@ declare namespace term {
             @param index The colour whose palette should be changed.
             @param colour A 24-bit integer representing the RGB value of the colour. For instance the integer
             0xFF0000 corresponds to the colour #FF0000.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         setPaletteColour(index: number, colour: number): void
@@ -3417,6 +4005,8 @@ declare namespace term {
             @param index The colour whose palette should be changed.
             @param colour A 24-bit integer representing the RGB value of the colour. For instance the integer
             0xFF0000 corresponds to the colour #FF0000.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         setPaletteColor(index: number, colour: number): void
@@ -3429,6 +4019,8 @@ declare namespace term {
             @returns The red channel, will be between 0 and 1.
             @returns The green channel, will be between 0 and 1.
             @returns The blue channel, will be between 0 and 1.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         getPaletteColour(colour: number): LuaMultiReturn<[number, number, number]>
@@ -3441,6 +4033,8 @@ declare namespace term {
             @returns The red channel, will be between 0 and 1.
             @returns The green channel, will be between 0 and 1.
             @returns The blue channel, will be between 0 and 1.
+ 
+            [Documentation](https://tweaked.cc/module/term.html)
         @noSelf 
         */
         getPaletteColor(colour: number): LuaMultiReturn<[number, number, number]>
@@ -3450,7 +4044,7 @@ declare namespace term {
 }
 /**
     Helpful utilities for formatting and manipulating strings.
-    
+ 
     [Documentation](https://tweaked.cc/module/textutils.html)
 */
 declare namespace textutils {
@@ -3463,6 +4057,8 @@ declare namespace textutils {
         @param text The the text to write to the screen
         @param rate? The number of characters to write each second,
         Defaults to 20.
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function slowWrite(text: string, rate?: number): void
 
@@ -3475,6 +4071,8 @@ declare namespace textutils {
         @param sText The the text to write to the screen
         @param nRate? The number of characters to write each second,
         Defaults to 20.
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function slowPrint(sText: string, nRate?: number): void
 
@@ -3486,6 +4084,8 @@ declare namespace textutils {
         clock (18:30) rather than a 12-hour one (6:30 AM)
         
         @returns The formatted time
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function formatTime(nTime: number, bTwentyFourHour?: boolean): string
 
@@ -3505,6 +4105,8 @@ declare namespace textutils {
         displayed before prompting.
         
         @returns The number of lines printed.
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function pagedPrint(text: string, free_lines?: number): number
 
@@ -3518,6 +4120,8 @@ declare namespace textutils {
         When encountering a number, this sets the text color of the subsequent rows to it.
         
         @param ... The rows and text colors to display.
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function tabulate(..._: (string[] | number)[]): void
 
@@ -3529,6 +4133,8 @@ declare namespace textutils {
         input should the whole output not fit on the display.
         
         @param ... The rows and text colors to display.
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function pagedTabulate(..._: (string[] | number)[]): void
 
@@ -3537,6 +4143,8 @@ declare namespace textutils {
         empty JSON object.
         
         The contents of this table should not be modified.
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export const empty_json_array: any
 
@@ -3544,6 +4152,8 @@ declare namespace textutils {
         A table representing the JSON null value.
         
         The contents of this table should not be modified.
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export const json_null: any
 
@@ -3563,6 +4173,8 @@ declare namespace textutils {
         @throws If the object contains a value which cannot be
         serialised. This includes functions and tables which appear multiple
         times.
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function serialize(t: /*not provided*/ any, opts: { compact?: boolean, allow_repetitions?: boolean }): string
 
@@ -3582,6 +4194,8 @@ declare namespace textutils {
         @throws If the object contains a value which cannot be
         serialised. This includes functions and tables which appear multiple
         times.
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function serialise(t: /*not provided*/ any, opts: { compact?: boolean, allow_repetitions?: boolean }): string
 
@@ -3593,6 +4207,8 @@ declare namespace textutils {
         @param s The serialised string to deserialise.
         
         @returns The deserialised object
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function unserialize(s: string): /*not provided*/ any
 
@@ -3604,6 +4220,8 @@ declare namespace textutils {
         @param s The serialised string to deserialise.
         
         @returns The deserialised object
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function unserialise(s: string): /*not provided*/ any
 
@@ -3629,6 +4247,8 @@ declare namespace textutils {
         
         @throws If the object contains a value which cannot be serialised. This includes
         functions and tables which appear multiple times.
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function serializeJSON(t: /*not provided*/ any, options?: { nbt_style?: boolean, unicode_strings?: boolean }): string
 
@@ -3654,6 +4274,8 @@ declare namespace textutils {
         
         @throws If the object contains a value which cannot be serialised. This includes
         functions and tables which appear multiple times.
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function serialiseJSON(t: /*not provided*/ any, options?: { nbt_style?: boolean, unicode_strings?: boolean }): string
 
@@ -3680,6 +4302,8 @@ declare namespace textutils {
         By default (or when this value is true), they are parsed as empty_json_array.
         
         @returns The deserialised object
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function unserializeJSON(s: string, options?: { nbt_style?: boolean, parse_null?: boolean, parse_empty_array?: boolean }): /*not provided*/ any
 
@@ -3706,6 +4330,8 @@ declare namespace textutils {
         By default (or when this value is true), they are parsed as empty_json_array.
         
         @returns The deserialised object
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function unserialiseJSON(s: string, options?: { nbt_style?: boolean, parse_null?: boolean, parse_empty_array?: boolean }): /*not provided*/ any
 
@@ -3715,6 +4341,8 @@ declare namespace textutils {
         @param str The string to encode
         
         @returns The encoded string.
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function urlEncode(str: string): string
 
@@ -3731,6 +4359,8 @@ declare namespace textutils {
         environment via the __index metatable field.
         
         @returns The (possibly empty) list of completions.
+ 
+        [Documentation](https://tweaked.cc/module/textutils.html)
     */
     export function complete(sSearchText: string, tSearchTable?: object): string[]
 
@@ -3738,7 +4368,7 @@ declare namespace textutils {
 /**
     Turtles are a robotic device, which can break and place blocks, attack mobs, and move about the world. They have
     an internal inventory of 16 slots, allowing them to store blocks they have broken or would like to place.
-    
+ 
     [Documentation](https://tweaked.cc/module/turtle.html)
 */
 declare namespace turtle {
@@ -3753,6 +4383,8 @@ declare namespace turtle {
         @returns If crafting succeeds.
         
         @throws When limit is less than 1 or greater than 64.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function craft(limit?: number): true
 
@@ -3762,6 +4394,8 @@ declare namespace turtle {
         
         @returns Whether the turtle could successfully move.
         @returns The reason the turtle could not move.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function forward(): LuaMultiReturn<[boolean, string | null]>
 
@@ -3771,6 +4405,8 @@ declare namespace turtle {
         
         @returns Whether the turtle could successfully move.
         @returns The reason the turtle could not move.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function back(): LuaMultiReturn<[boolean, string | null]>
 
@@ -3780,6 +4416,8 @@ declare namespace turtle {
         
         @returns Whether the turtle could successfully move.
         @returns The reason the turtle could not move.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function up(): LuaMultiReturn<[boolean, string | null]>
 
@@ -3789,6 +4427,8 @@ declare namespace turtle {
         
         @returns Whether the turtle could successfully move.
         @returns The reason the turtle could not move.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function down(): LuaMultiReturn<[boolean, string | null]>
 
@@ -3798,6 +4438,8 @@ declare namespace turtle {
         
         @returns Whether the turtle could successfully turn.
         @returns The reason the turtle could not turn.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function turnLeft(): LuaMultiReturn<[boolean, string | null]>
 
@@ -3807,6 +4449,8 @@ declare namespace turtle {
         
         @returns Whether the turtle could successfully turn.
         @returns The reason the turtle could not turn.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function turnRight(): LuaMultiReturn<[boolean, string | null]>
 
@@ -3821,6 +4465,8 @@ declare namespace turtle {
         
         @returns Whether a block was broken.
         @returns The reason no block was broken.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function dig(side?: string): LuaMultiReturn<[boolean, string | null]>
 
@@ -3831,6 +4477,8 @@ declare namespace turtle {
         
         @returns Whether a block was broken.
         @returns The reason no block was broken.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function digUp(side?: string): LuaMultiReturn<[boolean, string | null]>
 
@@ -3841,6 +4489,8 @@ declare namespace turtle {
         
         @returns Whether a block was broken.
         @returns The reason no block was broken.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function digDown(side?: string): LuaMultiReturn<[boolean, string | null]>
 
@@ -3855,6 +4505,8 @@ declare namespace turtle {
         
         @returns Whether the block could be placed.
         @returns The reason the block was not placed.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function place(text?: string): LuaMultiReturn<[boolean, string | null]>
 
@@ -3865,6 +4517,8 @@ declare namespace turtle {
         
         @returns Whether the block could be placed.
         @returns The reason the block was not placed.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function placeUp(text?: string): LuaMultiReturn<[boolean, string | null]>
 
@@ -3875,6 +4529,8 @@ declare namespace turtle {
         
         @returns Whether the block could be placed.
         @returns The reason the block was not placed.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function placeDown(text?: string): LuaMultiReturn<[boolean, string | null]>
 
@@ -3888,6 +4544,8 @@ declare namespace turtle {
         @returns The reason the no items were dropped.
         
         @throws If dropping an invalid number of items.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function drop(count?: number): LuaMultiReturn<[boolean, string | null]>
 
@@ -3901,6 +4559,8 @@ declare namespace turtle {
         @returns The reason the no items were dropped.
         
         @throws If dropping an invalid number of items.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function dropUp(count?: number): LuaMultiReturn<[boolean, string | null]>
 
@@ -3914,6 +4574,8 @@ declare namespace turtle {
         @returns The reason the no items were dropped.
         
         @throws If dropping an invalid number of items.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function dropDown(count?: number): LuaMultiReturn<[boolean, string | null]>
 
@@ -3927,6 +4589,8 @@ declare namespace turtle {
         @returns When the slot has been selected.
         
         @throws If the slot is out of range.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function select(slot: number): true
 
@@ -3938,6 +4602,8 @@ declare namespace turtle {
         @returns The number of items in this slot.
         
         @throws If the slot is out of range.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function getItemCount(slot?: number): number
 
@@ -3951,6 +4617,8 @@ declare namespace turtle {
         @returns The space left in in this slot.
         
         @throws If the slot is out of range.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function getItemSpace(slot?: number): number
 
@@ -3960,6 +4628,8 @@ declare namespace turtle {
         
         
         @returns If there is a solid block in front.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function detect(): boolean
 
@@ -3968,6 +4638,8 @@ declare namespace turtle {
         
         
         @returns If there is a solid block above.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function detectUp(): boolean
 
@@ -3976,6 +4648,8 @@ declare namespace turtle {
         
         
         @returns If there is a solid block below.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function detectDown(): boolean
 
@@ -3984,6 +4658,8 @@ declare namespace turtle {
         
         
         @returns If the block and item are equal.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function compare(): boolean
 
@@ -3992,6 +4668,8 @@ declare namespace turtle {
         
         
         @returns If the block and item are equal.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function compareUp(): boolean
 
@@ -4000,6 +4678,8 @@ declare namespace turtle {
         
         
         @returns If the block and item are equal.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function compareDown(): boolean
 
@@ -4010,6 +4690,8 @@ declare namespace turtle {
         
         @returns Whether an entity was attacked.
         @returns The reason nothing was attacked.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function attack(side?: string): LuaMultiReturn<[boolean, string | null]>
 
@@ -4020,6 +4702,8 @@ declare namespace turtle {
         
         @returns Whether an entity was attacked.
         @returns The reason nothing was attacked.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function attackUp(side?: string): LuaMultiReturn<[boolean, string | null]>
 
@@ -4030,6 +4714,8 @@ declare namespace turtle {
         
         @returns Whether an entity was attacked.
         @returns The reason nothing was attacked.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function attackDown(side?: string): LuaMultiReturn<[boolean, string | null]>
 
@@ -4044,6 +4730,8 @@ declare namespace turtle {
         @returns The reason the no items were picked up.
         
         @throws If given an invalid number of items.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function suck(count?: number): LuaMultiReturn<[boolean, string | null]>
 
@@ -4056,6 +4744,8 @@ declare namespace turtle {
         @returns The reason the no items were picked up.
         
         @throws If given an invalid number of items.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function suckUp(count?: number): LuaMultiReturn<[boolean, string | null]>
 
@@ -4068,6 +4758,8 @@ declare namespace turtle {
         @returns The reason the no items were picked up.
         
         @throws If given an invalid number of items.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function suckDown(count?: number): LuaMultiReturn<[boolean, string | null]>
 
@@ -4076,6 +4768,8 @@ declare namespace turtle {
         
         
         @returns The current amount of fuel a turtle this turtle has.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function getFuelLevel(): number
 
@@ -4094,6 +4788,8 @@ declare namespace turtle {
         @returns If the turtle was refuelled.
         
         @throws If the refuel count is out of range.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function refuel(count?: number): true
 
@@ -4105,6 +4801,8 @@ declare namespace turtle {
         @returns If the two items are equal.
         
         @throws If the slot is out of range.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function compareTo(slot: number): boolean
 
@@ -4118,6 +4816,8 @@ declare namespace turtle {
         
         @throws If the slot is out of range.
         If the number of items is out of range.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function transferTo(slot: number, count?: number): boolean
 
@@ -4126,6 +4826,8 @@ declare namespace turtle {
         
         
         @returns The current slot.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function getSelectedSlot(): number
 
@@ -4136,6 +4838,8 @@ declare namespace turtle {
         
         
         @returns The maximum amount of fuel a turtle can hold.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function getFuelLimit(): number
 
@@ -4148,6 +4852,8 @@ declare namespace turtle {
         
         
         @returns If the item was equipped.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function equipLeft(): true
 
@@ -4160,6 +4866,8 @@ declare namespace turtle {
         
         
         @returns If the item was equipped.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function equipRight(): true
 
@@ -4169,6 +4877,8 @@ declare namespace turtle {
         
         @returns Whether there is a block in front of the turtle.
         @returns Information about the block in front, or a message explaining that there is no block.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function inspect(): LuaMultiReturn<[boolean, object | string]>
 
@@ -4178,6 +4888,8 @@ declare namespace turtle {
         
         @returns Whether there is a block above the turtle.
         @returns Information about the above below, or a message explaining that there is no block.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function inspectUp(): LuaMultiReturn<[boolean, object | string]>
 
@@ -4187,6 +4899,8 @@ declare namespace turtle {
         
         @returns Whether there is a block below the turtle.
         @returns Information about the block below, or a message explaining that there is no block.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function inspectDown(): LuaMultiReturn<[boolean, object | string]>
 
@@ -4200,6 +4914,8 @@ declare namespace turtle {
         @returns Information about the given slot, or nil if it is empty.
         
         @throws If the slot is out of range.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export function getItemDetail(slot?: number, detailed?: boolean): null | object
 
@@ -4209,6 +4925,8 @@ declare namespace turtle {
         
         
         The builtin turtle API, without any generated helper functions.
+ 
+        [Documentation](https://tweaked.cc/module/turtle.html)
     */
     export const native: any
 
@@ -4217,7 +4935,7 @@ declare namespace turtle {
     A basic 3D vector type and some common vector operations. This may be useful
     when working with coordinates in Minecraft's world (such as those from the
     gps API).
-    
+ 
     [Documentation](https://tweaked.cc/module/vector.html)
 */
 declare namespace vector {
@@ -4229,6 +4947,8 @@ declare namespace vector {
         @param z The Z coordinate or direction of the vector.
         
         @returns The constructed vector.
+ 
+        [Documentation](https://tweaked.cc/module/vector.html)
     */
     function __reserved__new(x: number, y: number, z: number): Vector
 
@@ -4236,6 +4956,8 @@ declare namespace vector {
         A 3-dimensional vector, with x, y, and z values.
         
         This is suitable for representing both position and directional vectors.
+ 
+        [Documentation](https://tweaked.cc/module/vector.html)
     */
     export interface Vector {
         /**
@@ -4244,6 +4966,8 @@ declare namespace vector {
             @param o The second vector to add.
             
             @returns The resulting vector
+ 
+            [Documentation](https://tweaked.cc/module/vector.html)
         */
         add(o: Vector): Vector
 
@@ -4253,6 +4977,8 @@ declare namespace vector {
             @param o The vector to subtract.
             
             @returns The resulting vector
+ 
+            [Documentation](https://tweaked.cc/module/vector.html)
         */
         sub(o: Vector): Vector
 
@@ -4262,6 +4988,8 @@ declare namespace vector {
             @param m The scalar value to multiply with.
             
             @returns A vector with value (x * m, y * m, z * m).
+ 
+            [Documentation](https://tweaked.cc/module/vector.html)
         */
         mul(m: number): Vector
 
@@ -4271,6 +4999,8 @@ declare namespace vector {
             @param m The scalar value to divide by.
             
             @returns A vector with value (x / m, y / m, z / m).
+ 
+            [Documentation](https://tweaked.cc/module/vector.html)
         */
         div(m: number): Vector
 
@@ -4279,6 +5009,8 @@ declare namespace vector {
             
             
             @returns The negated vector.
+ 
+            [Documentation](https://tweaked.cc/module/vector.html)
         */
         unm(): Vector
 
@@ -4288,6 +5020,8 @@ declare namespace vector {
             @param o The second vector to compute the dot product of.
             
             @returns The dot product of self and o.
+ 
+            [Documentation](https://tweaked.cc/module/vector.html)
         */
         dot(o: Vector): Vector
 
@@ -4297,6 +5031,8 @@ declare namespace vector {
             @param o The second vector to compute the cross product of.
             
             @returns The cross product of self and o.
+ 
+            [Documentation](https://tweaked.cc/module/vector.html)
         */
         cross(o: Vector): Vector
 
@@ -4305,6 +5041,8 @@ declare namespace vector {
             
             
             @returns The length of this vector.
+ 
+            [Documentation](https://tweaked.cc/module/vector.html)
         */
         length(): number
 
@@ -4314,6 +5052,8 @@ declare namespace vector {
             
             
             @returns The normalised vector
+ 
+            [Documentation](https://tweaked.cc/module/vector.html)
         */
         normalize(): Vector
 
@@ -4325,6 +5065,8 @@ declare namespace vector {
             nearest 0.5.
             
             @returns The rounded vector.
+ 
+            [Documentation](https://tweaked.cc/module/vector.html)
         */
         round(tolerance?: number): Vector
 
@@ -4333,6 +5075,8 @@ declare namespace vector {
             
             
             @returns This vector's string representation.
+ 
+            [Documentation](https://tweaked.cc/module/vector.html)
         */
         tostring(): string
 
@@ -4342,6 +5086,8 @@ declare namespace vector {
             @param other The second vector to compare to.
             
             @returns Whether or not the vectors are equal.
+ 
+            [Documentation](https://tweaked.cc/module/vector.html)
         */
         equals(other: Vector): boolean
 
@@ -4355,7 +5101,7 @@ declare namespace vector {
     that can be written/drawn to, then later redrawn/repositioned/etc as need
     be. The API itself contains only one function, window.create, which returns
     the windows themselves.
-    
+ 
     [Documentation](https://tweaked.cc/module/window.html)
 */
 declare namespace window {
@@ -4379,6 +5125,8 @@ declare namespace window {
         default. Defaults to true.
         
         @returns The constructed window
+ 
+        [Documentation](https://tweaked.cc/module/window.html)
     */
     export function create(parent: term.Redirect, nX: number, nY: number, nWidth: number, nHeight: number, bStartVisible?: boolean): Window
 
@@ -4389,12 +5137,16 @@ declare namespace window {
         See also
         
         term.Redirect 
+ 
+        [Documentation](https://tweaked.cc/module/window.html)
     */
     export interface Window {
         /**
             
             
             @param sText 
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         write(sText: /*not provided*/ any): void
 
@@ -4404,24 +5156,32 @@ declare namespace window {
             @param sText 
             @param sTextColor 
             @param sBackgroundColor 
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         blit(sText: /*not provided*/ any, sTextColor: /*not provided*/ any, sBackgroundColor: /*not provided*/ any): void
 
         /**
             
             
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         clear(): void
 
         /**
             
             
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         clearLine(): void
 
         /**
             
             
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         getCursorPos(): void
 
@@ -4430,6 +5190,8 @@ declare namespace window {
             
             @param x 
             @param y 
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         setCursorPos(x: /*not provided*/ any, y: /*not provided*/ any): void
 
@@ -4437,24 +5199,32 @@ declare namespace window {
             
             
             @param blink 
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         setCursorBlink(blink: /*not provided*/ any): void
 
         /**
             
             
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         getCursorBlink(): void
 
         /**
             
             
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         isColor(): void
 
         /**
             
             
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         isColour(): void
 
@@ -4462,6 +5232,8 @@ declare namespace window {
             
             
             @param color 
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         setTextColor(color: /*not provided*/ any): void
 
@@ -4469,6 +5241,8 @@ declare namespace window {
             
             
             @param color 
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         setTextColour(color: /*not provided*/ any): void
 
@@ -4479,6 +5253,8 @@ declare namespace window {
             @param r 
             @param g 
             @param b 
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         setPaletteColour(colour: /*not provided*/ any, r: /*not provided*/ any, g: /*not provided*/ any, b: /*not provided*/ any): void
 
@@ -4489,6 +5265,8 @@ declare namespace window {
             @param r 
             @param g 
             @param b 
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         setPaletteColor(colour: /*not provided*/ any, r: /*not provided*/ any, g: /*not provided*/ any, b: /*not provided*/ any): void
 
@@ -4496,6 +5274,8 @@ declare namespace window {
             
             
             @param colour 
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         getPaletteColour(colour: /*not provided*/ any): void
 
@@ -4503,6 +5283,8 @@ declare namespace window {
             
             
             @param colour 
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         getPaletteColor(colour: /*not provided*/ any): void
 
@@ -4510,6 +5292,8 @@ declare namespace window {
             
             
             @param color 
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         setBackgroundColor(color: /*not provided*/ any): void
 
@@ -4517,12 +5301,16 @@ declare namespace window {
             
             
             @param color 
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         setBackgroundColour(color: /*not provided*/ any): void
 
         /**
             
             
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         getSize(): void
 
@@ -4530,30 +5318,40 @@ declare namespace window {
             
             
             @param n 
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         scroll(n: /*not provided*/ any): void
 
         /**
             
             
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         getTextColor(): void
 
         /**
             
             
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         getTextColour(): void
 
         /**
             
             
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         getBackgroundColor(): void
 
         /**
             
             
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         getBackgroundColour(): void
 
@@ -4567,6 +5365,8 @@ declare namespace window {
             @returns The background colours of this line, suitable for use with term.blit.
             
             @throws If y is not between 1 and this window's height.
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         getLine(y: number): LuaMultiReturn<[string, string, string]>
 
@@ -4577,6 +5377,8 @@ declare namespace window {
             Making an invisible window visible will immediately draw it.
             
             @param visible Whether this window is visible.
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         setVisible(visible: boolean): void
 
@@ -4586,12 +5388,16 @@ declare namespace window {
             
             
             @returns Whether this window is visible.
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         isVisible(): boolean
 
         /**
             Draw this window. This does nothing if the window is not visible.
             
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         redraw(): void
 
@@ -4599,6 +5405,8 @@ declare namespace window {
             Set the current terminal's cursor to where this window's cursor is. This
             does nothing if the window is not visible.
             
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         restoreCursor(): void
 
@@ -4608,6 +5416,8 @@ declare namespace window {
             
             @returns The x position of this window.
             @returns The y position of this window.
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         getPosition(): LuaMultiReturn<[number, number]>
 
@@ -4624,6 +5434,8 @@ declare namespace window {
             @param new_height The new height of this window.
             @param new_parent? The new redirect object this
             window should draw to.
+ 
+            [Documentation](https://tweaked.cc/module/window.html)
         */
         reposition(new_x: number, new_y: number, new_width?: number, new_height?: number, new_parent?: term.Redirect): void
 
@@ -4632,7 +5444,7 @@ declare namespace window {
 }
 /**
     This peripheral allows you to interact with command blocks.
-    
+ 
     [Documentation](https://tweaked.cc/peripheral/command.html)
 */
 interface command {
@@ -4641,16 +5453,20 @@ interface command {
         
         
         @returns The current command.
+ 
+        [Documentation](https://tweaked.cc/peripheral/command.html)
+        @noSelf
     */
-    /** @noSelf */
     getCommand(): string
 
     /**
         Set the command block's command.
         
         @param command The new command.
+ 
+        [Documentation](https://tweaked.cc/peripheral/command.html)
+        @noSelf
     */
-    /** @noSelf */
     setCommand(command: string): void
 
     /**
@@ -4659,36 +5475,44 @@ interface command {
         
         @returns If the command completed successfully.
         @returns A failure message.
+ 
+        [Documentation](https://tweaked.cc/peripheral/command.html)
+        @noSelf
     */
-    /** @noSelf */
     runCommand(): LuaMultiReturn<[boolean, string | null]>
 
 }
 /**
     A computer or turtle wrapped as a peripheral.
-    
+ 
     [Documentation](https://tweaked.cc/peripheral/computer.html)
 */
 interface computer {
     /**
         Turn the other computer on.
         
+ 
+        [Documentation](https://tweaked.cc/peripheral/computer.html)
+        @noSelf
     */
-    /** @noSelf */
     turnOn(): void
 
     /**
         Shutdown the other computer.
         
+ 
+        [Documentation](https://tweaked.cc/peripheral/computer.html)
+        @noSelf
     */
-    /** @noSelf */
     shutdown(): void
 
     /**
         Reboot or turn on the other computer.
         
+ 
+        [Documentation](https://tweaked.cc/peripheral/computer.html)
+        @noSelf
     */
-    /** @noSelf */
     reboot(): void
 
     /**
@@ -4696,8 +5520,10 @@ interface computer {
         
         
         @returns The computer's ID.
+ 
+        [Documentation](https://tweaked.cc/peripheral/computer.html)
+        @noSelf
     */
-    /** @noSelf */
     getID(): number
 
     /**
@@ -4705,8 +5531,10 @@ interface computer {
         
         
         @returns If the computer is on.
+ 
+        [Documentation](https://tweaked.cc/peripheral/computer.html)
+        @noSelf
     */
-    /** @noSelf */
     isOn(): boolean
 
     /**
@@ -4714,15 +5542,17 @@ interface computer {
         
         
         @returns The computer's label.
+ 
+        [Documentation](https://tweaked.cc/peripheral/computer.html)
+        @noSelf
     */
-    /** @noSelf */
     getLabel(): string | null
 
 }
 /**
     Disk drives are a peripheral which allow you to read and write to floppy disks and other "mountable media" (such as
     computers or turtles). They also allow you to play records.
-    
+ 
     [Documentation](https://tweaked.cc/peripheral/drive.html)
 */
 interface drive {
@@ -4731,8 +5561,10 @@ interface drive {
         
         
         @returns Whether a disk is currently inserted in the drive.
+ 
+        [Documentation](https://tweaked.cc/peripheral/drive.html)
+        @noSelf
     */
-    /** @noSelf */
     isDiskPresent(): boolean
 
     /**
@@ -4740,8 +5572,10 @@ interface drive {
         
         
         @returns The label of the disk, or nil if either no disk is inserted or the disk doesn't have a label.
+ 
+        [Documentation](https://tweaked.cc/peripheral/drive.html)
+        @noSelf
     */
-    /** @noSelf */
     getDiskLabel(): string | null
 
     /**
@@ -4755,8 +5589,10 @@ interface drive {
         @param label? The new label of the disk, or nil to clear.
         
         @throws If the disk's label can't be changed.
+ 
+        [Documentation](https://tweaked.cc/peripheral/drive.html)
+        @noSelf
     */
-    /** @noSelf */
     setDiskLabel(label?: string): void
 
     /**
@@ -4764,8 +5600,10 @@ interface drive {
         
         
         @returns Whether a disk with data is inserted.
+ 
+        [Documentation](https://tweaked.cc/peripheral/drive.html)
+        @noSelf
     */
-    /** @noSelf */
     hasData(): boolean
 
     /**
@@ -4773,8 +5611,10 @@ interface drive {
         
         
         @returns The mount path for the disk, or nil if no data disk is inserted.
+ 
+        [Documentation](https://tweaked.cc/peripheral/drive.html)
+        @noSelf
     */
-    /** @noSelf */
     getMountPath(): string | null
 
     /**
@@ -4782,8 +5622,10 @@ interface drive {
         
         
         @returns Whether a disk with audio is inserted.
+ 
+        [Documentation](https://tweaked.cc/peripheral/drive.html)
+        @noSelf
     */
-    /** @noSelf */
     hasAudio(): boolean
 
     /**
@@ -4791,29 +5633,37 @@ interface drive {
         
         
         @returns The title of the audio, false if no disk is inserted, or nil if the disk has no audio.
+ 
+        [Documentation](https://tweaked.cc/peripheral/drive.html)
+        @noSelf
     */
-    /** @noSelf */
     getAudioTitle(): string | null | false
 
     /**
         Plays the audio in the inserted disk, if available.
         
+ 
+        [Documentation](https://tweaked.cc/peripheral/drive.html)
+        @noSelf
     */
-    /** @noSelf */
     playAudio(): void
 
     /**
         Stops any audio that may be playing.
         
+ 
+        [Documentation](https://tweaked.cc/peripheral/drive.html)
+        @noSelf
     */
-    /** @noSelf */
     stopAudio(): void
 
     /**
         Ejects any disk that may be in the drive.
         
+ 
+        [Documentation](https://tweaked.cc/peripheral/drive.html)
+        @noSelf
     */
-    /** @noSelf */
     ejectDisk(): void
 
     /**
@@ -4821,14 +5671,16 @@ interface drive {
         
         
         @returns The ID of the disk in the drive, or nil if no disk with an ID is inserted.
+ 
+        [Documentation](https://tweaked.cc/peripheral/drive.html)
+        @noSelf
     */
-    /** @noSelf */
     getDiskID(): number | null
 
 }
 /**
     Modems allow you to send messages between computers over long distances.
-    
+ 
     [Documentation](https://tweaked.cc/peripheral/modem.html)
 */
 interface modem {
@@ -4840,8 +5692,10 @@ interface modem {
         
         @throws If the channel is out of range.
         If there are too many open channels.
+ 
+        [Documentation](https://tweaked.cc/peripheral/modem.html)
+        @noSelf
     */
-    /** @noSelf */
     open(channel: number): void
 
     /**
@@ -4852,8 +5706,10 @@ interface modem {
         @returns Whether the channel is open.
         
         @throws If the channel is out of range.
+ 
+        [Documentation](https://tweaked.cc/peripheral/modem.html)
+        @noSelf
     */
-    /** @noSelf */
     isOpen(channel: number): boolean
 
     /**
@@ -4862,15 +5718,19 @@ interface modem {
         @param channel The channel to close.
         
         @throws If the channel is out of range.
+ 
+        [Documentation](https://tweaked.cc/peripheral/modem.html)
+        @noSelf
     */
-    /** @noSelf */
     close(channel: number): void
 
     /**
         Close all open channels.
         
+ 
+        [Documentation](https://tweaked.cc/peripheral/modem.html)
+        @noSelf
     */
-    /** @noSelf */
     closeAll(): void
 
     /**
@@ -4888,8 +5748,10 @@ interface modem {
         tables. Other types (like functions), as well as metatables, will not be transmitted.
         
         @throws If the channel is out of range.
+ 
+        [Documentation](https://tweaked.cc/peripheral/modem.html)
+        @noSelf
     */
-    /** @noSelf */
     transmit(channel: number, replyChannel: number, payload: any): void
 
     /**
@@ -4900,8 +5762,10 @@ interface modem {
         
         
         @returns true if this is a wireless modem.
+ 
+        [Documentation](https://tweaked.cc/peripheral/modem.html)
+        @noSelf
     */
-    /** @noSelf */
     isWireless(): boolean
 
     /**
@@ -4915,8 +5779,10 @@ interface modem {
         
         
         @returns Remote peripheral names on the network.
+ 
+        [Documentation](https://tweaked.cc/peripheral/modem.html)
+        @noSelf
     */
-    /** @noSelf */
     getNamesRemote(): string[]
 
     /**
@@ -4928,8 +5794,10 @@ interface modem {
         @param name The peripheral's name.
         
         @returns boolean If a peripheral is present with the given name.
+ 
+        [Documentation](https://tweaked.cc/peripheral/modem.html)
+        @noSelf
     */
-    /** @noSelf */
     isPresentRemote(name: string): boolean
 
     /**
@@ -4941,8 +5809,10 @@ interface modem {
         @param name The peripheral's name.
         
         @returns The peripheral's type, or nil if it is not present.
+ 
+        [Documentation](https://tweaked.cc/peripheral/modem.html)
+        @noSelf
     */
-    /** @noSelf */
     getTypeRemote(name: string): string | null
 
     /**
@@ -4955,8 +5825,10 @@ interface modem {
         @param type The type to check.
         
         @returns If a peripheral has a particular type, or nil if it is not present.
+ 
+        [Documentation](https://tweaked.cc/peripheral/modem.html)
+        @noSelf
     */
-    /** @noSelf */
     hasTypeRemote(name: string, type: string): boolean | null
 
     /**
@@ -4968,8 +5840,10 @@ interface modem {
         @param name The peripheral's name.
         
         @returns A list of methods provided by this peripheral, or nil if it is not present.
+ 
+        [Documentation](https://tweaked.cc/peripheral/modem.html)
+        @noSelf
     */
-    /** @noSelf */
     getMethodsRemote(name: string): string[] | null
 
     /**
@@ -4983,8 +5857,10 @@ interface modem {
         @param ... Additional arguments to pass to the method
         
         @returns The return values of the peripheral method.
+ 
+        [Documentation](https://tweaked.cc/peripheral/modem.html)
+        @noSelf
     */
-    /** @noSelf */
     callRemote(remoteName: string, method: string, ..._: /*not provided*/ any[]): string
 
     /**
@@ -4997,15 +5873,17 @@ interface modem {
         
         
         @returns The current computer's name on the wired network.
+ 
+        [Documentation](https://tweaked.cc/peripheral/modem.html)
+        @noSelf
     */
-    /** @noSelf */
     getNameLocal(): string | null
 
 }
 /**
     Monitors are a block which act as a terminal, displaying information on one side. This allows them to be read and
     interacted with in-world without opening a GUI.
-    
+ 
     [Documentation](https://tweaked.cc/peripheral/monitor.html)
 */
 interface monitor {
@@ -5016,8 +5894,10 @@ interface monitor {
         @param scale The monitor's scale. This must be a multiple of 0.5 between 0.5 and 5.
         
         @throws If the scale is out of range.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     setTextScale(scale: number): void
 
     /**
@@ -5027,8 +5907,10 @@ interface monitor {
         @returns The monitor's current scale.
         
         @throws If the monitor cannot be found.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     getTextScale(): number
 
     /**
@@ -5038,8 +5920,10 @@ interface monitor {
         text to the current terminal line.
         
         @param text The text to write.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     write(text: string): void
 
     /**
@@ -5049,8 +5933,10 @@ interface monitor {
         will copy pixels from above instead.
         
         @param y The number of lines to move up by. This may be a negative number.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     scroll(y: number): void
 
     /**
@@ -5059,8 +5945,10 @@ interface monitor {
         
         @returns The x position of the cursor.
         @returns The y position of the cursor.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     getCursorPos(): LuaMultiReturn<[number, number]>
 
     /**
@@ -5068,8 +5956,10 @@ interface monitor {
         
         @param x The new x position of the cursor.
         @param y The new y position of the cursor.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     setCursorPos(x: number, y: number): void
 
     /**
@@ -5077,16 +5967,20 @@ interface monitor {
         
         
         @returns If the cursor is blinking.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     getCursorBlink(): boolean
 
     /**
         Sets whether the cursor should be visible (and blinking) at the current cursor position.
         
         @param blink Whether the cursor should blink.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     setCursorBlink(blink: boolean): void
 
     /**
@@ -5095,23 +5989,29 @@ interface monitor {
         
         @returns The terminal's width.
         @returns The terminal's height.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     getSize(): LuaMultiReturn<[number, number]>
 
     /**
         Clears the terminal, filling it with the current background colour.
         
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     clear(): void
 
     /**
         Clears the line the cursor is currently on, filling it with the current background
         colour.
         
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     clearLine(): void
 
     /**
@@ -5119,8 +6019,10 @@ interface monitor {
         
         
         @returns The current text colour.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     getTextColour(): number
 
     /**
@@ -5128,24 +6030,30 @@ interface monitor {
         
         
         @returns The current text colour.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     getTextColor(): number
 
     /**
         Set the colour that new text will be written as.
         
         @param colour The new text colour.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     setTextColour(colour: number): void
 
     /**
         Set the colour that new text will be written as.
         
         @param colour The new text colour.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     setTextColor(colour: number): void
 
     /**
@@ -5154,8 +6062,10 @@ interface monitor {
         
         
         @returns The current background colour.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     getBackgroundColour(): number
 
     /**
@@ -5164,8 +6074,10 @@ interface monitor {
         
         
         @returns The current background colour.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     getBackgroundColor(): number
 
     /**
@@ -5173,8 +6085,10 @@ interface monitor {
         terminal.
         
         @param colour The new background colour.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     setBackgroundColour(colour: number): void
 
     /**
@@ -5182,8 +6096,10 @@ interface monitor {
         terminal.
         
         @param colour The new background colour.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     setBackgroundColor(colour: number): void
 
     /**
@@ -5194,8 +6110,10 @@ interface monitor {
         
         
         @returns Whether this terminal supports colour.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     isColour(): boolean
 
     /**
@@ -5206,8 +6124,10 @@ interface monitor {
         
         
         @returns Whether this terminal supports colour.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     isColor(): boolean
 
     /**
@@ -5225,8 +6145,10 @@ interface monitor {
         @param backgroundColour The corresponding background colours.
         
         @throws If the three inputs are not the same length.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     blit(text: string, textColour: string, backgroundColour: string): void
 
     /**
@@ -5240,8 +6162,10 @@ interface monitor {
         @param index The colour whose palette should be changed.
         @param colour A 24-bit integer representing the RGB value of the colour. For instance the integer
         0xFF0000 corresponds to the colour #FF0000.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     setPaletteColour(index: number, colour: number): void
 
     /**
@@ -5255,8 +6179,10 @@ interface monitor {
         @param index The colour whose palette should be changed.
         @param colour A 24-bit integer representing the RGB value of the colour. For instance the integer
         0xFF0000 corresponds to the colour #FF0000.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     setPaletteColor(index: number, colour: number): void
 
     /**
@@ -5267,8 +6193,10 @@ interface monitor {
         @returns The red channel, will be between 0 and 1.
         @returns The green channel, will be between 0 and 1.
         @returns The blue channel, will be between 0 and 1.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     getPaletteColour(colour: number): LuaMultiReturn<[number, number, number]>
 
     /**
@@ -5279,14 +6207,16 @@ interface monitor {
         @returns The red channel, will be between 0 and 1.
         @returns The green channel, will be between 0 and 1.
         @returns The blue channel, will be between 0 and 1.
+ 
+        [Documentation](https://tweaked.cc/peripheral/monitor.html)
+        @noSelf
     */
-    /** @noSelf */
     getPaletteColor(colour: number): LuaMultiReturn<[number, number, number]>
 
 }
 /**
     The printer peripheral allows pages and books to be printed.
-    
+ 
     [Documentation](https://tweaked.cc/peripheral/printer.html)
 */
 interface printer {
@@ -5296,8 +6226,10 @@ interface printer {
         @param text The value to write to the page.
         
         @throws If any values couldn't be converted to a string, or if no page is started.
+ 
+        [Documentation](https://tweaked.cc/peripheral/printer.html)
+        @noSelf
     */
-    /** @noSelf */
     write(text: string): void
 
     /**
@@ -5308,8 +6240,10 @@ interface printer {
         @returns The Y position of the cursor.
         
         @throws If a page isn't being printed.
+ 
+        [Documentation](https://tweaked.cc/peripheral/printer.html)
+        @noSelf
     */
-    /** @noSelf */
     getCursorPos(): LuaMultiReturn<[number, number]>
 
     /**
@@ -5319,8 +6253,10 @@ interface printer {
         @param y The Y coordinate to set the cursor at.
         
         @throws If a page isn't being printed.
+ 
+        [Documentation](https://tweaked.cc/peripheral/printer.html)
+        @noSelf
     */
-    /** @noSelf */
     setCursorPos(x: number, y: number): void
 
     /**
@@ -5331,8 +6267,10 @@ interface printer {
         @returns The height of the page.
         
         @throws If a page isn't being printed.
+ 
+        [Documentation](https://tweaked.cc/peripheral/printer.html)
+        @noSelf
     */
-    /** @noSelf */
     getPageSize(): LuaMultiReturn<[number, number]>
 
     /**
@@ -5340,8 +6278,10 @@ interface printer {
         
         
         @returns Whether a new page could be started.
+ 
+        [Documentation](https://tweaked.cc/peripheral/printer.html)
+        @noSelf
     */
-    /** @noSelf */
     newPage(): boolean
 
     /**
@@ -5351,8 +6291,10 @@ interface printer {
         @returns Whether the page could be successfully finished.
         
         @throws If a page isn't being printed.
+ 
+        [Documentation](https://tweaked.cc/peripheral/printer.html)
+        @noSelf
     */
-    /** @noSelf */
     endPage(): boolean
 
     /**
@@ -5361,8 +6303,10 @@ interface printer {
         @param title? The title to set for the page.
         
         @throws If a page isn't being printed.
+ 
+        [Documentation](https://tweaked.cc/peripheral/printer.html)
+        @noSelf
     */
-    /** @noSelf */
     setPageTitle(title?: string): void
 
     /**
@@ -5370,8 +6314,10 @@ interface printer {
         
         
         @returns The amount of ink available to print with.
+ 
+        [Documentation](https://tweaked.cc/peripheral/printer.html)
+        @noSelf
     */
-    /** @noSelf */
     getInkLevel(): number
 
     /**
@@ -5379,14 +6325,16 @@ interface printer {
         
         
         @returns The amount of paper available to print with.
+ 
+        [Documentation](https://tweaked.cc/peripheral/printer.html)
+        @noSelf
     */
-    /** @noSelf */
     getPaperLevel(): number
 
 }
 /**
     The speaker peripheral allows your computer to play notes and other sounds.
-    
+ 
     [Documentation](https://tweaked.cc/peripheral/speaker.html)
 */
 interface speaker {
@@ -5410,8 +6358,10 @@ interface speaker {
         @returns Whether the note could be played as the limit was reached.
         
         @throws If the instrument doesn't exist.
+ 
+        [Documentation](https://tweaked.cc/peripheral/speaker.html)
+        @noSelf
     */
-    /** @noSelf */
     playNote(instrument: string, volume?: number, pitch?: number): boolean
 
     /**
@@ -5430,8 +6380,10 @@ interface speaker {
         @returns Whether the sound could be played.
         
         @throws If the sound name was invalid.
+ 
+        [Documentation](https://tweaked.cc/peripheral/speaker.html)
+        @noSelf
     */
-    /** @noSelf */
     playSound(name: string, volume?: number, pitch?: number): boolean
 
     /**
@@ -5456,8 +6408,10 @@ interface speaker {
         @returns If there was room to accept this audio data.
         
         @throws If the audio data is malformed.
+ 
+        [Documentation](https://tweaked.cc/peripheral/speaker.html)
+        @noSelf
     */
-    /** @noSelf */
     playAudio(audio: number[], volume?: number): boolean
 
     /**
@@ -5465,14 +6419,16 @@ interface speaker {
         
         This clears any audio that playAudio had queued and stops the latest sound played by playSound.
         
+ 
+        [Documentation](https://tweaked.cc/peripheral/speaker.html)
+        @noSelf
     */
-    /** @noSelf */
     stop(): void
 
 }
 /**
     Methods for interacting with blocks using Forge's energy storage system.
-    
+ 
     [Documentation](https://tweaked.cc/generic_peripheral/energy_storage.html)
 */
 interface energy_storage {
@@ -5481,8 +6437,10 @@ interface energy_storage {
         
         
         @returns The energy stored in this block, in FE.
+ 
+        [Documentation](https://tweaked.cc/generic_peripheral/energy_storage.html)
+        @noSelf
     */
-    /** @noSelf */
     getEnergy(): number
 
     /**
@@ -5490,14 +6448,16 @@ interface energy_storage {
         
         
         @returns The energy capacity of this block.
+ 
+        [Documentation](https://tweaked.cc/generic_peripheral/energy_storage.html)
+        @noSelf
     */
-    /** @noSelf */
     getEnergyCapacity(): number
 
 }
 /**
     Methods for interacting with tanks and other fluid storage blocks.
-    
+ 
     [Documentation](https://tweaked.cc/generic_peripheral/fluid_storage.html)
 */
 interface fluid_storage {
@@ -5512,9 +6472,11 @@ interface fluid_storage {
         
         
         @returns All tanks in this fluid storage.
+ 
+        [Documentation](https://tweaked.cc/generic_peripheral/fluid_storage.html)
+        @noSelf
     */
-    /** @noSelf */
-    tanks(): object | null[]
+    tanks(): (object | null)[]
 
     /**
         Move a fluid from one fluid container to another connected one.
@@ -5530,8 +6492,10 @@ interface fluid_storage {
         @returns The amount of moved fluid.
         
         @throws If the peripheral to transfer to doesn't exist or isn't an fluid container.
+ 
+        [Documentation](https://tweaked.cc/generic_peripheral/fluid_storage.html)
+        @noSelf
     */
-    /** @noSelf */
     pushFluid(toName: string, limit?: number, fluidName?: string): number
 
     /**
@@ -5548,14 +6512,16 @@ interface fluid_storage {
         @returns The amount of moved fluid.
         
         @throws If the peripheral to transfer to doesn't exist or isn't an fluid container.
+ 
+        [Documentation](https://tweaked.cc/generic_peripheral/fluid_storage.html)
+        @noSelf
     */
-    /** @noSelf */
     pullFluid(fromName: string, limit?: number, fluidName?: string): number
 
 }
 /**
     Methods for interacting with inventories.
-    
+ 
     [Documentation](https://tweaked.cc/generic_peripheral/inventory.html)
 */
 interface inventory {
@@ -5564,8 +6530,10 @@ interface inventory {
         
         
         @returns The number of slots in this inventory.
+ 
+        [Documentation](https://tweaked.cc/generic_peripheral/inventory.html)
+        @noSelf
     */
-    /** @noSelf */
     size(): number
 
     /**
@@ -5582,9 +6550,11 @@ interface inventory {
         
         
         @returns All items in this inventory.
+ 
+        [Documentation](https://tweaked.cc/generic_peripheral/inventory.html)
+        @noSelf
     */
-    /** @noSelf */
-    list(): object | null[]
+    list(): (object | null)[]
 
     /**
         Get detailed information about an item.
@@ -5608,8 +6578,10 @@ interface inventory {
         @returns Information about the item in this slot, or nil if not present.
         
         @throws If the slot is out of range.
+ 
+        [Documentation](https://tweaked.cc/generic_peripheral/inventory.html)
+        @noSelf
     */
-    /** @noSelf */
     getItemDetail(slot: number): object
 
     /**
@@ -5623,8 +6595,10 @@ interface inventory {
         @returns The maximum number of items in this slot.
         
         @throws If the slot is out of range.
+ 
+        [Documentation](https://tweaked.cc/generic_peripheral/inventory.html)
+        @noSelf
     */
-    /** @noSelf */
     getItemLimit(slot: number): number
 
     /**
@@ -5643,8 +6617,10 @@ interface inventory {
         
         @throws If the peripheral to transfer to doesn't exist or isn't an inventory.
         If either source or destination slot is out of range.
+ 
+        [Documentation](https://tweaked.cc/generic_peripheral/inventory.html)
+        @noSelf
     */
-    /** @noSelf */
     pushItems(toName: string, fromSlot: number, limit?: number, toSlot?: number): number
 
     /**
@@ -5663,89 +6639,111 @@ interface inventory {
         
         @throws If the peripheral to transfer to doesn't exist or isn't an inventory.
         If either source or destination slot is out of range.
+ 
+        [Documentation](https://tweaked.cc/generic_peripheral/inventory.html)
+        @noSelf
     */
-    /** @noSelf */
     pullItems(fromName: string, fromSlot: number, limit?: number, toSlot?: number): number
 
 }
 /**
     The alarm event is fired when an alarm started with os.setAlarm completes.
-    
+ 
     [Documentation](https://tweaked.cc/event/alarm.html)
 */
 interface alarm {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/alarm.html)
     */
     "0": "alarm"
     /**
     The ID of the alarm that finished.
+ 
+    [Documentation](https://tweaked.cc/event/alarm.html)
     */
     "1": number
 }
 /**
     The char event is fired when a character is typed on the keyboard.
-    
+ 
     [Documentation](https://tweaked.cc/event/char.html)
 */
 interface char {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/char.html)
     */
     "0": "char"
     /**
     The string representing the character that was pressed.
+ 
+    [Documentation](https://tweaked.cc/event/char.html)
     */
     "1": string
 }
 /**
     The computer_command event is fired when the /computercraft queue command is run for the current computer.
-    
+ 
     [Documentation](https://tweaked.cc/event/computer_command.html)
 */
 interface computer_command {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/computer_command.html)
     */
     "0": "computer_command"
     /**
     The arguments passed to the command.
+ 
+    [Documentation](https://tweaked.cc/event/computer_command.html)
     */
     "1": string[]
 }
 /**
     The disk event is fired when a disk is inserted into an adjacent or networked disk drive.
-    
+ 
     [Documentation](https://tweaked.cc/event/disk.html)
 */
 interface disk {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/disk.html)
     */
     "0": "disk"
     /**
     The side of the disk drive that had a disk inserted.
+ 
+    [Documentation](https://tweaked.cc/event/disk.html)
     */
     "1": string
 }
 /**
     The disk_eject event is fired when a disk is removed from an adjacent or networked disk drive.
-    
+ 
     [Documentation](https://tweaked.cc/event/disk_eject.html)
 */
 interface disk_eject {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/disk_eject.html)
     */
     "0": "disk_eject"
     /**
     The side of the disk drive that had a disk removed.
+ 
+    [Documentation](https://tweaked.cc/event/disk_eject.html)
     */
     "1": string
 }
 /**
     The file_transfer event is queued when a user drags-and-drops a file on an open computer.
-    
+ 
     [Documentation](https://tweaked.cc/event/file_transfer.html)
 */
 declare namespace file_transfer {
@@ -5758,6 +6756,8 @@ declare namespace file_transfer {
         See also
         
         fs.BinaryReadHandle 
+ 
+        [Documentation](https://tweaked.cc/event/file_transfer.html)
     */
     export interface TransferredFile {
         /**
@@ -5765,6 +6765,8 @@ declare namespace file_transfer {
             
             
             @returns The file's name.
+ 
+            [Documentation](https://tweaked.cc/event/file_transfer.html)
         */
         getName(): string
 
@@ -5772,6 +6774,8 @@ declare namespace file_transfer {
 
     /**
         A list of files that have been transferred to this computer.
+ 
+        [Documentation](https://tweaked.cc/event/file_transfer.html)
     */
     export interface TransferredFiles {
         /**
@@ -5779,6 +6783,8 @@ declare namespace file_transfer {
             
             
             @returns The list of files.
+ 
+            [Documentation](https://tweaked.cc/event/file_transfer.html)
         */
         getFiles(): file_transfer.TransferredFile[]
 
@@ -5788,530 +6794,696 @@ declare namespace file_transfer {
 interface file_transfer {
     /**
     The event name
+ 
+    [Documentation](https://tweaked.cc/event/file_transfer.html)
     */
     "0": "file_transfer"
     /**
     The list of transferred files.
+ 
+    [Documentation](https://tweaked.cc/event/file_transfer.html)
     */
     "1": file_transfer.TransferredFiles
 }
 /**
     The http_check event is fired when a URL check finishes.
-    
+ 
     [Documentation](https://tweaked.cc/event/http_check.html)
 */
 interface http_check {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/http_check.html)
     */
     "0": "http_check"
     /**
     The URL requested to be checked.
+ 
+    [Documentation](https://tweaked.cc/event/http_check.html)
     */
     "1": string
     /**
     Whether the check succeeded.
+ 
+    [Documentation](https://tweaked.cc/event/http_check.html)
     */
     "2": boolean
     /**
     If the check failed, a reason explaining why the check failed.
+ 
+    [Documentation](https://tweaked.cc/event/http_check.html)
     */
     "3": string | null
 }
 /**
     The http_failure event is fired when an HTTP request fails.
-    
+ 
     [Documentation](https://tweaked.cc/event/http_failure.html)
 */
 interface http_failure {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/http_failure.html)
     */
     "0": "http_failure"
     /**
     The URL of the site requested.
+ 
+    [Documentation](https://tweaked.cc/event/http_failure.html)
     */
     "1": string
     /**
     An error describing the failure.
+ 
+    [Documentation](https://tweaked.cc/event/http_failure.html)
     */
     "2": string
     /**
     A response handle if the connection succeeded, but the server's
            response indicated failure.
+ 
+    [Documentation](https://tweaked.cc/event/http_failure.html)
     */
     "3": http.Response | null
 }
 /**
     The http_success event is fired when an HTTP request returns successfully.
-    
+ 
     [Documentation](https://tweaked.cc/event/http_success.html)
 */
 interface http_success {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/http_success.html)
     */
     "0": "http_success"
     /**
     The URL of the site requested.
+ 
+    [Documentation](https://tweaked.cc/event/http_success.html)
     */
     "1": string
     /**
     The successful HTTP response.
+ 
+    [Documentation](https://tweaked.cc/event/http_success.html)
     */
     "2": http.Response
 }
 /**
     This event is fired when any key is pressed while the terminal is focused.
-    
+ 
     [Documentation](https://tweaked.cc/event/key.html)
 */
 interface key {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/key.html)
     */
     "0": "key"
     /**
     The numerical key value of the key pressed.
+ 
+    [Documentation](https://tweaked.cc/event/key.html)
     */
     "1": number
     /**
     Whether the key event was generated while holding the key (true), rather than pressing it the first time (false).
+ 
+    [Documentation](https://tweaked.cc/event/key.html)
     */
     "2": boolean
 }
 /**
     Fired whenever a key is released (or the terminal is closed while a key was being pressed).
-    
+ 
     [Documentation](https://tweaked.cc/event/key_up.html)
 */
 interface key_up {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/key_up.html)
     */
     "0": "key_up"
     /**
     The numerical key value of the key pressed.
+ 
+    [Documentation](https://tweaked.cc/event/key_up.html)
     */
     "1": number
 }
 /**
     The modem_message event is fired when a message is received on an open channel on any modem.
-    
+ 
     [Documentation](https://tweaked.cc/event/modem_message.html)
 */
 interface modem_message {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/modem_message.html)
     */
     "0": "modem_message"
     /**
     The side of the modem that received the message.
+ 
+    [Documentation](https://tweaked.cc/event/modem_message.html)
     */
     "1": string
     /**
     The channel that the message was sent on.
+ 
+    [Documentation](https://tweaked.cc/event/modem_message.html)
     */
     "2": number
     /**
     The reply channel set by the sender.
+ 
+    [Documentation](https://tweaked.cc/event/modem_message.html)
     */
     "3": number
     /**
     The message as sent by the sender.
+ 
+    [Documentation](https://tweaked.cc/event/modem_message.html)
     */
     "4": any
     /**
     The distance between the sender and the receiver in blocks, or nil if the message was sent between dimensions.
+ 
+    [Documentation](https://tweaked.cc/event/modem_message.html)
     */
     "5": number | null
 }
 /**
     The monitor_resize event is fired when an adjacent or networked monitor's size is changed.
-    
+ 
     [Documentation](https://tweaked.cc/event/monitor_resize.html)
 */
 interface monitor_resize {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/monitor_resize.html)
     */
     "0": "monitor_resize"
     /**
     The side or network ID of the monitor that was resized.
+ 
+    [Documentation](https://tweaked.cc/event/monitor_resize.html)
     */
     "1": string
 }
 /**
     The monitor_touch event is fired when an adjacent or networked Advanced Monitor is right-clicked.
-    
+ 
     [Documentation](https://tweaked.cc/event/monitor_touch.html)
 */
 interface monitor_touch {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/monitor_touch.html)
     */
     "0": "monitor_touch"
     /**
     The side or network ID of the monitor that was touched.
+ 
+    [Documentation](https://tweaked.cc/event/monitor_touch.html)
     */
     "1": string
     /**
     The X coordinate of the touch, in characters.
+ 
+    [Documentation](https://tweaked.cc/event/monitor_touch.html)
     */
     "2": number
     /**
     The Y coordinate of the touch, in characters.
+ 
+    [Documentation](https://tweaked.cc/event/monitor_touch.html)
     */
     "3": number
 }
 /**
     This event is fired when the terminal is clicked with a mouse. This event is only fired on advanced computers (including
     advanced turtles and pocket computers).
-    
+ 
     [Documentation](https://tweaked.cc/event/mouse_click.html)
 */
 interface mouse_click {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_click.html)
     */
     "0": "mouse_click"
     /**
     The mouse button that was clicked.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_click.html)
     */
     "1": number
     /**
     The X-coordinate of the click.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_click.html)
     */
     "2": number
     /**
     The Y-coordinate of the click.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_click.html)
     */
     "3": number
 }
 /**
     This event is fired every time the mouse is moved while a mouse button is being held.
-    
+ 
     [Documentation](https://tweaked.cc/event/mouse_drag.html)
 */
 interface mouse_drag {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_drag.html)
     */
     "0": "mouse_drag"
     /**
     The mouse button that is being pressed.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_drag.html)
     */
     "1": number
     /**
     The X-coordinate of the mouse.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_drag.html)
     */
     "2": number
     /**
     The Y-coordinate of the mouse.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_drag.html)
     */
     "3": number
 }
 /**
     This event is fired when a mouse wheel is scrolled in the terminal.
-    
+ 
     [Documentation](https://tweaked.cc/event/mouse_scroll.html)
 */
 interface mouse_scroll {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_scroll.html)
     */
     "0": "mouse_scroll"
     /**
     The direction of the scroll. (-1 = up, 1 = down)
+ 
+    [Documentation](https://tweaked.cc/event/mouse_scroll.html)
     */
     "1": number
     /**
     The X-coordinate of the mouse when scrolling.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_scroll.html)
     */
     "2": number
     /**
     The Y-coordinate of the mouse when scrolling.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_scroll.html)
     */
     "3": number
 }
 /**
     This event is fired when a mouse button is released or a held mouse leaves the computer's terminal.
-    
+ 
     [Documentation](https://tweaked.cc/event/mouse_up.html)
 */
 interface mouse_up {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_up.html)
     */
     "0": "mouse_up"
     /**
     The mouse button that was released.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_up.html)
     */
     "1": number
     /**
     The X-coordinate of the mouse.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_up.html)
     */
     "2": number
     /**
     The Y-coordinate of the mouse.
+ 
+    [Documentation](https://tweaked.cc/event/mouse_up.html)
     */
     "3": number
 }
 /**
     The paste event is fired when text is pasted into the computer through Ctrl-V (or ⌘V on Mac).
-    
+ 
     [Documentation](https://tweaked.cc/event/paste.html)
 */
 interface paste {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/paste.html)
     */
     "0": "paste"
     /**
     The text that was pasted.
+ 
+    [Documentation](https://tweaked.cc/event/paste.html)
     */
     "1": string
 }
 /**
     The peripheral event is fired when a peripheral is attached on a side or to a modem.
-    
+ 
     [Documentation](https://tweaked.cc/event/peripheral.html)
 */
 interface peripheral {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/peripheral.html)
     */
     "0": "peripheral"
     /**
     The side the peripheral was attached to.
+ 
+    [Documentation](https://tweaked.cc/event/peripheral.html)
     */
     "1": string
 }
 /**
     The peripheral_detach event is fired when a peripheral is detached from a side or from a modem.
-    
+ 
     [Documentation](https://tweaked.cc/event/peripheral_detach.html)
 */
 interface peripheral_detach {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/peripheral_detach.html)
     */
     "0": "peripheral_detach"
     /**
     The side the peripheral was detached from.
+ 
+    [Documentation](https://tweaked.cc/event/peripheral_detach.html)
     */
     "1": string
 }
 /**
     The rednet_message event is fired when a message is sent over Rednet.
-    
+ 
     [Documentation](https://tweaked.cc/event/rednet_message.html)
 */
 interface rednet_message {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/rednet_message.html)
     */
     "0": "rednet_message"
     /**
     The ID of the sending computer.
+ 
+    [Documentation](https://tweaked.cc/event/rednet_message.html)
     */
     "1": number
     /**
     The message sent.
+ 
+    [Documentation](https://tweaked.cc/event/rednet_message.html)
     */
     "2": any
     /**
     The protocol of the message, if provided.
+ 
+    [Documentation](https://tweaked.cc/event/rednet_message.html)
     */
     "3": string | null
 }
 /**
     The redstone event is fired whenever any redstone inputs on the computer change.
-    
+ 
     [Documentation](https://tweaked.cc/event/redstone.html)
 */
 interface redstone {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/redstone.html)
     */
     "0": "redstone"
 }
 /**
     This uses io.lines to read audio data in blocks of 16KiB from "example_song.dfpwm", and then attempts to play it
     using speaker.playAudio. If the speaker's buffer is full, it waits for an event and tries again.
-    
+ 
     [Documentation](https://tweaked.cc/event/speaker_audio_empty.html)
 */
 interface speaker_audio_empty {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/speaker_audio_empty.html)
     */
     "0": "speaker_audio_empty"
     /**
     The name of the speaker which is available to play more audio.
+ 
+    [Documentation](https://tweaked.cc/event/speaker_audio_empty.html)
     */
     "1": string
 }
 /**
     The task_complete event is fired when an asynchronous task completes. This is usually handled inside the function call that queued the task; however, functions such as commands.execAsync return immediately so the user can wait for completion.
-    
+ 
     [Documentation](https://tweaked.cc/event/task_complete.html)
 */
 interface task_complete {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/task_complete.html)
     */
     "0": "task_complete"
     /**
     The ID of the task that completed.
+ 
+    [Documentation](https://tweaked.cc/event/task_complete.html)
     */
     "1": number
     /**
     Whether the command succeeded.
+ 
+    [Documentation](https://tweaked.cc/event/task_complete.html)
     */
     "2": boolean
     /**
     If the command failed, an error message explaining the failure. (This is not present if the command succeeded.)
+ 
+    [Documentation](https://tweaked.cc/event/task_complete.html)
     */
     "3": string
     /**
     Any parameters returned from the command.
+ 
+    [Documentation](https://tweaked.cc/event/task_complete.html)
     */
     "4": any[]
 }
 /**
     The term_resize event is fired when the main terminal is resized. For instance:
-    
+ 
     [Documentation](https://tweaked.cc/event/term_resize.html)
 */
 interface term_resize {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/term_resize.html)
     */
     "0": "term_resize"
 }
 /**
     The terminate event is fired when Ctrl-T is held down.
-    
+ 
     [Documentation](https://tweaked.cc/event/terminate.html)
 */
 interface terminate {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/terminate.html)
     */
     "0": "terminate"
 }
 /**
     The timer event is fired when a timer started with os.startTimer completes.
-    
+ 
     [Documentation](https://tweaked.cc/event/timer.html)
 */
 interface timer {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/timer.html)
     */
     "0": "timer"
     /**
     The ID of the timer that finished.
+ 
+    [Documentation](https://tweaked.cc/event/timer.html)
     */
     "1": number
 }
 /**
     The turtle_inventory event is fired when a turtle's inventory is changed.
-    
+ 
     [Documentation](https://tweaked.cc/event/turtle_inventory.html)
 */
 interface turtle_inventory {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/turtle_inventory.html)
     */
     "0": "turtle_inventory"
 }
 /**
     The websocket_closed event is fired when an open WebSocket connection is closed.
-    
+ 
     [Documentation](https://tweaked.cc/event/websocket_closed.html)
 */
 interface websocket_closed {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_closed.html)
     */
     "0": "websocket_closed"
     /**
     The URL of the WebSocket that was closed.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_closed.html)
     */
     "1": string
     /**
     The server-provided reason
            the websocket was closed. This will be nil if the connection was closed
            abnormally.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_closed.html)
     */
     "2": string | null
     /**
     The connection close code,
            indicating why the socket was closed. This will be nil if the connection
            was closed abnormally.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_closed.html)
     */
     "3": number | null
 }
 /**
     The websocket_failure event is fired when a WebSocket connection request fails.
-    
+ 
     [Documentation](https://tweaked.cc/event/websocket_failure.html)
 */
 interface websocket_failure {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_failure.html)
     */
     "0": "websocket_failure"
     /**
     The URL of the site requested.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_failure.html)
     */
     "1": string
     /**
     An error describing the failure.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_failure.html)
     */
     "2": string
 }
 /**
     The websocket_message event is fired when a message is received on an open WebSocket connection.
-    
+ 
     [Documentation](https://tweaked.cc/event/websocket_message.html)
 */
 interface websocket_message {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_message.html)
     */
     "0": "websocket_message"
     /**
     The URL of the WebSocket.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_message.html)
     */
     "1": string
     /**
     The contents of the message.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_message.html)
     */
     "2": string
     /**
     Whether this is a binary message.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_message.html)
     */
     "3": boolean
 }
 /**
     The websocket_success event is fired when a WebSocket connection request returns successfully.
-    
+ 
     [Documentation](https://tweaked.cc/event/websocket_success.html)
 */
 interface websocket_success {
     /**
     The event name.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_success.html)
     */
     "0": "websocket_success"
     /**
     The URL of the site.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_success.html)
     */
     "1": string
     /**
     The handle for the WebSocket.
+ 
+    [Documentation](https://tweaked.cc/event/websocket_success.html)
     */
     "2": http.Websocket
 }

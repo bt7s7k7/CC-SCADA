@@ -3,6 +3,7 @@
 /// <reference path="../../addons.d.ts" />
 
 import "../components/compute/Compute"
+import "../components/logistics/Storage"
 import "../components/monitor/Monitor"
 import { Drawer, getStyleList } from "../drawing/Drawer"
 import { Widget } from "../drawing/Widget"
@@ -33,6 +34,7 @@ try {
             Logger.printWork("  :: Run without commands to start the runtime")
             Logger.printWork("  help: Print command list")
             Logger.printWork("  ui-test: Show the UI test screen")
+            Logger.printWork("  async-test: Execute the async task test")
         } else if (command == "ui-test") {
             const drawer = new Drawer(term)
 
@@ -64,6 +66,30 @@ try {
             })
             Widget.calculateLayout(root, drawer.size)
             Widget.draw(root, drawer)
+
+            EventLoop.run()
+        } else if (command == "async-test") {
+            EventLoop.subscribe(null, "key", (event) => {
+                Logger.printWork(event["1"])
+            })
+
+            const [width, height] = term.getSize()
+            let x = 1, y = height
+            let oX = 0, oY = 0
+            const task = EventLoop.executeAsync(() => {
+                const value = read()
+                Logger.abort(value)
+            })
+
+            task.before = () => {
+                [oX, oY] = term.getCursorPos()
+                term.setCursorPos(x, y)
+            }
+
+            task.after = () => {
+                [x, y] = term.getCursorPos()
+                term.setCursorPos(oX, oY)
+            }
 
             EventLoop.run()
         } else {

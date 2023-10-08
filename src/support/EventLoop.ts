@@ -1,3 +1,4 @@
+
 interface Subscription<K extends keyof EventMap = any> {
     event: K
     listener: (event: EventMap[K], handle: ListenerHandle) => void
@@ -9,6 +10,7 @@ interface Subscription<K extends keyof EventMap = any> {
 let _immediate: (() => void)[] = []
 const _microtasks: (() => void)[] = []
 const _subscriptions = new Map<keyof EventMap, Subscription[]>()
+const _asyncTasks = new Set<AsyncTask>()
 
 export class ListenerHandle {
     protected _subscriptions: Subscription[] = []
@@ -25,6 +27,12 @@ export class ListenerHandle {
             guard()
         }
     }
+}
+
+export class AsyncTask {
+    public before?: () => void
+    public after?: () => void
+    public thread: LuaThread = null!
 }
 
 export namespace EventLoop {
@@ -64,6 +72,18 @@ export namespace EventLoop {
                 task()
             } else {
                 const event = os.pullEvent()
+
+                for (const task of [..._asyncTasks]) {
+                    task.before?.()
+                    const [success, error] = coroutine.resume(task.thread, ...event)
+                    task.after?.()
+                    if (success == false) throw error
+
+                    if (coroutine.status(task.thread) == "dead") {
+                        _asyncTasks.delete(task)
+                    }
+                }
+
                 const eventName = event[0]
                 const eventData: Record<string, any> = {}
                 for (let i = 0; i < event.length; i++) {
@@ -140,5 +160,17 @@ export namespace EventLoop {
         handle["_subscriptions"].push(subscription)
 
         return handle
+    }
+
+    export function executeAsync(thunk: () => void) {
+        const task = new AsyncTask()
+        EventLoop.setImmediate(() => {
+            const thread = coroutine.create(() => thunk())
+            // Initial resume runs the function until first yield
+            coroutine.resume(thread)
+            task.thread = thread
+            _asyncTasks.add(task)
+        })
+        return task
     }
 }
