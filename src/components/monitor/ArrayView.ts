@@ -43,7 +43,8 @@ export class ArrayViewComponent extends UIField implements EventHandler {
                     [new Widget({ content: "<empty>", style: "output" })]
                 ) : (
                     [...this._lastValue]
-                        .map(v => `${v[0]}: ${v[1]}`)
+                        .map(v => `${v[0]}=${v[1]}`)
+                        .map(v => v.length > this.monitor.drawer!.size.x ? "~" + v.slice(v.length - this.monitor.drawer!.size.x + 1) : v)
                         .map((v, i, a) => new Widget({ content: (i < a.length - 1 ? v + ", " : v), style: "output" }))
                 ))
             ]
