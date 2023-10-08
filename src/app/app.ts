@@ -146,7 +146,6 @@ try {
                 }
             })
 
-
             EventLoop.queueMicrotask(() => {
                 if (system.domain == null) {
                     Logger.printWork("Creating local domain...")
@@ -156,6 +155,49 @@ try {
 
                 DomainProxy.findDomain(system.domain)
             })
+
+            let lastKey = { key: 0, time: os.epoch("utc") }
+            EventLoop.subscribe(null, "key_up", (event) => {
+                if (!Logger.isStdoutEnabled()) return
+
+                const key = event["1"]
+
+                if (key == /* H */ 35 || key == 72) {
+                    print("Keyboard shortcuts:")
+                    print("  H - Help")
+                    print("  T - Terminate")
+                    print("  R - Reboot")
+                    print("  E - Edit config")
+                    print("  Z - Open shell")
+                } else if (key == /* T */ 20 || key == 84) {
+                    if (lastKey.key == key && os.epoch("utc") - lastKey.time < 500) {
+                        Logger.abort("Terminated")
+                    } else {
+                        print("Press R twice to confirm reboot")
+                    }
+                } else if (key == /* R */ 19 || key == 82) {
+                    if (lastKey.key == key && os.epoch("utc") - lastKey.time < 500) {
+                        os.reboot()
+                    } else {
+                        print("Press R twice to confirm reboot")
+                    }
+                } else if (key == /* E */ 18 || key == 69) {
+                    Logger.setStdoutEnabled(false)
+                    EventLoop.executeAsync(() => {
+                        shell.execute("edit", "config.txt")
+                        Logger.setStdoutEnabled(true)
+                    })
+                } else if (key == /* Z */ 44 || key == 89) {
+                    Logger.setStdoutEnabled(false)
+                    EventLoop.executeAsync(() => {
+                        shell.execute("shell")
+                        Logger.setStdoutEnabled(true)
+                    })
+                }
+
+                lastKey = { key, time: os.epoch("utc") }
+            })
+
             EventLoop.run()
         }
     } else {

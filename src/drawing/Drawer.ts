@@ -102,7 +102,7 @@ export class Drawer {
         public readonly ctx: term.Redirect
     ) {
         if (ctx == term.current()) {
-            Logger.stopStdout()
+            Logger.setStdoutEnabled(false)
         }
 
         const [w, h] = this.ctx.getSize()

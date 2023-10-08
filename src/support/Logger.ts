@@ -42,8 +42,12 @@ export namespace Logger {
         _logFile = file
     }
 
-    export function stopStdout() {
-        _stdoutEnabled = false
+    export function setStdoutEnabled(enabled: boolean) {
+        _stdoutEnabled = enabled
+    }
+
+    export function isStdoutEnabled() {
+        return _stdoutEnabled
     }
 
     export function printWork(...values: any[]) {
