@@ -1,4 +1,5 @@
 import { DataStore, StoredValue } from "../../data/DataStore"
+import { Logger } from "../../support/Logger"
 import { Event, EventHandler } from "../../system/Event"
 import { System } from "../../system/System"
 import { ComponentManifest } from "../Component"
@@ -49,9 +50,17 @@ export class DataWriteOperator extends Operator implements EventHandler {
 
 export class DataReadOperator extends Operator implements EventHandler {
     public id = ""
+    public set passive(value: string) {
+        if (value == "passive") {
+            this._passive = true
+        } else {
+            Logger.abort("Invalid settings flag for DataRead")
+        }
+    }
 
     protected _store = DataStore.of("any")
     protected _lastValue: StoredValue | null = null
+    protected _passive = false
 
     public getParameterCount(): number {
         return 0
@@ -61,7 +70,8 @@ export class DataReadOperator extends Operator implements EventHandler {
         return {
             subComponentType: null,
             fields: [
-                { name: "id", type: "string" }
+                { name: "id", type: "string" },
+                { name: "passive", type: "string", optional: true },
             ]
         }
     }
@@ -77,7 +87,9 @@ export class DataReadOperator extends Operator implements EventHandler {
             owner: false,
             handler: (value) => {
                 this._lastValue = value
-                this.owner.refresh()
+                if (!this._passive) {
+                    this.owner.refresh()
+                }
             },
         })
 

@@ -1,5 +1,6 @@
 import { StoredValue } from "../../data/DataStore"
 import { EventLoop } from "../../support/EventLoop"
+import { ensureBoolean } from "../../support/support"
 import { Component, ComponentManifest } from "../Component"
 import { ComputeComponent } from "./Compute"
 
@@ -10,10 +11,12 @@ export abstract class Operator extends Component {
     public hasResult() {
         return true
     }
-    public abstract evaluate(args: (StoredValue | null)[]): StoredValue | null
+    public abstract evaluate(args: (StoredValue | null)[]): StoredValue | typeof Operator.BREAK | null
     public init() {
 
     }
+
+    public static readonly BREAK = Symbol("break")
 }
 
 export class PollOperator extends Operator {
@@ -44,5 +47,52 @@ export class PollOperator extends Operator {
         EventLoop.setInterval(null, this.interval, () => {
             this.owner.refresh()
         })
+    }
+}
+
+export class BreakOperator extends Operator {
+    public enabled = false
+
+    public getManifest(): ComponentManifest {
+        return {
+            subComponentType: null,
+            fields: [
+                { name: "enabled", type: "boolean", optional: true }
+            ]
+        }
+    }
+
+    public getParameterCount(): number {
+        return this.enabled ? 0 : 1
+    }
+
+    public hasResult(): boolean {
+        return false
+    }
+
+    public evaluate(args: (StoredValue | null)[]): StoredValue | typeof Operator.BREAK | null {
+        if (this.enabled || ensureBoolean(args[0])) return Operator.BREAK
+        return null
+    }
+}
+
+export class VoidOperator extends Operator {
+    public getManifest(): ComponentManifest {
+        return {
+            subComponentType: null,
+            fields: []
+        }
+    }
+
+    public getParameterCount(): number {
+        return 1
+    }
+
+    public hasResult(): boolean {
+        return false
+    }
+
+    public evaluate(args: (StoredValue | null)[]): typeof Operator.BREAK | StoredValue | null {
+        return null
     }
 }
