@@ -1,4 +1,3 @@
-import { StoredValue } from "../../data/DataStore"
 import { EventLoop } from "../../support/EventLoop"
 import { Logger } from "../../support/Logger"
 import { ensureBoolean, ensureNumber } from "../../support/support"
@@ -6,7 +5,7 @@ import { DeviceFoundEvent, DeviceLostEvent } from "../../system/DeviceManager"
 import { Event, EventHandler } from "../../system/Event"
 import { System } from "../../system/System"
 import { ComponentManifest } from "../Component"
-import { Operator } from "./Operator"
+import { ComputeValue, Operator } from "./Operator"
 
 abstract class RedstoneBase extends Operator implements EventHandler {
     public side = ""
@@ -96,7 +95,7 @@ export class RedstoneInputOperator extends RedstoneBase {
         this.owner.refresh()
     }
 
-    public evaluate(args: (StoredValue | null)[]): StoredValue | null {
+    public evaluate(args: ComputeValue[]): ComputeValue {
         if (this.device != null) {
             const handle = this._getHandle()
             if (handle != null) {
@@ -140,7 +139,7 @@ export class RedstoneOutputOperator extends RedstoneBase {
         }
     }
 
-    public evaluate(args: (StoredValue | null)[]): StoredValue | null {
+    public evaluate(args: ComputeValue[]): ComputeValue {
         this._lastValue = args[0]
         this._handleChange()
 

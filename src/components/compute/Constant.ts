@@ -1,7 +1,6 @@
 import { FieldType } from "../../app/config"
-import { DataTypeMap, StoredValue } from "../../data/DataStore"
 import { ComponentManifest } from "../Component"
-import { Operator } from "./Operator"
+import { ComputeValue, Operator } from "./Operator"
 
 abstract class Constant extends Operator {
     public value: any = null
@@ -19,7 +18,7 @@ abstract class Constant extends Operator {
         }
     }
 
-    public evaluate(args: StoredValue[]): StoredValue | null {
+    public evaluate(args: ComputeValue[]): ComputeValue {
         return this.value
     }
 

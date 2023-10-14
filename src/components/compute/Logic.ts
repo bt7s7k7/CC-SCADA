@@ -1,7 +1,7 @@
 import { StoredValue } from "../../data/DataStore"
 import { ensureBoolean } from "../../support/support"
 import { ComponentManifest } from "../Component"
-import { Operator } from "./Operator"
+import { ComputeValue, Operator } from "./Operator"
 
 
 
@@ -19,7 +19,7 @@ abstract class Logic extends Operator {
 
     protected abstract _evaluate(a: boolean, b: boolean): StoredValue
 
-    public evaluate(args: StoredValue[]): StoredValue {
+    public evaluate(args: ComputeValue[]): ComputeValue {
         let a = ensureBoolean(args[0])
         let b = ensureBoolean(args[1])
         return this._evaluate(a, b)
@@ -47,7 +47,7 @@ export class NegateOperator extends Operator {
         return 1
     }
 
-    public evaluate(args: StoredValue[]): StoredValue | null {
+    public evaluate(args: ComputeValue[]): ComputeValue {
         return !ensureBoolean(args[0])
     }
 }
@@ -61,7 +61,7 @@ export class ChoiceOperator extends Operator {
         return 3
     }
 
-    public evaluate(args: StoredValue[]): StoredValue | null {
+    public evaluate(args: ComputeValue[]): ComputeValue {
         return ensureBoolean(args[2]) ? args[0] : args[1]
     }
 }

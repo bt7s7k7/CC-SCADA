@@ -5,6 +5,7 @@ import { DeviceFoundEvent, DeviceLostEvent } from "../../system/DeviceManager"
 import { Event, EventHandler } from "../../system/Event"
 import { System } from "../../system/System"
 import { Component, ComponentManifest, registerComponent } from "../Component"
+import { BeginTransferOperator, ExecuteTransferOperator, InputOperator, OutputOperator } from "./Logistics"
 
 export class StorageComponent extends Component implements EventHandler {
     public name: string | null = null
@@ -85,3 +86,7 @@ export class StorageComponent extends Component implements EventHandler {
 }
 
 registerComponent("Storage", StorageComponent)
+registerComponent("BeginTransfer", BeginTransferOperator)
+registerComponent("ExecuteTransfer", ExecuteTransferOperator)
+registerComponent("Input", InputOperator)
+registerComponent("Output", OutputOperator)

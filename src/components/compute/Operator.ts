@@ -1,8 +1,9 @@
-import { StoredValue } from "../../data/DataStore"
 import { EventLoop } from "../../support/EventLoop"
 import { ensureBoolean } from "../../support/support"
 import { Component, ComponentManifest } from "../Component"
 import { ComputeComponent } from "./Compute"
+
+export type ComputeValue = {} | null
 
 export abstract class Operator extends Component {
     public owner: ComputeComponent = null!
@@ -11,7 +12,7 @@ export abstract class Operator extends Component {
     public hasResult() {
         return true
     }
-    public abstract evaluate(args: (StoredValue | null)[]): StoredValue | typeof Operator.BREAK | null
+    public abstract evaluate(args: ComputeValue[]): ComputeValue
     public init() {
 
     }
@@ -39,7 +40,7 @@ export class PollOperator extends Operator {
         return false
     }
 
-    public evaluate(args: (StoredValue | null)[]): StoredValue | null {
+    public evaluate(args: ComputeValue[]): ComputeValue {
         return null
     }
 
@@ -70,7 +71,7 @@ export class BreakOperator extends Operator {
         return false
     }
 
-    public evaluate(args: (StoredValue | null)[]): StoredValue | typeof Operator.BREAK | null {
+    public evaluate(args: ComputeValue[]): ComputeValue {
         if (this.enabled || ensureBoolean(args[0])) return Operator.BREAK
         return null
     }
@@ -92,7 +93,7 @@ export class VoidOperator extends Operator {
         return false
     }
 
-    public evaluate(args: (StoredValue | null)[]): typeof Operator.BREAK | StoredValue | null {
+    public evaluate(args: ComputeValue[]): ComputeValue {
         return null
     }
 }

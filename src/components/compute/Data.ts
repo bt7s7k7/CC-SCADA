@@ -3,7 +3,7 @@ import { Logger } from "../../support/Logger"
 import { Event, EventHandler } from "../../system/Event"
 import { System } from "../../system/System"
 import { ComponentManifest } from "../Component"
-import { Operator } from "./Operator"
+import { ComputeValue, Operator } from "./Operator"
 
 export class DataWriteOperator extends Operator implements EventHandler {
     public id = ""
@@ -37,8 +37,11 @@ export class DataWriteOperator extends Operator implements EventHandler {
         System.getSystem().registerEventHandler(this)
     }
 
-    public evaluate(args: StoredValue[]): StoredValue | null {
+    public evaluate(args: ComputeValue[]): ComputeValue {
         const value = args[0]
+        if (value != null && typeof value != "string" && typeof value != "number" && typeof value != "boolean") {
+            Logger.abort("DataWrite received value that is not a valid StoreValue type")
+        }
         this._store.setValue(value)
         return null
     }
@@ -96,7 +99,7 @@ export class DataReadOperator extends Operator implements EventHandler {
         System.getSystem().registerEventHandler(this)
     }
 
-    public evaluate(args: StoredValue[]): StoredValue | null {
+    public evaluate(args: ComputeValue[]): ComputeValue {
         return this._lastValue
     }
 }

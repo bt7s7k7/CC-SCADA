@@ -1,7 +1,7 @@
 import { StoredValue } from "../../data/DataStore"
 import { ensureNumber } from "../../support/support"
 import { ComponentManifest } from "../Component"
-import { Operator } from "./Operator"
+import { ComputeValue, Operator } from "./Operator"
 
 abstract class Numeric extends Operator {
     public constant: number | null = null
@@ -21,7 +21,7 @@ abstract class Numeric extends Operator {
 
     protected abstract _evaluate(a: number, b: number): StoredValue
 
-    public evaluate(args: StoredValue[]): StoredValue {
+    public evaluate(args: ComputeValue[]): ComputeValue {
         let a = ensureNumber(args[0])
         let b = this.constant != null ? this.constant : ensureNumber(args[1])
         return this._evaluate(a, b)

@@ -1,4 +1,3 @@
-import { StoredValue } from "../../data/DataStore"
 import { EventLoop } from "../../support/EventLoop"
 import { Logger } from "../../support/Logger"
 import { DomainAcquiredEvent } from "../../system/DomainProxy"
@@ -9,7 +8,7 @@ import { BooleanConstant, NumberConstant, StringConstant } from "./Constant"
 import { DataReadOperator, DataWriteOperator } from "./Data"
 import { AndOperator, ChoiceOperator, NegateOperator, OrOperator } from "./Logic"
 import { AddOperator, DivOperator, EqualsOperator, GreaterOrEqualsOperator, GreaterThanOperator, IntDivOperator, LessOrEqualsOperator, LessThanOperator, ModOperator, MulOperator, SubOperator } from "./Numeric"
-import { BreakOperator, Operator, PollOperator, VoidOperator } from "./Operator"
+import { BreakOperator, ComputeValue, Operator, PollOperator, VoidOperator } from "./Operator"
 import { AnalogRedstoneInputOperator, AnalogRedstoneOutputOperator, RedstoneInputOperator, RedstoneOutputOperator } from "./Redstone"
 
 export class ComputeComponent extends Component implements EventHandler {
@@ -31,7 +30,7 @@ export class ComputeComponent extends Component implements EventHandler {
     }
 
     protected refreshNow() {
-        const stack: (StoredValue | null)[] = []
+        const stack: ComputeValue[] = []
 
         for (const operator of this.operators) {
             const paramCount = operator.getParameterCount()
