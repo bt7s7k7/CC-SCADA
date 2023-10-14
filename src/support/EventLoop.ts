@@ -1,3 +1,4 @@
+import { Logger } from "./Logger"
 
 interface Subscription<K extends keyof EventMap = any> {
     event: K
@@ -74,6 +75,10 @@ export namespace EventLoop {
                 const event = os.pullEvent()
 
                 for (const task of [..._asyncTasks]) {
+                    if (coroutine.status(task.thread) == "dead") {
+                        Logger.abort("Async task is dead on arrival")
+                    }
+
                     task.before?.()
                     const [success, error] = coroutine.resume(task.thread, ...event)
                     task.after?.()
@@ -166,8 +171,14 @@ export namespace EventLoop {
         const task = new AsyncTask()
         EventLoop.setImmediate(() => {
             const thread = coroutine.create(() => thunk())
+            task.before?.()
             // Initial resume runs the function until first yield
             coroutine.resume(thread)
+            task.after?.()
+            if (coroutine.status(thread) == "dead") {
+                // Task returned without yielding
+                return
+            }
             task.thread = thread
             _asyncTasks.add(task)
         })
