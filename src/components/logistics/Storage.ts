@@ -9,6 +9,7 @@ import { BeginTransferOperator, ExecuteTransferOperator, InputOperator, OutputOp
 
 export class StorageComponent extends Component implements EventHandler {
     public name: string | null = null
+    public alias: string | null = null
     public interval = 0.5
     public system = System.getSystem()
 
@@ -21,6 +22,7 @@ export class StorageComponent extends Component implements EventHandler {
             subComponentType: null,
             fields: [
                 { name: "name", type: "string", optional: true },
+                { name: "alias", type: "string", optional: true },
                 { name: "interval", type: "number", optional: true }
             ]
         }
@@ -71,7 +73,7 @@ export class StorageComponent extends Component implements EventHandler {
             if (this.name != null) {
                 this._store.init({
                     defaultValue: 0,
-                    key: this.name,
+                    key: this.alias ?? this.name,
                     owner: true
                 })
             }
