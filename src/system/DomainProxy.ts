@@ -1,4 +1,3 @@
-import { PING_INTERVAL, TIMEOUT_DURATION } from "../constants"
 import { StoredValue } from "../data/DataStore"
 import { EventLoop, ListenerHandle } from "../support/EventLoop"
 import { Logger } from "../support/Logger"
@@ -182,11 +181,11 @@ class RemoteDomain extends DomainProxy {
             }
         })
 
-        EventLoop.setInterval(this._listener, PING_INTERVAL, () => {
+        EventLoop.setInterval(this._listener, system.pingInterval, () => {
             this._sendMessage({ kind: "domain:ping" })
         })
 
-        EventLoop.setInterval(this._listener, TIMEOUT_DURATION, () => {
+        EventLoop.setInterval(this._listener, system.timeoutDuration, () => {
             if (receivedPing == false) {
                 this._listener.dispose()
                 Logger.printError(`Domain connection timeout`)

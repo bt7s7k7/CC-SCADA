@@ -17,13 +17,18 @@ export class System extends Component {
     public readonly devices = new DeviceManager(this)
     public readonly data = new DataStoreManager(this)
 
+    public readonly pingInterval = 1
+    public readonly timeoutDuration = 1.5
+
     public getManifest(): ComponentManifest {
         return {
             subComponentType: null,
             fields: [
                 { name: "name", type: "string" },
                 { name: "domain", type: "string", optional: true },
-                { name: "connectionModem", type: "string", optional: true }
+                { name: "connectionModem", type: "string", optional: true },
+                { name: "pingInterval", type: "number", optional: true },
+                { name: "timeoutDuration", type: "number", optional: true },
             ]
         }
     }

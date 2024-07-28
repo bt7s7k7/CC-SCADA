@@ -1,4 +1,3 @@
-import { PING_INTERVAL, TIMEOUT_DURATION } from "../constants"
 import { StoredValue } from "../data/DataStore"
 import { EventLoop, ListenerHandle } from "../support/EventLoop"
 import { Logger } from "../support/Logger"
@@ -245,7 +244,7 @@ export class Domain {
             })
 
 
-            EventLoop.setInterval(this._listener, PING_INTERVAL, () => {
+            EventLoop.setInterval(this._listener, system.pingInterval, () => {
                 for (const client of this._clients.values()) {
                     if (client.id != this._computerID) {
                         this._sendMessage(client.id, { kind: "client:ping" })
@@ -253,7 +252,7 @@ export class Domain {
                 }
             })
 
-            EventLoop.setInterval(this._listener, TIMEOUT_DURATION, () => {
+            EventLoop.setInterval(this._listener, system.timeoutDuration, () => {
                 for (const client of this._clients.values()) {
                     if (client.id != this._computerID && client.receivedPing == false) {
                         this._removeClient(client)
